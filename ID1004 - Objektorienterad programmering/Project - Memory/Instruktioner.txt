@@ -1,0 +1,15 @@
+ID1004 Inlämningsuppgift 4.5hp
+Memory
+Mattias Cederlund
+mcede@kth.se
+
+För att köra programmet:
+Kompilera och starta programmet Memory.java som vanligt.
+När programmet startats finns det information om hur man fortsätter.
+Observera att alla filer måste ligga som de ligger när de packats upp för att sökvägar till bilderna ska stämma i programmet.
+
+Filer som ingår:
+Memory.java (Huvudprogrammet)
+Folder: Memorypics (Innehåll nedan)
+	1-32.gif (De 32 bilderna som är på baksidan av memorykorten numererade från 1 till 32)
+	baksida.jpg
