@@ -1,0 +1,27 @@
+1. printf tar ett första argument vad som ska skrivas ut och sedan godtyckligt fler med data. Varje "kod" %-någonting motsvarar dessa data i tur och ordning. Koderna bestämmer formateringen. %.2f ger två decimaler på flyttal.
+Frågor om minnesläckor: Valgrind gav definetly lost: 48 bytes in 1 blocks. Efter att free av-kommenterats: inga läckor. 
+Det konstiga skulle vara att man avallokerar elementet och sedan dess next. Har för mig att det fungerar så att elementen fortfarande finns på samma plats i minnet, enda skillnaden är att minnet numer är markerat som ledigt, att det får skrivas över. På frågan om man ska programmera så ser jag inget problem med det. Om man ska avallokera en hel länkad lista som bara har envägs-länkning är det enda vägen att gå.
+2. Det tredje argumentet i fscanf ska peka på ett redan allokerat element av samma typ som typparametern i andra argumentet. &length är en pekare till elementet length och dess minnesplats. &-tecken anger pekare till variabeln.
+
+3. Ubuntu-stacken växer nedåt (out.txt) från låga adresser till höga, solaris-stacken växer uppåt från höga adresser till låga.
+
+4. 
+utfil.exe: nod.o program.o
+	gcc $(FLAGS) -o utfil.exe nod.o program.o
+utfil.exe är målfil. nod.o och program.o är beroenden. Raden börjande med gcc är kommandot. 
+
+5. FLAGS är alternativ som säger åt kompilatorn att kompilera programmet på ett specifikt sätt. 
+6. -g: Lägg till debuginfo som debuggern GDB kan använda.
+-W, numera -Wall men båda stöds. Generera varningar för alla eventuella fel
+man gcc -> /    -Wall
+
+7. Make vet när målet behöver uppdateras/kompileras om. Detta är om filen med målets namn saknas eller är äldre än någon av filerna målet beror på. 
+I vårt exempel skedde uppdatering eftersom nod.c, ett beroende hade ändrats. Andra gången hade inget beroende ändrats och därför behövdes ingen om-kompilering.
+
+8. I c får inte bl.a. funktioner definieras två gånger, om så är fallet fås error vid kompillering: http://en.wikipedia.org/wiki/One_Definition_Rule Med en include guard kan vi se till att vi inte definierar samma sak flera gånger vid include. http://en.wikipedia.org/wiki/Include_guard http://www.nada.kth.se/datorer/haften/java2c/java2c/node39.html <- bra guider.
+
+9. ** list är en pekare till en pekare, den pekar till pekaren till första elementet i listan. När man sedan lägger till ett nytt element i listan sätts dess next-element att peka på det tidigare första elementet (det element list pekade på) och pekaren list sätts nu att pekar på det ny-tillagda elementet, som blir först i listan.
+
+10. fscanf: Hämtar objekt från given ström efter det format som specificerats. I vårt fall söker vi efter en sträng följt av en float. Returvärdet är antalet värden som anropet lyckats hämta. 
+scanf: Fungerar likadant som fscanf men man specificerar inte vilken stream man läser från utan den läser alltid från stdin.
+man 3 fscanf

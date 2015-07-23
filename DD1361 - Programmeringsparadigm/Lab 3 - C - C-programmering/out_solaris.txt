@@ -1,0 +1,7 @@
+Name       Value      Size       Address   
+l1         1          8          ffbff828  
+l2         2          8          ffbff820  
+i1         3          4          ffbff81c  
+i2         4          4          ffbff818  
+c1         heheh      5          ffbff810  
+c2         hoho       5          ffbff808  

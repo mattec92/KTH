@@ -1,0 +1,3 @@
+sed -e "s/^[ ]*\|[ ]*[,;\t][ ]*/\t/g" t1.txt
+I början, inga eller flera förekomster av mellanslag ersätts med tab
+Eller inga eller flera mellanslag följt av separatortecken följt av inga eller flera mellanslag ersätts med tab

@@ -1,0 +1,100 @@
+nul
+en
+to
+tre
+fire
+fem
+seks
+syv
+otte
+ni
+ti
+ellve
+tolv
+tretten
+fjorten
+femten
+seksten
+sytten
+atten
+nitten
+tyve
+en og tyve
+to og tyve
+tre og tyve
+fire og tyve
+fem og tyve
+seks og tyve
+syv og tyve
+otte og tyve
+ni og tyve
+tredive
+en og tredive
+to og tredive
+tre og tredive
+fire og tredive
+fem og tredive
+seks og tredive
+syv og tredive
+otte og tredive
+ni og tredive
+fyrre
+en og fyrre
+to og fyrre
+tre og fyrre
+fire og fyrre
+fem og fyrre
+seks og fyrre
+syv og fyrre
+otte og fyrre
+ni og fyrre
+halv tres
+en og halv tres
+to og halv tres
+tre og halv tres
+fire og halv tres sindstyve
+fem og halv tres
+seks og halv tres sindstyve
+syv og halv tres
+otte og halv tres
+ni og halv tres
+tres
+en og tres
+to og tres
+tre og tres
+fire og tres
+fem og tres sindstyve
+seks og tres
+syv og tres sindstyve
+otte og tres
+ni og tres
+halv fjerds
+en og halv fjerds
+to og halv fjerds
+tre og halv fjerds
+fire og halv fjerds
+fem og halv fjerds
+seks og halv fjerds sindstyve
+syv og halv fjerds
+otte og halv fjerds
+ni og halv fjerds
+firs
+en og firs
+to og firs sindstyve
+tre og firs
+fire og firs
+fem og firs sindstyve
+seks og firs
+syv og firs
+otte og firs
+ni og firs
+halv fems sindstyve
+en og halv fems
+to og halv fems
+tre og halv fems
+fire og halv fems
+fem og halv fems
+seks og halv fems
+syv og halv fems sindstyve
+otte og halv fems
+ni og halv fems

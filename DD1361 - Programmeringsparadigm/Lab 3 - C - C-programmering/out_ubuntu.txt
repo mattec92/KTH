@@ -1,0 +1,7 @@
+Name       Value      Size       Address   
+l1         1          8          0x7fff4043f4c8
+l2         2          8          0x7fff4043f4d0
+i1         3          4          0x7fff4043f4d8
+i2         4          4          0x7fff4043f4dc
+c1         heheh      5          0x7fff4043f4e0
+c2         hoho       5          0x7fff4043f4f0

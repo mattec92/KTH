@@ -1,0 +1,7 @@
+Tunnelbanan	Östra station	50	Drottning Kristinas väg
+Östra station	p1	20	Drottning Kristinas väg
+p1	THS	100	Drottning Kristinas väg
+THS	p2	500	Drottning Kristinas väg
+p2	p3	200	Teknikringen
+p3	Escapen	200	Osquars backe
+Escapen	p1	100	Osquars backe
