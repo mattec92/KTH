@@ -1,0 +1,19 @@
+Gissa ett tal mellan 0-100
+50
+Du gissade för lågt. Talet är högre än: 50
+Du har 9 gissningar kvar.
+70
+Du gissade för lågt. Talet är högre än: 70
+Du har 8 gissningar kvar.
+80
+Du gissade för lågt. Talet är högre än: 80
+Du har 7 gissningar kvar.
+90
+Du gissade för lågt. Talet är högre än: 90
+Du har 6 gissningar kvar.
+95
+Du gissade för högt. Talet är lägre än: 95
+Du har 5 gissningar kvar.
+93
+Du gissade rätt! Det rätta talet var: 93
+Dina gissningar: 50, 70, 80, 90, 95, 93
