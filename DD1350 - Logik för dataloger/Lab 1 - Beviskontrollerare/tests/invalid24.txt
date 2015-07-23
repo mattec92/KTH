@@ -1,0 +1,14 @@
+[].
+
+imp(p,p).
+
+[
+  [
+    [1, p,         assumption]
+  ],
+  [
+    [2, p,         assumption],
+    [3, p,         copy(1)]
+  ],
+  [4, imp(p,p),    (1)]
+].

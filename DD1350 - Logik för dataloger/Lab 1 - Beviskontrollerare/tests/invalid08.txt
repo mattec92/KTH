@@ -1,0 +1,14 @@
+[imp(p, q), neg(q)].
+
+neg(q).
+
+[
+  [
+    [1, p,        assumption ],
+    [2, imp(p,q), premise    ],
+    [3, q,        impel(1,2) ],
+    [4, neg(q),   premise    ],
+    [5, cont,     negel(3, 4)]
+  ],
+  [6, neg(q),     pbc(1,5)   ]
+].

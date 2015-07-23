@@ -1,0 +1,9 @@
+[p].
+
+and(p,q).
+
+[
+  [1, p,         premise],
+  [2, q,         assumption],
+  [3, and(p,q),  andint(1,2)]
+].

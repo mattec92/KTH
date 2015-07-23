@@ -1,0 +1,12 @@
+[q].
+
+q.
+
+[
+  [
+    [1, p, assumption],
+    [2, q, premise]
+  ],
+  [3, imp(p, q), impint(1,2)],
+  [4, q, copy(2)]
+].

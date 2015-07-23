@@ -1,0 +1,19 @@
+% States are s0, s1 and s2
+% Adjacency lists of LTS
+[
+[wait, [card_inserted]],
+[card_inserted, [wait, pin_inserted]],
+[pin_inserted, [money_withdrew, wait]],
+[money_withdrew, [printed_receit, wait]],
+[receit_printed, [wait]]
+].
+% Labeling of LTS
+[
+[wait, [wait]],
+[card_inserted, [card]],
+[pin_inserted, [card, auth]],
+[money_withdrew, [auth, money]],
+[receit_printed, [auth, receit]]
+].
+wait.
+af(neg(card)).

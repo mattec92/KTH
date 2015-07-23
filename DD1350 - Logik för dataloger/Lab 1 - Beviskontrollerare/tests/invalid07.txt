@@ -1,0 +1,12 @@
+[and(imp(p, neg(p)), imp(neg(r), p)), r].
+neg(p).
+[
+    [1,and(imp(p, neg(p)), imp(neg(r), p)),premise],
+    [2,imp(p, neg(p)), andel2(1)],
+    [
+        [3,p,assumption],
+	[4,neg(p),impel(3,2)],
+	[5,cont,negel(3,4)]
+    ],
+    [6,neg(p),negint(3,5)]
+].

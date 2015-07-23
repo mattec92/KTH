@@ -1,0 +1,10 @@
+[p, neg(p)].
+
+q.
+
+[
+  [1, p,      premise ],
+  [2, neg(p), premise ],
+  [3, cont,   negel(1,2)],
+  [4, q,      contel(3)]
+].

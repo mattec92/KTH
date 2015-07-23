@@ -1,0 +1,17 @@
+[neg(and(p,q)), or(p,r), imp(neg(q),s)].
+
+or(r,s).
+
+[
+[1, neg(and(p,q)), premise],
+[2, or(p,r), premise],
+[3, imp(neg(q),s), premise],
+[
+[4, neg(s), assumption],
+[5, neg(q), mt(3,4)],
+[6, s, impel(5,3)],
+[7, cont, negel(4,6)]
+],
+[8, s, contel(7)],
+[9, or(r,s), orint1(8)]
+].

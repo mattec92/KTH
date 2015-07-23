@@ -1,0 +1,23 @@
+[imp(p,or(q,r)),p,neg(r)].
+
+q.
+
+[
+  [1, imp(p,or(q,r)),    premise],
+  [2, p,                 premise],
+  [3, neg(r),            premise],
+  [4, or(q,r),           impel(2,1)],
+  [
+    [5, neg(q),          assumption],
+    [
+      [6, q,             assumption],
+      [7, cont,          negel(6,5)]
+    ],
+    [
+      [8, r,             assumption],
+      [9, cont,          negel(8,3)]
+    ],
+    [10, cont,           orel(4,6,7,8,9)]
+  ],
+  [11, q,                pbc(5,10)]
+].
