@@ -1,0 +1,50 @@
+Algoritmer och datastrukturer Fadil Galjic
+Uppgifter för laboration 4
+Söksamlingar
+Uppgift 1
+En textfil innehåller uppgifter om alla länder i världen. För varje land anges dess namn, huvudstad, antalet invånare, yta, o s v. Länderna är sorterade i filen enligt deras namn.
+Ett program läser in uppgifterna från filen och lägger dem i en samling baserad på en hashtabell. Därefter är dessa uppgifter tillgängliga till programmets användare: de kan välja olika länder och få motsvarande uppgifter om dessa länder.
+Skapa det här programmet.
+Uppgift 2
+En textfil innehåller uppgifter om alla länder i världen. För varje land anges dess namn, huvudstad, antalet invånare, yta, o s v. Länderna är sorterade i filen enligt deras namn.
+Ett program läser in uppgifterna från filen och lägger dem i en samling baserad på ett (välbalanserat) binärt sökträd. Därefter är dessa uppgifter tillgängliga till programmets användare: de kan välja olika länder och få motsvarande uppgifter.
+Skapa det här programmet.
+Uppgift 3
+Sanna betraktar följande heltalsserie:
+400 200 600 100 300 500 700 50 150 250 350 450 550 650 750 25 75 125 175
+Plötsligt inser hon att serien kan uppfattas som ett fullständigt, binärt sökträd. Hon tar pennor och papper och börjar rita trädet. Varje nivå i trädet ritas med en ny färg. När trädet är färdigt hittar hon det största och det minsta heltalet i trädet, och markerar dem på ett speciellt sätt. Hon blir så inspirerad att hon tar en ny penna och ritar en väg genom alla trädets heltal i avtagande ordning. Till sist ritar hon en väg från trädets rot till heltalet 150.
+Skapa ett program som simulerar de olika aktiviteterna. Heltalen ska lagras i en heltalsvektor, som ska tolkas som ett träd.
+Uppgift 4
+Algoritmer och datastrukturer Fadil Galjic
+En snabb söksamling innehåller uppgifter om faktorer till alla heltal mellan 1 och 10000. T ex innehåller samlingen heltalet 60 och dess faktorer 2, 2, 3 och 5 (60 = 2 * 2 * 3 * 5).
+Ett program skapar en sådan söksamling, och använder den för att förkorta olika bråk. Programmets användare kan t ex ange bråket 60 / 72, och få den i förkortad form 5 / 6. Bråkets nämnare och täljare ska inte överstiga 10000. Det går också att använda söksamlingen för att få alla primtal i ett givet heltalsintervall (vars övre gräns inte överstiger 10000).
+Skapa det här programmet.
+Uppgift 5
+En snabb söksamling innehåller uppgifter om faktorer till 10000 slumpmässiga heltal. T ex kan samlingen innehålla heltalet 60 och dess faktorer 2, 2, 3 och 5 (60 = 2 * 2 * 3 * 5).
+Ett program skapar en sådan söksamling, och använder den för att förkorta olika bråk. Programmets användare kan t ex ange bråket 60 / 72, och få den i förkortad form 5 / 6. Om nämnaren eller täljaren till det angivna bråket inte finns i söksamlingen, faktoriseras den och läggs till även den till söksamlingen.
+Skapa det här programmet.
+Uppgift 6
+Ett program har tillgång till en snabb söksamling, som innehåller uppgifter om ett antal personer. Programmets användare kan ange namn på en person, och få alla tillgängliga uppgifter om personen. Uppgifter om nya personer kan läggas till till söksamlingen, och redan befintliga uppgifter kan tas bort från den. Det går också att överföra uppgifter till en textfil, där personerna är sorterade enligt deras namn.
+Skapa det här programmet.
+Uppgift 7
+Ett program läser en bok, och bestämmer de hundra mest frekventa orden i boken. Programmet skriver sedan ut dessa ord och deras frekvenser till en fil. Orden ordnas i filen enligt deras frekvenser.
+Skapa det här programmet.
+Uppgift 8
+Algoritmer och datastrukturer Fadil Galjic
+Sanna vill utöka sitt ordförråd i engelska. För det ändamålet använder hon en engelsk-svensk ordbok, en behållare med ett antal vita kort, en speciell, tom kortbehållare, en penna, en dator och en skrivare.
+Sanna öppnar ordboken och väljer ett ord som hon inte kan. Hon tar ett kort från den första kortbehållaren, och skriver både det här ordet och motsvarande svenskt ord på kortet. Hon koncentrerar sig en stund på kortet med avsikt att memorera ordet och dess betydelse. Efter det lägger Sanna detta kort i den andra kortbehållaren, och väljer nästa ord från ordboken. Hon fortsätter på samma sätt tills alla vita kort är förbrukade.
+Sanna tar sedan datorn och skapar en fil med alla dessa ord. Orden i filen är sorterade enligt lexikografisk ordning. Till sist skriver Sanna ut filen på skrivaren och få alla ord på flera pappersblad.
+Skapa ett program som simulerar de olika aktiviteterna.
+Uppgift 9
+Ett serverprogram har tillgång till en snabb söksamling, som innehåller olika uppgifter om alla böcker i ett bibliotek. Ett klientprogram kan ansluta sig till servern, och få olika uppgifter om böckerna i biblioteket.
+Skapa den här servern och motsvarande klient.
+Uppgift 10
+Ett meddelande kan kodas som en serie bokstäver. Det går också att använda Morsealfabetet, och representera ett meddelande som en serie punkter och streck.
+Skapa ett serverprogram, som kan översätta mellan dessa två sätt att representera ett meddelande.
+Uppgift 11
+Skapa en abstrakt modell som representerar en söksamling. Implementera sedan den modellen på två olika sätt: genom att använda ett binärt sökträd och genom att använda en hashtabell som underliggande datastruktur.
+Testa modellen och dess implementationer.
+Uppgift 12
+Algoritmer och datastrukturer Fadil Galjic
+En söksamling kan implementeras med ett binärt sökträd som underliggande datastruktur. Det går också att använda en hashtabell som datamodell.
+Skapa en programvarukomponent som kan utföra omvandlingar mellan dessa två typer av söksamlingar. Använd sedan den komponenten i en applikation.

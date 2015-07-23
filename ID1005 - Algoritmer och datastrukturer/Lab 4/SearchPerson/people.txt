@@ -1,0 +1,6 @@
+Emma: Name/Age/City: Emma/54/Malmö
+Kalle: Name/Age/City: Kalle/23/Leksand
+Linus: Name/Age/City: Linus/21/Stockoholm
+Lisa: Name/Age/City: Lisa/3/Hemma
+Mattias: Name/Age/City: Mattias/19/Stockholm
+Pelle: Name/Age/City: Pelle/12/Blajstan
