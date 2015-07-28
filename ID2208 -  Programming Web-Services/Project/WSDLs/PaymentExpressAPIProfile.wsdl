@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://PaymentExpress.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://PaymentExpress.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://PaymentExpress.com">
+      <s:element name="SubmitTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="transactionDetails" type="tns:TransactionDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TransactionDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="amount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="billingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardHolderName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="clientInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cvc2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dateExpiry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dpsBillingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dpsTxnRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="enableAddBillCard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="enablePaxInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="inputCurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxCarrier" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxCarrier2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxCarrier3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxCarrier4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxDateDepart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxDate2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxDate3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxDate4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxTime1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxTime2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxTime3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxTime4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxLeg1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxLeg2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxLeg3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxLeg4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxClass1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxClass2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxClass3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxClass4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxStopOverCode1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxStopOverCode2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxStopOverCode3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxStopOverCode4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxFareBasis1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxFareBasis2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxFareBasis3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxFareBasis4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxFlightNumber1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxFlightNumber2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxFlightNumber3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxFlightNumber4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxOrigin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxTicketNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paxTravelAgentInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnData1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnData2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnData3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dateStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="issueNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="enableAvsData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="avsAction" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="avsPostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="avsStreetAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="enable3DSecure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paRes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="clientType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="iccData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="deviceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardNumber2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="track2" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SubmitTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitTransactionResult" type="tns:TransactionResult2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TransactionResult2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="acquirerReco" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="acquirerResponseText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="amount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="authCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="authorized" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="billingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardHolderHelpText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardHolderName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardHolderResponseDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardHolderResponseText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="currencyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="currencyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="currencyRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cvc2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dateExpiry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dateSettlement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dpsBillingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dpsTxnRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="helpText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantHelpText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantResponseDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="merchantResponseText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reco" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="retry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="statusRequired" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="testMode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="iccData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardNumber2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="issuerCountryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnMac" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="riskRuleMatches" type="tns:ArrayOfRiskRuleMatch" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRiskRuleMatch">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="riskRuleMatch" nillable="true" type="tns:riskRuleMatch" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="riskRuleMatch">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="matchedAmount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="matchedTransactionCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="action" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="period" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="includedTransactions" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="amountLimit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="transactionCountLimit" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SubmitTransaction2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="transactionDetails" type="tns:TransactionDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitTransaction2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitTransaction2Result" type="tns:TransactionResult2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Check3dsEnrollment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="transactionDetails" type="tns:EnrolmentCheckRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EnrolmentCheckRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="amount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dateExpiry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="txnRef" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Check3dsEnrollmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Check3dsEnrollmentResult" type="tns:EnrolmentCheckResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EnrolmentCheckResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="enrolled" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paReq" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="acsURL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="txnRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatusResult" type="tns:TransactionResult2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatus2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="txnRef" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatus2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatus2Result" type="tns:TransactionResult2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardDetails" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SubmitTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitTransaction" />
+  </wsdl:message>
+  <wsdl:message name="SubmitTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitTransaction2SoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitTransaction2" />
+  </wsdl:message>
+  <wsdl:message name="SubmitTransaction2SoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitTransaction2Response" />
+  </wsdl:message>
+  <wsdl:message name="Check3dsEnrollmentSoapIn">
+    <wsdl:part name="parameters" element="tns:Check3dsEnrollment" />
+  </wsdl:message>
+  <wsdl:message name="Check3dsEnrollmentSoapOut">
+    <wsdl:part name="parameters" element="tns:Check3dsEnrollmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatus2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatus2" />
+  </wsdl:message>
+  <wsdl:message name="GetStatus2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatus2Response" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCardSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCard" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCardSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCardResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PaymentExpressWSSoap">
+    <wsdl:operation name="SubmitTransaction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send transaction data to Payment Express Server.</wsdl:documentation>
+      <wsdl:input message="tns:SubmitTransactionSoapIn" />
+      <wsdl:output message="tns:SubmitTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTransaction2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send transaction data. Includes Acquirer Response in result.</wsdl:documentation>
+      <wsdl:input message="tns:SubmitTransaction2SoapIn" />
+      <wsdl:output message="tns:SubmitTransaction2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Check3dsEnrollment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check whether a card is 3DS enrolled.</wsdl:documentation>
+      <wsdl:input message="tns:Check3dsEnrollmentSoapIn" />
+      <wsdl:output message="tns:Check3dsEnrollmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query status of a transaction.</wsdl:documentation>
+      <wsdl:input message="tns:GetStatusSoapIn" />
+      <wsdl:output message="tns:GetStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Query status of a transaction. Includes Acquirer Response in result.</wsdl:documentation>
+      <wsdl:input message="tns:GetStatus2SoapIn" />
+      <wsdl:output message="tns:GetStatus2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update stored credit card details.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateCardSoapIn" />
+      <wsdl:output message="tns:UpdateCardSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PaymentExpressWSSoap" type="tns:PaymentExpressWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitTransaction">
+      <soap:operation soapAction="http://PaymentExpress.com/SubmitTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTransaction2">
+      <soap:operation soapAction="http://PaymentExpress.com/SubmitTransaction2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Check3dsEnrollment">
+      <soap:operation soapAction="http://PaymentExpress.com/Check3dsEnrollment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap:operation soapAction="http://PaymentExpress.com/GetStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus2">
+      <soap:operation soapAction="http://PaymentExpress.com/GetStatus2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCard">
+      <soap:operation soapAction="http://PaymentExpress.com/UpdateCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PaymentExpressWSSoap12" type="tns:PaymentExpressWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitTransaction">
+      <soap12:operation soapAction="http://PaymentExpress.com/SubmitTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTransaction2">
+      <soap12:operation soapAction="http://PaymentExpress.com/SubmitTransaction2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Check3dsEnrollment">
+      <soap12:operation soapAction="http://PaymentExpress.com/Check3dsEnrollment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap12:operation soapAction="http://PaymentExpress.com/GetStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus2">
+      <soap12:operation soapAction="http://PaymentExpress.com/GetStatus2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCard">
+      <soap12:operation soapAction="http://PaymentExpress.com/UpdateCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaymentExpressWS">
+    <wsdl:port name="PaymentExpressWSSoap" binding="tns:PaymentExpressWSSoap">
+      <soap:address location="https://sec.paymentexpress.com/WS/PXWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PaymentExpressWSSoap12" binding="tns:PaymentExpressWSSoap12">
+      <soap12:address location="https://sec.paymentexpress.com/WS/PXWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

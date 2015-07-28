@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.optimalpayments.com/ils/xmlschema/v1" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.optimalpayments.com/ils/v1" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.optimalpayments.com/ils/v1">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.optimalpayments.com/ils/xmlschema/v1" targetNamespace="http://www.optimalpayments.com/ils/xmlschema/v1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+      <xs:element name="ilsLookupRequestV1" type="IlsLookupRequestV1">
+        <xs:annotation>
+          <xs:documentation>Comment describing your root element</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:complexType name="MerchantAccountV1">
+        <xs:sequence>
+          <xs:element name="accountNum">
+            <xs:annotation>
+              <xs:documentation>The merchant account against which the request is made</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="10" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="storeID">
+            <xs:annotation>
+              <xs:documentation>The account transaction processing id</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="80" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="storePwd">
+            <xs:annotation>
+              <xs:documentation>The account transaction processing password</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="20" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DateV1">
+        <xs:sequence>
+          <xs:element name="year">
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:minInclusive value="2008" />
+                <xs:maxInclusive value="9999" />
+                <xs:totalDigits value="4" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="month">
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:minInclusive value="1" />
+                <xs:maxInclusive value="12" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="day">
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:minInclusive value="1" />
+                <xs:maxInclusive value="31" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="hour">
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:minInclusive value="0" />
+                <xs:maxInclusive value="23" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="minute">
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:minInclusive value="0" />
+                <xs:maxInclusive value="59" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="second">
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:minInclusive value="0" />
+                <xs:maxInclusive value="59" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TxnTypeV1">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" />
+          <xs:element name="count" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ilsLookupResponseV1" type="IlsLookupResponseV1" />
+      <xs:complexType name="IlsLookupResponseV1">
+        <xs:sequence>
+          <xs:element name="decision" type="DecisionV1" />
+          <xs:element name="description">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="1024" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="merchantAccount" type="xs:string" />
+          <xs:element name="currency">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="3" />
+                <xs:maxLength value="3" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="startDate" type="DateV1" />
+          <xs:element name="endDate" type="DateV1" />
+          <xs:element name="txnType" type="TxnTypeV1" maxOccurs="unbounded" />
+          <xs:element name="transactions" type="TransactionsV1" maxOccurs="unbounded" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="IlsLookupRequestV1">
+        <xs:sequence>
+          <xs:element name="merchantAccount" type="MerchantAccountV1" />
+          <xs:element name="startDate" type="DateV1" />
+          <xs:element name="endDate" type="DateV1" />
+          <xs:element name="type" type="RequestTypeV1" maxOccurs="unbounded" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="RequestTypeV1">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="authorizations" />
+          <xs:enumeration value="settlements" />
+          <xs:enumeration value="credits" />
+          <xs:enumeration value="chargebacks" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="DecisionV1">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ACCEPTED" />
+          <xs:enumeration value="ERROR" />
+          <xs:enumeration value="REJECTED" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="TransactionsV1">
+        <xs:sequence minOccurs="0">
+          <xs:element name="authorizations" type="xs:string" />
+          <xs:element name="settlements" type="xs:string" />
+          <xs:element name="credits" type="xs:string" />
+          <xs:element name="chargebacks" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="childFma" type="xs:string" use="optional" />
+      </xs:complexType>
+    </xs:schema>
+    <xsd:schema targetNamespace="http://www.optimalpayments.com/ils/v1" elementFormDefault="qualified" attributeFormDefault="qualified">
+      <xsd:element name="ilsLookup">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="ns1:ilsLookupRequestV1" minOccurs="1" maxOccurs="1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ilsLookupResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="ns1:ilsLookupResponseV1" minOccurs="1" maxOccurs="1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ilsLookupResponse">
+    <wsdl:part element="tns:ilsLookupResponse" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="ilsLookupRequest">
+    <wsdl:part element="tns:ilsLookup" name="parameters" />
+  </wsdl:message>
+  <wsdl:portType name="IlsServiceV1PortType">
+    <wsdl:operation name="ilsLookup">
+      <wsdl:input message="tns:ilsLookupRequest" name="ilsLookupRequest" />
+      <wsdl:output message="tns:ilsLookupResponse" name="ilsLookupResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IlsServiceV1HttpBinding" type="tns:IlsServiceV1PortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ilsLookup">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="ilsLookupRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ilsLookupResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IlsServiceV1">
+    <wsdl:port binding="tns:IlsServiceV1HttpBinding" name="IlsServiceV1HttpPort">
+      <wsdlsoap:address location="https://webservices.optimalpayments.com/ilsWS/IlsService/v1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
+

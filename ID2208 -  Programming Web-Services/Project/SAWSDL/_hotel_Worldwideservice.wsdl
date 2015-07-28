@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Hotel" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/Hotel" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/Hotel" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/Hotel-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/Hotel" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/Hotel" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:37:07 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/travel.owl#Hotel"/></xsd:annotation><xsd:element name="Hotel" type="HotelType"/><xsd:simpleType name="HotelType" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#Hotel"><xsd:restriction base="xsd:string"/></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_HOTELRequest">
+  </wsdl:message>
+  <wsdl:message name="get_HOTELResponse">
+    <wsdl:part name="_HOTEL" type="HotelType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HotelSoap">
+    <wsdl:operation name="get_HOTEL">
+      <wsdl:input message="get_HOTELRequest">
+    </wsdl:input>
+      <wsdl:output message="get_HOTELResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HotelSoapBinding" type="HotelSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_HOTEL">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Hotel"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Hotel"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HotelService">
+    <wsdl:port name="HotelSoap" binding="HotelSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/Hotel"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

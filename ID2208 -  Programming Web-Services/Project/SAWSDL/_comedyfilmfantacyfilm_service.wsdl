@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Comedyfilmfantacyfilm" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/Comedyfilmfantacyfilm" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/Comedyfilmfantacyfilm" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/Comedyfilmfantacyfilm-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/Comedyfilmfantacyfilm" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/Comedyfilmfantacyfilm" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:33:29 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/my_ontology.owl#ComedyFilm"/><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/my_ontology.owl#FantacyFilm"/></xsd:annotation><xsd:element name="FantacyFilm" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/_comedyfilmfantacyfilm_service_FantacyFilm_liftingSchemaMapping.xslt" type="FantacyFilmType"/><xsd:element name="ComedyFilm" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/_comedyfilmfantacyfilm_service_ComedyFilm_liftingSchemaMapping.xslt" type="ComedyFilmType"/><xsd:complexType name="FantacyFilmType" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#FantacyFilm"><xsd:sequence><xsd:element name="Title"/></xsd:sequence></xsd:complexType><xsd:complexType name="ComedyFilmType" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#ComedyFilm"><xsd:sequence><xsd:element name="Title"/></xsd:sequence></xsd:complexType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_COMEDYFILM_FANTACYFILMRequest">
+  </wsdl:message>
+  <wsdl:message name="get_COMEDYFILM_FANTACYFILMResponse">
+    <wsdl:part name="_COMEDYFILM" type="ComedyFilmType">
+    </wsdl:part>
+    <wsdl:part name="_FANTACYFILM" type="FantacyFilmType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ComedyfilmfantacyfilmSoap">
+    <wsdl:operation name="get_COMEDYFILM_FANTACYFILM">
+      <wsdl:input message="get_COMEDYFILM_FANTACYFILMRequest">
+    </wsdl:input>
+      <wsdl:output message="get_COMEDYFILM_FANTACYFILMResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ComedyfilmfantacyfilmSoapBinding" type="ComedyfilmfantacyfilmSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_COMEDYFILM_FANTACYFILM">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Comedyfilmfantacyfilm"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Comedyfilmfantacyfilm"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ComedyfilmfantacyfilmService">
+    <wsdl:port name="ComedyfilmfantacyfilmSoap" binding="ComedyfilmfantacyfilmSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/Comedyfilmfantacyfilm"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

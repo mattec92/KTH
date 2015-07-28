@@ -1,0 +1,1272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://planexml.flightwise.com/ws" xmlns:s1="http://fboweb.com/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://planexml.flightwise.com/ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Special web-service interface to Flightwise flight tracking data.  Access to this data is restricted and provided only upon acceptance of required licenses.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://planexml.flightwise.com/ws">
+      <s:import namespace="http://fboweb.com/ws" />
+      <s:element name="FlightPlans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FlightPlansResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FlightPlansResult" type="tns:ArrayOfFlightPlan" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFlightPlan">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FlightPlan" nillable="true" type="tns:FlightPlan" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FlightPlan">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ident" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dest" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FileTime" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartureTime" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ETA" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Route" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Center" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartureTimezoneOffset" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestinationTimezoneOffset" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FlightStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ident" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FlightStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FIDynamic" nillable="true" type="tns:FIDynamic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FIDynamic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ident" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeStamp" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArrivalMins" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Alt" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="GS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:FlightStatusType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Course" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClimbDescend" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="StaticRefresh" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DestTimezoneOffset" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestDST" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FlightStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Landed" />
+          <s:enumeration value="Active" />
+          <s:enumeration value="Timeout" />
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="Scheduled" />
+          <s:enumeration value="Filed" />
+          <s:enumeration value="Cancelled" />
+          <s:enumeration value="Decontrolled" />
+          <s:enumeration value="Controlled" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="FlightInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ident" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeDetails" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeDynamicInfo" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FlightInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FIStatic" nillable="true" type="tns:FIStatic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FIStatic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ident" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrimaryPhoto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HistoryNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RadioCall" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BBOX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Owner" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:FlightStatusType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Index" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepartureTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptLat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptLon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dest" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestLat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestLon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArrivalTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACTypeString" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EquipCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VFR" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Historical" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="FIDynamic" type="tns:FIDynamic" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeptTimezoneOffset" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptLoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestLoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptDST" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FlightPath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ident" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FlightPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FlightPathResult" type="tns:ArrayOfAdsPosition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAdsPosition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="adsPosition" nillable="true" type="tns:adsPosition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="adsPosition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="timestamp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="alt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="center" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="climbDescend" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Registration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ident" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:Registry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Search">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeDetails" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeDynamicInfo" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="page" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchResult" type="tns:ArrayOfFIStatic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFIStatic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FIStatic" nillable="true" type="tns:FIStatic" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PhotoList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ident" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PhotoListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PhotoListResult" type="tns:ArrayOfPhoto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPhoto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Photo" nillable="true" type="tns:Photo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Photo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ident" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateUploaded" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateTaken" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Airport" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Primary" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RecentFlights">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ident" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecentFlightsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecentFlightsResult" type="tns:ArrayOfPastFlight" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPastFlight">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PastFlight" nillable="true" type="tns:PastFlight" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PastFlight">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ident" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dest" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartureTime" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartureTimezoneOffset" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArrivalTime" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArrivalTimezoneOffset" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="Center" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EquipCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AirportsNear">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="radius" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AirportsNearResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AirportsNearResult" type="tns:ArrayOfAirport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAirport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Airport" nillable="true" type="tns:Airport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Airport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ident" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ICAO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Elev" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GMTOffset" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DST" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tower" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AirportsNearConventional">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="radius" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AirportsNearConventionalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AirportsNearConventionalResult" type="tns:ArrayOfAirport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AirportInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ident" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AirportInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AirportInfoResult" type="tns:ArrayOfAirport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FlightsNear">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="radius" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="IncludeDetails" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FlightsNearResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FlightsNearResult" type="tns:ArrayOfFIStatic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlanList" nillable="true" type="tns:ArrayOfFlightPlan" />
+      <s:element name="FIDynamic" nillable="true" type="tns:FIDynamic" />
+      <s:element name="FIStatic" nillable="true" type="tns:FIStatic" />
+      <s:element name="positions" nillable="true" type="tns:ArrayOfAdsPosition" />
+      <s:element name="Flights" nillable="true" type="tns:ArrayOfFIStatic" />
+      <s:element name="Photos" nillable="true" type="tns:ArrayOfPhoto" />
+      <s:element name="History" nillable="true" type="tns:ArrayOfPastFlight" />
+      <s:element name="Airports" nillable="true" type="tns:ArrayOfAirport" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://fboweb.com/ws">
+      <s:element name="Registry" nillable="true" type="s1:registry" />
+      <s:complexType name="registry">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NumEngines" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EngineType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AircraftType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumSeats" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Category" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvgCruiseSpeed" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EngineTypeText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AircraftTypeText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegOwnerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegOwnerAddress1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegOwnerAddress2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegOwnerCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegOwnerState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegOwnerZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcftMfgName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcftModelName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WeightClass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMfr" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FlightPlansSoapIn">
+    <wsdl:part name="parameters" element="tns:FlightPlans" />
+  </wsdl:message>
+  <wsdl:message name="FlightPlansSoapOut">
+    <wsdl:part name="parameters" element="tns:FlightPlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="FlightStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:FlightStatus" />
+  </wsdl:message>
+  <wsdl:message name="FlightStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:FlightStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="FlightInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:FlightInfo" />
+  </wsdl:message>
+  <wsdl:message name="FlightInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:FlightInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="FlightPathSoapIn">
+    <wsdl:part name="parameters" element="tns:FlightPath" />
+  </wsdl:message>
+  <wsdl:message name="FlightPathSoapOut">
+    <wsdl:part name="parameters" element="tns:FlightPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrationSoapIn">
+    <wsdl:part name="parameters" element="tns:Registration" />
+  </wsdl:message>
+  <wsdl:message name="RegistrationSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchSoapIn">
+    <wsdl:part name="parameters" element="tns:Search" />
+  </wsdl:message>
+  <wsdl:message name="SearchSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="PhotoListSoapIn">
+    <wsdl:part name="parameters" element="tns:PhotoList" />
+  </wsdl:message>
+  <wsdl:message name="PhotoListSoapOut">
+    <wsdl:part name="parameters" element="tns:PhotoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecentFlightsSoapIn">
+    <wsdl:part name="parameters" element="tns:RecentFlights" />
+  </wsdl:message>
+  <wsdl:message name="RecentFlightsSoapOut">
+    <wsdl:part name="parameters" element="tns:RecentFlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearSoapIn">
+    <wsdl:part name="parameters" element="tns:AirportsNear" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearSoapOut">
+    <wsdl:part name="parameters" element="tns:AirportsNearResponse" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearConventionalSoapIn">
+    <wsdl:part name="parameters" element="tns:AirportsNearConventional" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearConventionalSoapOut">
+    <wsdl:part name="parameters" element="tns:AirportsNearConventionalResponse" />
+  </wsdl:message>
+  <wsdl:message name="AirportInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:AirportInfo" />
+  </wsdl:message>
+  <wsdl:message name="AirportInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:AirportInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="FlightsNearSoapIn">
+    <wsdl:part name="parameters" element="tns:FlightsNear" />
+  </wsdl:message>
+  <wsdl:message name="FlightsNearSoapOut">
+    <wsdl:part name="parameters" element="tns:FlightsNearResponse" />
+  </wsdl:message>
+  <wsdl:message name="FlightPlansHttpGetIn">
+    <wsdl:part name="query" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightPlansHttpGetOut">
+    <wsdl:part name="Body" element="tns:PlanList" />
+  </wsdl:message>
+  <wsdl:message name="FlightStatusHttpGetIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:FIDynamic" />
+  </wsdl:message>
+  <wsdl:message name="FlightInfoHttpGetIn">
+    <wsdl:part name="ident" type="s:string" />
+    <wsdl:part name="IncludeDetails" type="s:string" />
+    <wsdl:part name="IncludeDynamicInfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:FIStatic" />
+  </wsdl:message>
+  <wsdl:message name="FlightPathHttpGetIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightPathHttpGetOut">
+    <wsdl:part name="Body" element="tns:positions" />
+  </wsdl:message>
+  <wsdl:message name="RegistrationHttpGetIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistrationHttpGetOut">
+    <wsdl:part name="Body" element="s1:Registry" />
+  </wsdl:message>
+  <wsdl:message name="SearchHttpGetIn">
+    <wsdl:part name="query" type="s:string" />
+    <wsdl:part name="IncludeDetails" type="s:string" />
+    <wsdl:part name="IncludeDynamicInfo" type="s:string" />
+    <wsdl:part name="page" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchHttpGetOut">
+    <wsdl:part name="Body" element="tns:Flights" />
+  </wsdl:message>
+  <wsdl:message name="PhotoListHttpGetIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PhotoListHttpGetOut">
+    <wsdl:part name="Body" element="tns:Photos" />
+  </wsdl:message>
+  <wsdl:message name="RecentFlightsHttpGetIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RecentFlightsHttpGetOut">
+    <wsdl:part name="Body" element="tns:History" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearHttpGetIn">
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lon" type="s:string" />
+    <wsdl:part name="radius" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearHttpGetOut">
+    <wsdl:part name="Body" element="tns:Airports" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearConventionalHttpGetIn">
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lon" type="s:string" />
+    <wsdl:part name="radius" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearConventionalHttpGetOut">
+    <wsdl:part name="Body" element="tns:Airports" />
+  </wsdl:message>
+  <wsdl:message name="AirportInfoHttpGetIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AirportInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:Airports" />
+  </wsdl:message>
+  <wsdl:message name="FlightsNearHttpGetIn">
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lon" type="s:string" />
+    <wsdl:part name="radius" type="s:string" />
+    <wsdl:part name="IncludeDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightsNearHttpGetOut">
+    <wsdl:part name="Body" element="tns:Flights" />
+  </wsdl:message>
+  <wsdl:message name="FlightPlansHttpPostIn">
+    <wsdl:part name="query" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightPlansHttpPostOut">
+    <wsdl:part name="Body" element="tns:PlanList" />
+  </wsdl:message>
+  <wsdl:message name="FlightStatusHttpPostIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:FIDynamic" />
+  </wsdl:message>
+  <wsdl:message name="FlightInfoHttpPostIn">
+    <wsdl:part name="ident" type="s:string" />
+    <wsdl:part name="IncludeDetails" type="s:string" />
+    <wsdl:part name="IncludeDynamicInfo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:FIStatic" />
+  </wsdl:message>
+  <wsdl:message name="FlightPathHttpPostIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightPathHttpPostOut">
+    <wsdl:part name="Body" element="tns:positions" />
+  </wsdl:message>
+  <wsdl:message name="RegistrationHttpPostIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistrationHttpPostOut">
+    <wsdl:part name="Body" element="s1:Registry" />
+  </wsdl:message>
+  <wsdl:message name="SearchHttpPostIn">
+    <wsdl:part name="query" type="s:string" />
+    <wsdl:part name="IncludeDetails" type="s:string" />
+    <wsdl:part name="IncludeDynamicInfo" type="s:string" />
+    <wsdl:part name="page" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SearchHttpPostOut">
+    <wsdl:part name="Body" element="tns:Flights" />
+  </wsdl:message>
+  <wsdl:message name="PhotoListHttpPostIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PhotoListHttpPostOut">
+    <wsdl:part name="Body" element="tns:Photos" />
+  </wsdl:message>
+  <wsdl:message name="RecentFlightsHttpPostIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RecentFlightsHttpPostOut">
+    <wsdl:part name="Body" element="tns:History" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearHttpPostIn">
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lon" type="s:string" />
+    <wsdl:part name="radius" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearHttpPostOut">
+    <wsdl:part name="Body" element="tns:Airports" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearConventionalHttpPostIn">
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lon" type="s:string" />
+    <wsdl:part name="radius" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AirportsNearConventionalHttpPostOut">
+    <wsdl:part name="Body" element="tns:Airports" />
+  </wsdl:message>
+  <wsdl:message name="AirportInfoHttpPostIn">
+    <wsdl:part name="ident" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AirportInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:Airports" />
+  </wsdl:message>
+  <wsdl:message name="FlightsNearHttpPostIn">
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lon" type="s:string" />
+    <wsdl:part name="radius" type="s:string" />
+    <wsdl:part name="IncludeDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FlightsNearHttpPostOut">
+    <wsdl:part name="Body" element="tns:Flights" />
+  </wsdl:message>
+  <wsdl:portType name="PlaneXMLv1Soap">
+    <wsdl:operation name="FlightPlans">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of flight plans based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:FlightPlansSoapIn" />
+      <wsdl:output message="tns:FlightPlansSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns dynamic (changing) data on a flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightStatusSoapIn" />
+      <wsdl:output message="tns:FlightStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns complete flight (static and dynamic) data on a specific flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightInfoSoapIn" />
+      <wsdl:output message="tns:FlightInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightPath">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the complete flight path data for a flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightPathSoapIn" />
+      <wsdl:output message="tns:FlightPathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the registration information on an aircraft.</wsdl:documentation>
+      <wsdl:input message="tns:RegistrationSoapIn" />
+      <wsdl:output message="tns:RegistrationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for flights based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:SearchSoapIn" />
+      <wsdl:output message="tns:SearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PhotoList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of available photos of this aircraft.</wsdl:documentation>
+      <wsdl:input message="tns:PhotoListSoapIn" />
+      <wsdl:output message="tns:PhotoListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecentFlights">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches past flight history based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:RecentFlightsSoapIn" />
+      <wsdl:output message="tns:RecentFlightsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNear">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for airports within the specified radius of lat, lon.</wsdl:documentation>
+      <wsdl:input message="tns:AirportsNearSoapIn" />
+      <wsdl:output message="tns:AirportsNearSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNearConventional">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for airports within the specified radius of lat, lon.</wsdl:documentation>
+      <wsdl:input message="tns:AirportsNearConventionalSoapIn" />
+      <wsdl:output message="tns:AirportsNearConventionalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the specific airport's information.</wsdl:documentation>
+      <wsdl:input message="tns:AirportInfoSoapIn" />
+      <wsdl:output message="tns:AirportInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightsNear">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of active flights near the specified lat/lon and radius.</wsdl:documentation>
+      <wsdl:input message="tns:FlightsNearSoapIn" />
+      <wsdl:output message="tns:FlightsNearSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PlaneXMLv1HttpGet">
+    <wsdl:operation name="FlightPlans">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of flight plans based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:FlightPlansHttpGetIn" />
+      <wsdl:output message="tns:FlightPlansHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns dynamic (changing) data on a flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightStatusHttpGetIn" />
+      <wsdl:output message="tns:FlightStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns complete flight (static and dynamic) data on a specific flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightInfoHttpGetIn" />
+      <wsdl:output message="tns:FlightInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightPath">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the complete flight path data for a flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightPathHttpGetIn" />
+      <wsdl:output message="tns:FlightPathHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the registration information on an aircraft.</wsdl:documentation>
+      <wsdl:input message="tns:RegistrationHttpGetIn" />
+      <wsdl:output message="tns:RegistrationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for flights based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:SearchHttpGetIn" />
+      <wsdl:output message="tns:SearchHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PhotoList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of available photos of this aircraft.</wsdl:documentation>
+      <wsdl:input message="tns:PhotoListHttpGetIn" />
+      <wsdl:output message="tns:PhotoListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecentFlights">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches past flight history based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:RecentFlightsHttpGetIn" />
+      <wsdl:output message="tns:RecentFlightsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNear">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for airports within the specified radius of lat, lon.</wsdl:documentation>
+      <wsdl:input message="tns:AirportsNearHttpGetIn" />
+      <wsdl:output message="tns:AirportsNearHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNearConventional">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for airports within the specified radius of lat, lon.</wsdl:documentation>
+      <wsdl:input message="tns:AirportsNearConventionalHttpGetIn" />
+      <wsdl:output message="tns:AirportsNearConventionalHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the specific airport's information.</wsdl:documentation>
+      <wsdl:input message="tns:AirportInfoHttpGetIn" />
+      <wsdl:output message="tns:AirportInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightsNear">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of active flights near the specified lat/lon and radius.</wsdl:documentation>
+      <wsdl:input message="tns:FlightsNearHttpGetIn" />
+      <wsdl:output message="tns:FlightsNearHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PlaneXMLv1HttpPost">
+    <wsdl:operation name="FlightPlans">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of flight plans based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:FlightPlansHttpPostIn" />
+      <wsdl:output message="tns:FlightPlansHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns dynamic (changing) data on a flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightStatusHttpPostIn" />
+      <wsdl:output message="tns:FlightStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns complete flight (static and dynamic) data on a specific flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightInfoHttpPostIn" />
+      <wsdl:output message="tns:FlightInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightPath">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the complete flight path data for a flight.</wsdl:documentation>
+      <wsdl:input message="tns:FlightPathHttpPostIn" />
+      <wsdl:output message="tns:FlightPathHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the registration information on an aircraft.</wsdl:documentation>
+      <wsdl:input message="tns:RegistrationHttpPostIn" />
+      <wsdl:output message="tns:RegistrationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for flights based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:SearchHttpPostIn" />
+      <wsdl:output message="tns:SearchHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PhotoList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of available photos of this aircraft.</wsdl:documentation>
+      <wsdl:input message="tns:PhotoListHttpPostIn" />
+      <wsdl:output message="tns:PhotoListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecentFlights">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches past flight history based on the specified query.</wsdl:documentation>
+      <wsdl:input message="tns:RecentFlightsHttpPostIn" />
+      <wsdl:output message="tns:RecentFlightsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNear">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for airports within the specified radius of lat, lon.</wsdl:documentation>
+      <wsdl:input message="tns:AirportsNearHttpPostIn" />
+      <wsdl:output message="tns:AirportsNearHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNearConventional">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches for airports within the specified radius of lat, lon.</wsdl:documentation>
+      <wsdl:input message="tns:AirportsNearConventionalHttpPostIn" />
+      <wsdl:output message="tns:AirportsNearConventionalHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the specific airport's information.</wsdl:documentation>
+      <wsdl:input message="tns:AirportInfoHttpPostIn" />
+      <wsdl:output message="tns:AirportInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FlightsNear">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of active flights near the specified lat/lon and radius.</wsdl:documentation>
+      <wsdl:input message="tns:FlightsNearHttpPostIn" />
+      <wsdl:output message="tns:FlightsNearHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PlaneXMLv1Soap" type="tns:PlaneXMLv1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FlightPlans">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/FlightPlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightStatus">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/FlightStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfo">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/FlightInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightPath">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/FlightPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/Registration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/Search" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PhotoList">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/PhotoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecentFlights">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/RecentFlights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNear">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/AirportsNear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNearConventional">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/AirportsNearConventional" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/AirportInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightsNear">
+      <soap:operation soapAction="http://planexml.flightwise.com/ws/FlightsNear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PlaneXMLv1Soap12" type="tns:PlaneXMLv1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FlightPlans">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/FlightPlans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightStatus">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/FlightStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfo">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/FlightInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightPath">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/FlightPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/Registration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/Search" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PhotoList">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/PhotoList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecentFlights">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/RecentFlights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNear">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/AirportsNear" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNearConventional">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/AirportsNearConventional" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/AirportInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightsNear">
+      <soap12:operation soapAction="http://planexml.flightwise.com/ws/FlightsNear" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PlaneXMLv1HttpGet" type="tns:PlaneXMLv1HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="FlightPlans">
+      <http:operation location="/FlightPlans" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightStatus">
+      <http:operation location="/FlightStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfo">
+      <http:operation location="/FlightInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightPath">
+      <http:operation location="/FlightPath" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <http:operation location="/Registration" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <http:operation location="/Search" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PhotoList">
+      <http:operation location="/PhotoList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecentFlights">
+      <http:operation location="/RecentFlights" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNear">
+      <http:operation location="/AirportsNear" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNearConventional">
+      <http:operation location="/AirportsNearConventional" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <http:operation location="/AirportInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightsNear">
+      <http:operation location="/FlightsNear" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PlaneXMLv1HttpPost" type="tns:PlaneXMLv1HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="FlightPlans">
+      <http:operation location="/FlightPlans" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightStatus">
+      <http:operation location="/FlightStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightInfo">
+      <http:operation location="/FlightInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightPath">
+      <http:operation location="/FlightPath" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <http:operation location="/Registration" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <http:operation location="/Search" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PhotoList">
+      <http:operation location="/PhotoList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecentFlights">
+      <http:operation location="/RecentFlights" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNear">
+      <http:operation location="/AirportsNear" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportsNearConventional">
+      <http:operation location="/AirportsNearConventional" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AirportInfo">
+      <http:operation location="/AirportInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlightsNear">
+      <http:operation location="/FlightsNear" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PlaneXMLv1">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Special web-service interface to Flightwise flight tracking data.  Access to this data is restricted and provided only upon acceptance of required licenses.</wsdl:documentation>
+    <wsdl:port name="PlaneXMLv1Soap" binding="tns:PlaneXMLv1Soap">
+      <soap:address location="http://planexml.flightwise.com/ws/PlaneXMLv1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PlaneXMLv1Soap12" binding="tns:PlaneXMLv1Soap12">
+      <soap12:address location="http://planexml.flightwise.com/ws/PlaneXMLv1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PlaneXMLv1HttpGet" binding="tns:PlaneXMLv1HttpGet">
+      <http:address location="http://planexml.flightwise.com/ws/PlaneXMLv1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PlaneXMLv1HttpPost" binding="tns:PlaneXMLv1HttpPost">
+      <http:address location="http://planexml.flightwise.com/ws/PlaneXMLv1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

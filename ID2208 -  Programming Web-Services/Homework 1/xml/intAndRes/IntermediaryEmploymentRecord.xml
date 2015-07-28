@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ap:EmploymentInfo xmlns:ap="http://www.ApplicantProfile.se">
+    <ap:Employment>
+        <ap:Role>Developer</ap:Role>
+        <ap:StartDate>2013-10-23</ap:StartDate>
+        <ap:EndDate>2015-02-02</ap:EndDate>
+        <ap:Company>
+            <ap:Name>Millicom</ap:Name>
+            <ap:CompanyNumber>123432</ap:CompanyNumber>
+            <ap:PhoneNumber>3165334534</ap:PhoneNumber>
+        </ap:Company>
+    </ap:Employment>
+    <ap:Employment>
+        <ap:Role>Fair worker</ap:Role>
+        <ap:StartDate>2013-11-09</ap:StartDate>
+        <ap:EndDate>2013-11-09</ap:EndDate>
+        <ap:Company>
+            <ap:Name>KTH</ap:Name>
+            <ap:CompanyNumber>45654</ap:CompanyNumber>
+            <ap:PhoneNumber>86575463</ap:PhoneNumber>
+        </ap:Company>
+    </ap:Employment>
+</ap:EmploymentInfo>

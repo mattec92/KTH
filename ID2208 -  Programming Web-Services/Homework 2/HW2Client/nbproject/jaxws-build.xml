@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-FlightReservationServiceBottomUp" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/FlightReservationServiceBottomUp"/>
+        <property name="wsdl-FlightReservationServiceBottomUp" location="xml-resources/web-service-references/FlightReservationServiceBottomUp/wsdl/localhost_8080/FlightReservationServiceBottomUp/FlightReservationServiceBottomUp.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/FlightReservationServiceBottomUp" destdir="${build.generated.dir}/jax-wsCache/FlightReservationServiceBottomUp" wsdl="${wsdl-FlightReservationServiceBottomUp}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/FlightReservationServiceBottomUp/FlightReservationServiceBottomUp?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-FlightReservationServiceBottomUp}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/FlightReservationServiceBottomUp"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/FlightReservationServiceBottomUp">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-FlightReservationServiceBottomUp" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/FlightReservationServiceBottomUp"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/se/mattec/id2208/hw2"/>
+    </target>
+    <target name="wsimport-client-FlightReservationServiceTopDown" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/FlightReservationServiceTopDown"/>
+        <property name="wsdl-FlightReservationServiceTopDown" location="xml-resources/web-service-references/FlightReservationServiceTopDown/wsdl/localhost_8080/FlightReservationServiceTopDown/FlightReservationServiceTopDown.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/FlightReservationServiceTopDown" destdir="${build.generated.dir}/jax-wsCache/FlightReservationServiceTopDown" wsdl="${wsdl-FlightReservationServiceTopDown}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/FlightReservationServiceTopDown/FlightReservationServiceTopDown?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-FlightReservationServiceTopDown}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/FlightReservationServiceTopDown"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/FlightReservationServiceTopDown">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-FlightReservationServiceTopDown" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/FlightReservationServiceTopDown"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/se/mattec/id2208/hw2/topdown"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-FlightReservationServiceBottomUp, wsimport-client-FlightReservationServiceTopDown"/>
+</project>

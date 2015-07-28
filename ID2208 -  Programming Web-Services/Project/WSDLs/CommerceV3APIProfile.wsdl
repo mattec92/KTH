@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://service.commercev3.com/CV3Data.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="https://service.commercev3.com/CV3Data.xsd">
+   <types>
+      <xsd:schema targetNamespace="https://service.commercev3.com/CV3Data.xsd">
+         <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+         <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      </xsd:schema>
+   </types>
+   <message name="testRequest">
+      <part name="testparam1" type="xsd:string" />
+      <part name="testparam2" type="xsd:string" />
+   </message>
+   <message name="testResponse">
+      <part name="return" type="xsd:base64Binary" />
+   </message>
+   <message name="CV3DataRequest">
+      <part name="data" type="xsd:base64Binary" />
+   </message>
+   <message name="CV3DataResponse">
+      <part name="return" type="xsd:base64Binary" />
+   </message>
+   <portType name="CV3Data.xsdPortType">
+      <operation name="test">
+         <input message="tns:testRequest" />
+         <output message="tns:testResponse" />
+      </operation>
+      <operation name="CV3Data">
+         <input message="tns:CV3DataRequest" />
+         <output message="tns:CV3DataResponse" />
+      </operation>
+   </portType>
+   <binding name="CV3Data.xsdBinding" type="tns:CV3Data.xsdPortType">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+      <operation name="test">
+         <soap:operation soapAction="http://service.commercev3.com/index.php/test" style="rpc" />
+         <input>
+            <soap:body use="encoded" namespace="http://soapinterop.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://soapinterop.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+      <operation name="CV3Data">
+         <soap:operation soapAction="http://service.commercev3.com/index.php/CV3Data" style="rpc" />
+         <input>
+            <soap:body use="encoded" namespace="http://soapinterop.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://soapinterop.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </output>
+      </operation>
+   </binding>
+   <service name="CV3Data.xsd">
+      <port name="CV3Data.xsdPort" binding="tns:CV3Data.xsdBinding">
+         <soap:address location="http://service.commercev3.com/index.php" />
+      </port>
+   </service>
+</definitions>
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AuthorBooktaxedprice" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/AuthorBooktaxedprice" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/AuthorBooktaxedprice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/AuthorBooktaxedprice-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/AuthorBooktaxedprice" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/AuthorBooktaxedprice" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:33:10 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/books.owl#Author"/><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/books.owl#Book"/><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/concept.owl#TaxedPrice"/></xsd:annotation><xsd:element name="Book" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/author_booktaxedprice_service_Book_liftingSchemaMapping.xslt" type="BookType"/><xsd:element name="Author" type="AuthorType"/><xsd:element name="TaxedPrice" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/author_booktaxedprice_service_TaxedPrice_liftingSchemaMapping.xslt" type="TaxedPriceType"/><xsd:complexType name="TaxedPriceType" sawsdl:modelReference="http://127.0.0.1/ontology/concept.owl#TaxedPrice"><xsd:sequence><xsd:element name="Fine" type="Thing"/><xsd:element name="currency" type="Currency"/><xsd:element name="amount" type="xsd:float"/></xsd:sequence></xsd:complexType><xsd:complexType name="BookType" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Book"><xsd:sequence><xsd:element name="isTitled" type="Title"/><xsd:element name="hasType" type="Book-Type"/><xsd:element name="writtenBy" type="AuthorType"/><xsd:element name="publishedBy" type="Publisher"/><xsd:element name="datePublished" type="Date"/><xsd:element name="timePublished" type="Once"/></xsd:sequence></xsd:complexType><xsd:simpleType name="Date" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Date"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Currency" sawsdl:modelReference="http://www.daml.ecs.soton.ac.uk/ont/currency.owl#Currency"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Once" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Once"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Title" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Title"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Publisher" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Publisher"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Book-Type" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Book-Type"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Thing" sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing"><xsd:restriction base="xsd:string"><xsd:enumeration value="greenLamp01"/><xsd:enumeration value="staticFramework01"/><xsd:enumeration value="ultraSoundTechnology"/><xsd:enumeration value="contactSensor01"/><xsd:enumeration value="magazin02CargoArea"/><xsd:enumeration value="yellowButton01"/><xsd:enumeration value="cup01CargoArea"/><xsd:enumeration value="rfIDChip01"/><xsd:enumeration value="redPill01"/><xsd:enumeration value="doser02"/><xsd:enumeration value="redLamp01"/><xsd:enumeration value="battery01"/><xsd:enumeration value="doser01"/><xsd:enumeration value="magazin02"/><xsd:enumeration value="whitePill01"/><xsd:enumeration value="powerPlug01"/><xsd:enumeration value="doser03CargoArea"/><xsd:enumeration value="stopper02"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="AuthorType" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Author"><xsd:restriction base="xsd:string"/></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_BOOK_TAXEDPRICERequest">
+    <wsdl:part name="_AUTHOR" type="AuthorType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_BOOK_TAXEDPRICEResponse">
+    <wsdl:part name="_BOOK" type="BookType">
+    </wsdl:part>
+    <wsdl:part name="_TAXEDPRICE" type="TaxedPriceType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AuthorBooktaxedpriceSoap">
+    <wsdl:operation name="get_BOOK_TAXEDPRICE">
+      <wsdl:input message="get_BOOK_TAXEDPRICERequest">
+    </wsdl:input>
+      <wsdl:output message="get_BOOK_TAXEDPRICEResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthorBooktaxedpriceSoapBinding" type="AuthorBooktaxedpriceSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_BOOK_TAXEDPRICE">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/AuthorBooktaxedprice"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/AuthorBooktaxedprice"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthorBooktaxedpriceService">
+    <wsdl:port name="AuthorBooktaxedpriceSoap" binding="AuthorBooktaxedpriceSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/AuthorBooktaxedprice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

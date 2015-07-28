@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ActivityRuralarea" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityRuralarea" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/ActivityRuralarea" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/ActivityRuralarea-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/ActivityRuralarea" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/ActivityRuralarea" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:33:06 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/travel.owl#Activity"/><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/travel.owl#RuralArea"/></xsd:annotation><xsd:element name="RuralArea" type="RuralAreaType"/><xsd:element name="Activity" type="ActivityType"/><xsd:simpleType name="RuralAreaType" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#RuralArea"><xsd:restriction base="xsd:string"><xsd:enumeration value="CapeYork"/><xsd:enumeration value="Woomera"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="ActivityType" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#Activity"><xsd:restriction base="xsd:string"/></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_RURALAREARequest">
+    <wsdl:part name="_ACTIVITY" type="ActivityType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_RURALAREAResponse">
+    <wsdl:part name="_RURALAREA" type="RuralAreaType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ActivityRuralareaSoap">
+    <wsdl:operation name="get_RURALAREA">
+      <wsdl:input message="get_RURALAREARequest">
+    </wsdl:input>
+      <wsdl:output message="get_RURALAREAResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActivityRuralareaSoapBinding" type="ActivityRuralareaSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_RURALAREA">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityRuralarea"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityRuralarea"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ActivityRuralareaService">
+    <wsdl:port name="ActivityRuralareaSoap" binding="ActivityRuralareaSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/ActivityRuralarea"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

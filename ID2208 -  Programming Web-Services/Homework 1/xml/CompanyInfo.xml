@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<c:Companies xmlns:c="http://www.CompanyInfo.se">
+	<c:Company>
+		<c:Name>Millicom</c:Name>
+		<c:CompanyNumber>123432</c:CompanyNumber>
+		<c:PhoneNumber>03165334534</c:PhoneNumber>
+	</c:Company>
+	<c:Company>
+		<c:Name>KTH</c:Name>
+		<c:CompanyNumber>45654</c:CompanyNumber>
+		<c:PhoneNumber>086575463</c:PhoneNumber>
+	</c:Company>
+</c:Companies>

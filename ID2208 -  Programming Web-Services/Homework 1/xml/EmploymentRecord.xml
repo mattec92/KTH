@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Employee xmlns:e="http://www.EmploymentInfo.se">
+	<e:Name>Mattias Cederlund</e:Name>
+	<e:PersonNumber>920926-2410</e:PersonNumber>
+	<e:Employment>
+		<e:CompanyName>Millicom</e:CompanyName>
+		<e:Role>Developer</e:Role>
+		<e:StartDate>2013-10-23</e:StartDate>
+		<e:EndDate>2015-02-02</e:EndDate>
+	</e:Employment>
+	<e:Employment>
+		<e:CompanyName>KTH</e:CompanyName>
+		<e:Role>Fair worker</e:Role>
+		<e:StartDate>2013-11-09</e:StartDate>
+		<e:EndDate>2013-11-09</e:EndDate>
+	</e:Employment>
+</e:Employee>

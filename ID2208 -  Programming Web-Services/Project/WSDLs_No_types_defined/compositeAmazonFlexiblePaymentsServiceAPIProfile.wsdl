@@ -1,0 +1,644 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:wsa="http://www.w3.org/2005/03/addressing"
+             xmlns:aws="http://www.amazonaws.com/schemas/core"
+             xmlns:tns="http://fps.amazonaws.com/doc/2007-01-08/"
+             targetNamespace="http://fps.amazonaws.com/doc/2007-01-08/">
+    <types>
+        <xs:schema targetNamespace="http://fps.amazonaws.com/doc/2007-01-08/" >
+           <xs:include schemaLocation="AmazonFPS.xsd"/>
+        </xs:schema>
+    </types>
+
+    <message name="GetTokenUsageRequestMsg">
+        <part name="body" element="tns:GetTokenUsageRequest"/>
+    </message>
+    <message name="GetTokenUsageResponseMsg">
+        <part name="body" element="tns:GetTokenUsageResponse"/>
+    </message>
+    <message name="GetPrepaidBalanceRequestMsg">
+        <part name="body" element="tns:GetPrepaidBalanceRequest"/>
+    </message>
+    <message name="GetPrepaidBalanceResponseMsg">
+        <part name="body" element="tns:GetPrepaidBalanceResponse"/>
+    </message>
+    <message name="GetDebtBalanceRequestMsg">
+        <part name="body" element="tns:GetDebtBalanceRequest"/>
+    </message>
+    <message name="GetDebtBalanceResponseMsg">
+        <part name="body" element="tns:GetDebtBalanceResponse"/>
+    </message>
+    <message name="GetTotalPrepaidLiabilityRequestMsg">
+        <part name="body" element="tns:GetTotalPrepaidLiabilityRequest"/>
+    </message>
+    <message name="GetTotalPrepaidLiabilityResponseMsg">
+        <part name="body" element="tns:GetTotalPrepaidLiabilityResponse"/>
+    </message>
+    <message name="GetOutstandingDebtBalanceRequestMsg">
+        <part name="body" element="tns:GetOutstandingDebtBalanceRequest"/>
+    </message>
+    <message name="GetOutstandingDebtBalanceResponseMsg">
+        <part name="body" element="tns:GetOutstandingDebtBalanceResponse"/>
+    </message>
+    <message name="SettleDebtRequestMsg">
+        <part name="body" element="tns:SettleDebtRequest"/>
+    </message>
+    <message name="SettleDebtResponseMsg">
+        <part name="body" element="tns:SettleDebtResponse"/>
+    </message>
+    <message name="WriteOffDebtRequestMsg">
+        <part name="body" element="tns:WriteOffDebtRequest"/>
+    </message>
+    <message name="WriteOffDebtResponseMsg">
+        <part name="body" element="tns:WriteOffDebtResponse"/>
+    </message>
+    <message name="FundPrepaidRequestMsg">
+        <part name="body" element="tns:FundPrepaidRequest"/>
+    </message>
+    <message name="FundPrepaidResponseMsg">
+        <part name="body" element="tns:FundPrepaidResponse"/>
+    </message>
+    <message name="SubscribeForCallerNotificationRequestMsg">
+        <part name="body" element="tns:SubscribeForCallerNotificationRequest"/>
+    </message>
+    <message name="SubscribeForCallerNotificationResponseMsg">
+        <part name="body" element="tns:SubscribeForCallerNotificationResponse"/>
+    </message>
+    <message name="UnSubscribeForCallerNotificationRequestMsg">
+        <part name="body" element="tns:UnSubscribeForCallerNotificationRequest"/>
+    </message>
+    <message name="UnSubscribeForCallerNotificationResponseMsg">
+        <part name="body" element="tns:UnSubscribeForCallerNotificationResponse"/>
+    </message>
+    <message name="GetAllCreditInstrumentsRequestMsg">
+        <part name="body" element="tns:GetAllCreditInstrumentsRequest"/>
+    </message>
+    <message name="GetAllCreditInstrumentsResponseMsg">
+        <part name="body" element="tns:GetAllCreditInstrumentsResponse"/>
+    </message>
+    <message name="GetAllPrepaidInstrumentsRequestMsg">
+        <part name="body" element="tns:GetAllPrepaidInstrumentsRequest"/>
+    </message>
+    <message name="GetAllPrepaidInstrumentsResponseMsg">
+        <part name="body" element="tns:GetAllPrepaidInstrumentsResponse"/>
+    </message>
+    <message name="GetAccountBalanceRequestMsg">
+        <part name="body" element="tns:GetAccountBalanceRequest"/>
+    </message>
+    <message name="GetAccountBalanceResponseMsg">
+        <part name="body" element="tns:GetAccountBalanceResponse"/>
+    </message>
+   <message name="GetAccountActivityRequestMsg">
+        <part name="body" element="tns:GetAccountActivityRequest"/>
+    </message>
+    <message name="GetAccountActivityResponseMsg">
+        <part name="body" element="tns:GetAccountActivityResponse"/>
+    </message>
+    <message name="GetTokensRequestMsg">
+        <part name="body" element="tns:GetTokensRequest"/>
+    </message>
+    <message name="GetTokensResponseMsg">
+        <part name="body" element="tns:GetTokensResponse"/>
+    </message>
+    <message name="GetPaymentInstructionRequestMsg">
+        <part name="body" element="tns:GetPaymentInstructionRequest"/>
+    </message>
+    <message name="GetPaymentInstructionResponseMsg">
+        <part name="body" element="tns:GetPaymentInstructionResponse"/>
+    </message>
+    <message name="CancelTokenRequestMsg">
+        <part name="body" element="tns:CancelTokenRequest"/>
+    </message>
+    <message name="CancelTokenResponseMsg">
+        <part name="body" element="tns:CancelTokenResponse"/>
+    </message>
+   <message name="PayBatchRequestMsg">
+        <part name="body" element="tns:PayBatchRequest"/>
+    </message>
+    <message name="PayBatchResponseMsg">
+        <part name="body" element="tns:PayBatchResponse"/>
+    </message>
+    <message name="PayRequestMsg">
+        <part name="body" element="tns:PayRequest"/>
+    </message>
+    <message name="PayResponseMsg">
+        <part name="body" element="tns:PayResponse"/>
+    </message>
+    <message name="ReserveRequestMsg">
+        <part name="body" element="tns:ReserveRequest"/>
+    </message>
+    <message name="ReserveResponseMsg">
+        <part name="body" element="tns:ReserveResponse"/>
+    </message>
+    <message name="SettleRequestMsg">
+        <part name="body" element="tns:SettleRequest"/>
+    </message>
+    <message name="SettleResponseMsg">
+        <part name="body" element="tns:SettleResponse"/>
+    </message>
+    <message name="RefundRequestMsg">
+        <part name="body" element="tns:RefundRequest"/>
+    </message>
+    <message name="RefundResponseMsg">
+        <part name="body" element="tns:RefundResponse"/>
+    </message>
+    <message name="GetResultsRequestMsg">
+        <part name="body" element="tns:GetResultsRequest"/>
+    </message>
+    <message name="GetResultsResponseMsg">
+        <part name="body" element="tns:GetResultsResponse"/>
+    </message>
+    <message name="DiscardResultsRequestMsg">
+        <part name="body" element="tns:DiscardResultsRequest"/>
+    </message>
+    <message name="DiscardResultsResponseMsg">
+        <part name="body" element="tns:DiscardResultsResponse"/>
+    </message>
+    <message name="GetTransactionRequestMsg">
+        <part name="body" element="tns:GetTransactionRequest"/>
+    </message>
+    <message name="GetTransactionResponseMsg">
+        <part name="body" element="tns:GetTransactionResponse"/>
+    </message>
+ 	
+ 	<message name="InstallPaymentInstructionBatchRequestMsg">
+        <part name="body" element="tns:InstallPaymentInstructionBatchRequest"/>
+    </message>
+    <message name="InstallPaymentInstructionBatchResponseMsg">
+        <part name="body" element="tns:InstallPaymentInstructionBatchResponse"/>
+    </message>
+    
+    <message name="InstallPaymentInstructionRequestMsg">
+        <part name="body" element="tns:InstallPaymentInstructionRequest"/>
+    </message>
+    <message name="InstallPaymentInstructionResponseMsg">
+        <part name="body" element="tns:InstallPaymentInstructionResponse"/>
+    </message>
+ 	<message name="RetryTransactionRequestMsg">
+                <part name="body" element="tns:RetryTransactionRequest"/>
+        </message>
+        <message name="RetryTransactionResponseMsg">
+                 <part name="body" element="tns:RetryTransactionResponse"/>
+         </message>
+
+   <message name="GetTokenByCallerRequestMsg">
+        <part name="body" element="tns:GetTokenByCallerRequest"/>
+    </message>
+    <message name="GetTokenByCallerResponseMsg">
+        <part name="body" element="tns:GetTokenByCallerResponse"/>
+    </message>
+  
+ 
+    <portType name="AmazonFPSPortType">
+        <operation name="InstallPaymentInstructionBatch">
+            <input message="tns:InstallPaymentInstructionBatchRequestMsg"
+                   wsa:Action="urn:InstallPaymentInstructionBatch"/>
+            <output message="tns:InstallPaymentInstructionBatchResponseMsg"
+                    wsa:Action="urn:InstallPaymentInstructionBatch:Response"/>
+        </operation>
+        <operation name="InstallPaymentInstruction">
+            <input message="tns:InstallPaymentInstructionRequestMsg"
+                   wsa:Action="urn:InstallPaymentInstruction"/>
+            <output message="tns:InstallPaymentInstructionResponseMsg"
+                    wsa:Action="urn:InstallPaymentInstruction:Response"/>
+        </operation>
+        <operation name="GetTokenUsage">
+            <input message="tns:GetTokenUsageRequestMsg"
+                   wsa:Action="urn:GetTokenUsage"/>
+            <output message="tns:GetTokenUsageResponseMsg"
+                    wsa:Action="urn:GetTokenUsage:Response"/>
+        </operation>
+	    <operation name="GetPrepaidBalance">
+            <input message="tns:GetPrepaidBalanceRequestMsg"
+                   wsa:Action="urn:GetPrepaidBalance"/>
+            <output message="tns:GetPrepaidBalanceResponseMsg"
+                    wsa:Action="urn:GetPrepaidBalance:Response"/>
+        </operation>
+        <operation name="GetDebtBalance">
+            <input message="tns:GetDebtBalanceRequestMsg"
+                   wsa:Action="urn:GetDebtBalance"/>
+            <output message="tns:GetDebtBalanceResponseMsg"
+                    wsa:Action="urn:GetDebtBalance:Response"/>
+        </operation>
+        <operation name="GetTotalPrepaidLiability">
+            <input message="tns:GetTotalPrepaidLiabilityRequestMsg"
+                   wsa:Action="urn:GetTotalPrepaidLiability"/>
+            <output message="tns:GetTotalPrepaidLiabilityResponseMsg"
+                    wsa:Action="urn:GetTotalPrepaidLiability:Response"/>
+        </operation>
+        <operation name="GetOutstandingDebtBalance">
+            <input message="tns:GetOutstandingDebtBalanceRequestMsg"
+                   wsa:Action="urn:GetOutstandingDebtBalance"/>
+            <output message="tns:GetOutstandingDebtBalanceResponseMsg"
+                    wsa:Action="urn:GetOutstandingDebtBalance:Response"/>
+        </operation>
+        <operation name="SettleDebt">
+            <input message="tns:SettleDebtRequestMsg"
+                   wsa:Action="urn:SettleDebt"/>
+            <output message="tns:SettleDebtResponseMsg"
+                    wsa:Action="urn:SettleDebt:Response"/>
+        </operation>
+        <operation name="WriteOffDebt">
+            <input message="tns:WriteOffDebtRequestMsg"
+                   wsa:Action="urn:WriteOffDebt"/>
+            <output message="tns:WriteOffDebtResponseMsg"
+                    wsa:Action="urn:WriteOffDebt:Response"/>
+        </operation>
+        <operation name="FundPrepaid">
+            <input message="tns:FundPrepaidRequestMsg"
+                   wsa:Action="urn:FundPrepaid"/>
+            <output message="tns:FundPrepaidResponseMsg"
+                    wsa:Action="urn:FundPrepaid:Response"/>
+        </operation>
+        <operation name="SubscribeForCallerNotification">
+            <input message="tns:SubscribeForCallerNotificationRequestMsg"
+                   wsa:Action="urn:SubscribeForCallerNotification"/>
+            <output message="tns:SubscribeForCallerNotificationResponseMsg"
+                    wsa:Action="urn:SubscribeForCallerNotification:Response"/>
+        </operation>
+        <operation name="UnSubscribeForCallerNotification">
+            <input message="tns:UnSubscribeForCallerNotificationRequestMsg"
+                   wsa:Action="urn:UnSubscribeForCallerNotification"/>
+            <output message="tns:UnSubscribeForCallerNotificationResponseMsg"
+                    wsa:Action="urn:UnSubscribeForCallerNotification:Response"/>
+        </operation>
+        <operation name="GetAllCreditInstruments">
+            <input message="tns:GetAllCreditInstrumentsRequestMsg"
+                   wsa:Action="urn:GetAllCreditInstruments"/>
+            <output message="tns:GetAllCreditInstrumentsResponseMsg"
+                    wsa:Action="urn:GetAllCreditInstruments:Response"/>
+        </operation>
+        <operation name="GetAllPrepaidInstruments">
+            <input message="tns:GetAllPrepaidInstrumentsRequestMsg"
+                   wsa:Action="urn:GetAllPrepaidInstruments"/>
+            <output message="tns:GetAllPrepaidInstrumentsResponseMsg"
+                    wsa:Action="urn:GetAllPrepaidInstruments:Response"/>
+        </operation>
+        <operation name="GetAccountBalance">
+            <input message="tns:GetAccountBalanceRequestMsg"
+                   wsa:Action="urn:GetAccountBalance"/>
+            <output message="tns:GetAccountBalanceResponseMsg"
+                    wsa:Action="urn:GetAccountBalance:Response"/>
+        </operation>
+       <operation name="GetAccountActivity">
+            <input message="tns:GetAccountActivityRequestMsg"
+                   wsa:Action="urn:GetAccountActivity"/>
+            <output message="tns:GetAccountActivityResponseMsg"
+                    wsa:Action="urn:GetAccountActivity:Response"/>
+        </operation>
+        <operation name="GetTokens">
+            <input message="tns:GetTokensRequestMsg"
+                   wsa:Action="urn:GetTokens"/>
+            <output message="tns:GetTokensResponseMsg"
+                    wsa:Action="urn:GetTokens:Response"/>
+        </operation>
+        <operation name="GetPaymentInstruction">
+            <input message="tns:GetPaymentInstructionRequestMsg"
+                   wsa:Action="urn:GetPaymentInstruction"/>
+            <output message="tns:GetPaymentInstructionResponseMsg"
+                    wsa:Action="urn:GetPaymentInstruction:Response"/>
+        </operation>
+        <operation name="CancelToken">
+            <input message="tns:CancelTokenRequestMsg"
+                   wsa:Action="urn:CancelToken"/>
+            <output message="tns:CancelTokenResponseMsg"
+                    wsa:Action="urn:CancelToken:Response"/>
+        </operation>
+       <operation name="PayBatch">
+            <input message="tns:PayBatchRequestMsg"
+                   wsa:Action="urn:PayBatch"/>
+            <output message="tns:PayBatchResponseMsg"
+                    wsa:Action="urn:PayBatch:Response"/>
+        </operation>
+        
+        <operation name="Pay">
+            <input message="tns:PayRequestMsg"
+                   wsa:Action="urn:Pay"/>
+            <output message="tns:PayResponseMsg"
+                    wsa:Action="urn:Pay:Response"/>
+        </operation>
+        
+        <operation name="Reserve">
+            <input message="tns:ReserveRequestMsg"
+                   wsa:Action="urn:Reserve"/>
+            <output message="tns:ReserveResponseMsg"
+                    wsa:Action="urn:Reserve:Response"/>
+        </operation>
+        <operation name="Settle">
+            <input message="tns:SettleRequestMsg"
+                   wsa:Action="urn:Settle"/>
+            <output message="tns:SettleResponseMsg"
+                    wsa:Action="urn:Settle:Response"/>
+        </operation>
+        <operation name="Refund">
+            <input message="tns:RefundRequestMsg"
+                   wsa:Action="urn:Refund"/>
+            <output message="tns:RefundResponseMsg"
+                    wsa:Action="urn:Refund:Response"/>
+        </operation>
+        <operation name="GetResults">
+            <input message="tns:GetResultsRequestMsg"
+                   wsa:Action="urn:GetResults"/>
+            <output message="tns:GetResultsResponseMsg"
+                    wsa:Action="urn:GetResults:Response"/>
+        </operation>
+        <operation name="DiscardResults">
+            <input message="tns:DiscardResultsRequestMsg"
+                   wsa:Action="urn:DiscardResults"/>
+            <output message="tns:DiscardResultsResponseMsg"
+                    wsa:Action="urn:DiscardResults:Response"/>
+        </operation>
+        <operation name="GetTransaction">
+            <input message="tns:GetTransactionRequestMsg"
+                   wsa:Action="urn:GetTransaction"/>
+            <output message="tns:GetTransactionResponseMsg"
+                    wsa:Action="urn:GetTransaction:Response"/>
+        </operation>
+  		<operation name="RetryTransaction">
+ 		     		<input message="tns:RetryTransactionRequestMsg"
+               				wsa:Action="urn:RetryTransaction"/>
+				<output message="tns:RetryTransactionResponseMsg"
+	                       		wsa:Action="urn:RetryTransactionResponse"/>
+	        </operation>
+
+        <operation name="GetTokenByCaller">
+            <input message="tns:GetTokenByCallerRequestMsg"
+                   wsa:Action="urn:GetTokenByCaller"/>
+            <output message="tns:GetTokenByCallerResponseMsg"
+                    wsa:Action="urn:GetTokenByCaller:Response"/>
+        </operation>
+
+    </portType>
+    <binding name="AmazonFPSBinding" type="tns:AmazonFPSPortType">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="InstallPaymentInstructionBatch">
+            <soap:operation soapAction="urn:InstallPaymentInstructionBatch"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="InstallPaymentInstruction">
+            <soap:operation soapAction="urn:InstallPaymentInstruction"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetTokenUsage">
+            <soap:operation soapAction="urn:GetTokenUsage"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetPrepaidBalance">
+            <soap:operation soapAction="urn:GetPrepaidBalance"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetDebtBalance">
+            <soap:operation soapAction="urn:GetDebtBalance"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetTotalPrepaidLiability">
+            <soap:operation soapAction="urn:GetTotalPrepaidLiability"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetOutstandingDebtBalance">
+            <soap:operation soapAction="urn:GetOutstandingDebtBalance"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="SettleDebt">
+            <soap:operation soapAction="urn:SettleDebt"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="WriteOffDebt">
+            <soap:operation soapAction="urn:WriteOffDebt"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="FundPrepaid">
+            <soap:operation soapAction="urn:FundPrepaid"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="SubscribeForCallerNotification">
+            <soap:operation soapAction="urn:SubscribeForCallerNotification"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="UnSubscribeForCallerNotification">
+            <soap:operation soapAction="urn:UnSubscribeForCallerNotification"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetAllCreditInstruments">
+            <soap:operation soapAction="urn:GetAllCreditInstruments"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetAllPrepaidInstruments">
+            <soap:operation soapAction="urn:GetAllPrepaidInstruments"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetAccountBalance">
+            <soap:operation soapAction="urn:GetAccountBalance"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+       <operation name="GetAccountActivity">
+            <soap:operation soapAction="urn:GetAccountActivity"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetTokens">
+            <soap:operation soapAction="urn:GetTokens"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetPaymentInstruction">
+            <soap:operation soapAction="urn:GetPaymentInstruction"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="CancelToken">
+            <soap:operation soapAction="urn:CancelToken"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="PayBatch">
+            <soap:operation soapAction="urn:PayBatch"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+       <operation name="Pay">
+            <soap:operation soapAction="urn:Pay"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Reserve">
+            <soap:operation soapAction="urn:Reserve"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Settle">
+            <soap:operation soapAction="urn:Settle"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Refund">
+            <soap:operation soapAction="urn:Refund"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetResults">
+            <soap:operation soapAction="urn:GetResults"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="DiscardResults">
+            <soap:operation soapAction="urn:DiscardResults"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetTransaction">
+            <soap:operation soapAction="urn:GetTransaction"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+  		<operation name="RetryTransaction">
+                        <soap:operation soapAction="urn:RetryTransaction"/>
+                        <input>
+                                <soap:body use="literal"/>
+                        </input>
+                        <output>
+                                <soap:body use="literal"/>
+                       </output>
+        </operation>
+        <operation name="GetTokenByCaller">
+            <soap:operation soapAction="urn:GetTokenByCaller"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="AmazonFPS">
+        <port name="AmazonFPSPort" binding="tns:AmazonFPSBinding">
+            <soap:address location="https://fps.amazonaws.com"/>
+        </port>
+    </service>
+</definitions>

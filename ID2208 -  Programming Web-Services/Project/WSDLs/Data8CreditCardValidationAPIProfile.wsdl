@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.data-8.co.uk/integr8" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.data-8.co.uk/integr8" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.data-8.co.uk/integr8">
+      <s:element name="IsValidSimple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:CreditCardType" />
+            <s:element minOccurs="0" maxOccurs="1" name="creditcardnumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CreditCardType">
+        <s:restriction base="s:string">
+          <s:enumeration value="AmericanExpress" />
+          <s:enumeration value="DinersClubCarteBlanche" />
+          <s:enumeration value="DinersClubenRoute" />
+          <s:enumeration value="DinersClubInternational" />
+          <s:enumeration value="Discover" />
+          <s:enumeration value="JCB" />
+          <s:enumeration value="Laser" />
+          <s:enumeration value="Maestro" />
+          <s:enumeration value="Mastercard" />
+          <s:enumeration value="Solo" />
+          <s:enumeration value="Switch" />
+          <s:enumeration value="Visa" />
+          <s:enumeration value="VisaElectron" />
+          <s:enumeration value="Unknown" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="IsValidSimpleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsValidSimpleResult" type="tns:CreditCardValidationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CreditCardValidationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:Status" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditCardType" type="tns:CreditCardType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valid" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Status">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditsRemaining" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IsValid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:CreditCardValidationRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="options" type="tns:ArrayOfOption" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CreditCardValidationRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreditCardType" type="tns:CreditCardType" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Option" nillable="true" type="tns:Option" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Option">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IsValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsValidResult" type="tns:CreditCardValidationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidMultiple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requests" type="tns:ArrayOfCreditCardValidationRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="options" type="tns:ArrayOfOption" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCreditCardValidationRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CreditCardValidationRequest" nillable="true" type="tns:CreditCardValidationRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IsValidMultipleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsValidMultipleResult" type="tns:ArrayOfCreditCardValidationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCreditCardValidationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CreditCardValidationResponse" nillable="true" type="tns:CreditCardValidationResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreditCardValidationResponse" nillable="true" type="tns:CreditCardValidationResponse" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="IsValidSimpleSoapIn">
+    <wsdl:part name="parameters" element="tns:IsValidSimple" />
+  </wsdl:message>
+  <wsdl:message name="IsValidSimpleSoapOut">
+    <wsdl:part name="parameters" element="tns:IsValidSimpleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidSoapIn">
+    <wsdl:part name="parameters" element="tns:IsValid" />
+  </wsdl:message>
+  <wsdl:message name="IsValidSoapOut">
+    <wsdl:part name="parameters" element="tns:IsValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidMultipleSoapIn">
+    <wsdl:part name="parameters" element="tns:IsValidMultiple" />
+  </wsdl:message>
+  <wsdl:message name="IsValidMultipleSoapOut">
+    <wsdl:part name="parameters" element="tns:IsValidMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidSimpleHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="creditcardnumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsValidSimpleHttpGetOut">
+    <wsdl:part name="Body" element="tns:CreditCardValidationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidSimpleHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="creditcardnumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsValidSimpleHttpPostOut">
+    <wsdl:part name="Body" element="tns:CreditCardValidationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CreditCardValidationSoap">
+    <wsdl:operation name="IsValidSimple">
+      <wsdl:input message="tns:IsValidSimpleSoapIn" />
+      <wsdl:output message="tns:IsValidSimpleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValid">
+      <wsdl:input message="tns:IsValidSoapIn" />
+      <wsdl:output message="tns:IsValidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidMultiple">
+      <wsdl:input message="tns:IsValidMultipleSoapIn" />
+      <wsdl:output message="tns:IsValidMultipleSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CreditCardValidationHttpGet">
+    <wsdl:operation name="IsValidSimple">
+      <wsdl:input message="tns:IsValidSimpleHttpGetIn" />
+      <wsdl:output message="tns:IsValidSimpleHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CreditCardValidationHttpPost">
+    <wsdl:operation name="IsValidSimple">
+      <wsdl:input message="tns:IsValidSimpleHttpPostIn" />
+      <wsdl:output message="tns:IsValidSimpleHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CreditCardValidationSoap" type="tns:CreditCardValidationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsValidSimple">
+      <soap:operation soapAction="http://www.data-8.co.uk/integr8/IsValidSimple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValid">
+      <soap:operation soapAction="http://www.data-8.co.uk/integr8/IsValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidMultiple">
+      <soap:operation soapAction="http://www.data-8.co.uk/integr8/IsValidMultiple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CreditCardValidationSoap12" type="tns:CreditCardValidationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsValidSimple">
+      <soap12:operation soapAction="http://www.data-8.co.uk/integr8/IsValidSimple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValid">
+      <soap12:operation soapAction="http://www.data-8.co.uk/integr8/IsValid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidMultiple">
+      <soap12:operation soapAction="http://www.data-8.co.uk/integr8/IsValidMultiple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CreditCardValidationHttpGet" type="tns:CreditCardValidationHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="IsValidSimple">
+      <http:operation location="/IsValidSimple" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CreditCardValidationHttpPost" type="tns:CreditCardValidationHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="IsValidSimple">
+      <http:operation location="/IsValidSimple" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CreditCardValidation">
+    <wsdl:port name="CreditCardValidationSoap" binding="tns:CreditCardValidationSoap">
+      <soap:address location="http://webservices.data-8.co.uk/CreditCardValidation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CreditCardValidationSoap12" binding="tns:CreditCardValidationSoap12">
+      <soap12:address location="http://webservices.data-8.co.uk/CreditCardValidation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CreditCardValidationHttpGet" binding="tns:CreditCardValidationHttpGet">
+      <http:address location="http://webservices.data-8.co.uk/CreditCardValidation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CreditCardValidationHttpPost" binding="tns:CreditCardValidationHttpPost">
+      <http:address location="http://webservices.data-8.co.uk/CreditCardValidation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

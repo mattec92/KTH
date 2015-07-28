@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="TransactionService" targetNamespace="https://ws.paymentsgateway.net/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="https://ws.paymentsgateway.net/v1" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+  <wsp:Policy wsu:Id="WSHttpBinding_ITransactionService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false"/>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256/>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict/>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="BasicHttpBinding_ITransactionService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false"/>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256/>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict/>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="https://ws.paymentsgateway.net/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/">
+      <xsd:element name="getTransaction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ticket" type="tns:Authentication"/>
+            <xsd:element name="MerchantID" type="xsd:int"/>
+            <xsd:element name="TransactionID" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Authentication">
+        <xsd:sequence>
+          <xsd:element name="APILoginID" type="xsd:string"/>
+          <xsd:element name="TSHash" type="xsd:string"/>
+          <xsd:element name="UTCTime" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Authentication" nillable="true" type="tns:Authentication"/>
+      <xsd:element name="getTransactionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="getTransactionResult" nillable="true" type="tns:Transaction"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Transaction">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="AccountType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AcctTRN" nillable="true" type="xsd:string"/>
+          <xsd:element name="Amount" type="xsd:double"/>
+          <xsd:element name="AttemptNumber" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="BilltoAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoAddress2" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoCity" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoCompanyName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoEmailAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoFirstName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoLastName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoPhone" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoPostalCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BilltoState" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CardExpDate" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CardType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CardholderName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CheckNumber" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ConsumerID" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ConsumerOrderID" nillable="true" type="xsd:string"/>
+          <xsd:element name="ConvenienceFee" type="xsd:double"/>
+          <xsd:element name="ConvenienceFeePrincipal" type="xsd:double"/>
+          <xsd:element minOccurs="0" name="DebitCredit" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EnteredBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EntryClassCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EntryDescription" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IPAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ItemDescription" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LineItems" nillable="true" type="tns:ArrayOfLineItem"/>
+          <xsd:element minOccurs="0" name="MerchantData1" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MerchantData2" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MerchantData3" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MerchantData4" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MerchantData5" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MerchantData6" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MerchantData7" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MerchantData8" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MerchantData9" nillable="true" type="xsd:string"/>
+          <xsd:element name="MerchantID" type="xsd:int"/>
+          <xsd:element name="OriginationDate" type="xsd:dateTime"/>
+          <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:TransactionResponse"/>
+          <xsd:element name="SalesTaxAmount" type="xsd:double"/>
+          <xsd:element name="ServiceFee" type="xsd:double"/>
+          <xsd:element name="ServiceFeePrincipal" type="xsd:double"/>
+          <xsd:element minOccurs="0" name="ShiptoAddress" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ShiptoAddress2" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ShiptoCity" nillable="true" type="xsd:string"/>
+          <xsd:element name="ShiptoFreightAmount" type="xsd:double"/>
+          <xsd:element minOccurs="0" name="ShiptoName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ShiptoPostalCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ShiptoState" nillable="true" type="xsd:string"/>
+          <xsd:element name="TotalAmount" type="xsd:double"/> 
+          <xsd:element minOccurs="0" name="TransactionID" nillable="true" type="xsd:string"/>
+          <xsd:element name="TsCreated" type="xsd:dateTime"/>
+          <xsd:element name="UpdatedDate" type="xsd:dateTime"/>
+          <xsd:element minOccurs="0" name="UserDefined" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="WalletID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Transaction" nillable="true" type="tns:Transaction"/>
+      <xsd:complexType name="ArrayOfLineItem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="LineItem" nillable="true" type="tns:LineItem"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfLineItem" nillable="true" type="tns:ArrayOfLineItem"/>
+      <xsd:complexType name="LineItem">
+        <xsd:sequence>
+          <xsd:element name="Headers" type="xsd:string"/>
+          <xsd:element name="Items" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LineItem" nillable="true" type="tns:LineItem"/>
+      <xsd:complexType name="TransactionResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="AuthCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AvsResult" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Last4" nillable="true" type="xsd:string"/>
+          <xsd:element name="MerchantClientID" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="PreauthCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PreauthDescription" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PreauthNegReport" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PreauthResult" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResponseCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResponseDescription" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResponseType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Status" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="TransactionID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="TransactionResponse" nillable="true" type="tns:TransactionResponse"/>
+
+      <xsd:element name="getReceivedSummary">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ticket" type="tns:Authentication"/>
+            <xsd:element name="range" type="tns:Range"/>
+            <xsd:element name="PageIndex" type="xsd:int"/>
+            <xsd:element name="PageSize" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Range">
+        <xsd:sequence>
+          <xsd:element name="MerchantIDs" type="xsd:string" />
+          <xsd:element name="StartDate" type="xsd:dateTime" />
+          <xsd:element name="EndDate" type="xsd:dateTime" />
+          <xsd:element name="ChildMID" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="EntryType" nillable="true" type="tns:EntryType"/>
+          <xsd:element minOccurs="0" name="TransactionType" nillable="true" type="tns:TransactionType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Range" nillable="true" type="tns:Range"/>
+      <xsd:element name="getReceivedSummaryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="getReceivedSummaryResult" nillable="true" type="tns:ArrayOfReceivedSummary"/>
+            <xsd:element name="TotalRecords" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfReceivedSummary">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ReceivedSummary" nillable="true" type="tns:ReceivedSummary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfReceivedSummary" nillable="true" type="tns:ArrayOfReceivedSummary"/>
+      <xsd:complexType name="ReceivedSummary">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Code" nillable="true" type="xsd:string"/>
+          <xsd:element name="ConvFeeAmount" type="xsd:double"/>
+          <xsd:element name="Count" type="xsd:int"/>
+          <xsd:element name="DateSum" type="xsd:dateTime"/>
+          <xsd:element minOccurs="0" name="EntryType" nillable="true" type="xsd:string"/>
+          <xsd:element name="MerchantID" type="xsd:int"/>
+          <xsd:element name="ServiceFeeAmount" type="xsd:double"/>
+          <xsd:element minOccurs="0" name="Status" nillable="true" type="xsd:string"/>
+          <xsd:element name="TotalAmount" type="xsd:double"/>
+          <xsd:element name="TransactionType" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReceivedSummary" nillable="true" type="tns:ReceivedSummary"/>
+      <xsd:element name="getOriginationSummary">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ticket" type="tns:Authentication"/>
+            <xsd:element name="range" type="tns:Range"/>
+            <xsd:element name="PageIndex" type="xsd:int"/>
+            <xsd:element name="PageSize" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOriginationSummaryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="getOriginationSummaryResult" nillable="true" type="tns:ArrayOfOriginationSummary"/>
+            <xsd:element name="TotalRecords" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfOriginationSummary">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="OriginationSummary" nillable="true" type="tns:OriginationSummary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfOriginationSummary" nillable="true" type="tns:ArrayOfOriginationSummary"/>
+      <xsd:complexType name="OriginationSummary">
+        <xsd:sequence>
+          <xsd:element name="ConvFeeAmount" type="xsd:double"/>
+          <xsd:element name="Count" type="xsd:int"/>
+          <xsd:element name="DateSum" type="xsd:dateTime"/>
+          <xsd:element minOccurs="0" name="EntryType" nillable="true" type="xsd:string"/>
+          <xsd:element name="MerchantID" type="xsd:int"/>
+          <xsd:element name="ServiceFeeAmount" type="xsd:double"/>
+          <xsd:element minOccurs="0" name="Status" nillable="true" type="xsd:string"/>
+          <xsd:element name="TotalAmount" type="xsd:double"/>
+          <xsd:element name="TransactionType" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="OriginationSummary" nillable="true" type="tns:OriginationSummary"/>
+      <xsd:element name="getSettleSummary">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ticket" type="tns:Authentication"/>
+            <xsd:element name="range" type="tns:Range"/>
+            <xsd:element name="PageIndex" type="xsd:int"/>
+            <xsd:element name="PageSize" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getSettleSummaryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="getSettleSummaryResult" nillable="true" type="tns:ArrayOfSettleSummary"/>
+            <xsd:element name="TotalRecords" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfSettleSummary">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SettleSummary" nillable="true" type="tns:SettleSummary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfSettleSummary" nillable="true" type="tns:ArrayOfSettleSummary"/>
+      <xsd:complexType name="ArrayOfTransaction">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Transaction" nillable="true" type="tns:Transaction"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfTransaction" nillable="true" type="tns:ArrayOfTransaction"/>
+      <xsd:complexType name="SettleSummary">
+        <xsd:sequence>
+          <xsd:element name="ConvFeeAmount" type="xsd:double"/>
+          <xsd:element name="ConvFeeAmountFunded" type="xsd:double"/>
+          <xsd:element name="Count" type="xsd:int"/>
+          <xsd:element name="EntryType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FundingType" nillable="true" type="xsd:string"/>
+          <xsd:element name="MerchantID" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="ResponseCode" nillable="true" type="xsd:string"/>
+          <xsd:element name="ServiceFeeAmount" type="xsd:double"/>
+          <xsd:element name="ServiceFeeAmountFunded" type="xsd:double"/>
+          <xsd:element name="SettleDate" type="xsd:dateTime"/>
+          <xsd:element name="TotalAmount" type="xsd:double"/>
+          <xsd:element name="TotalAmountFunded" type="xsd:double"/>
+          <xsd:element name="TransactionType" nillable="true" type="xsd:string"/>
+          
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SettleSummary" nillable="true" type="tns:SettleSummary"/>
+      <xsd:element name="searchTransactions">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ticket" type="tns:Authentication"/>
+            <xsd:element name="range" type="tns:Range"/>
+            <xsd:element name="page" type="tns:Page"/>
+            <xsd:element name="SearchType" type="tns:SearchType"/>
+            <xsd:element minOccurs="0" name="paymenttype" nillable="true" type="tns:PaymentType"/>
+            <xsd:element name="sFilter" type="tns:ArrayOfTransactionSearchFilter"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Page">
+        <xsd:sequence>
+          <xsd:element name="PageSize" type="xsd:int"/>
+          <xsd:element name="PageIndex" type="xsd:int"/>
+          <xsd:element name="SortBy" type="tns:TransactionColumn"/>
+          <xsd:element name="SortDirection" type="tns:SortDirection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Page" nillable="true" type="tns:Page"/>
+      <xsd:simpleType name="TransactionColumn">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="BillToFirstName"/>
+          <xsd:enumeration value="BillToLastName"/>
+          <xsd:enumeration value="BillToCompanyName"/>
+          <xsd:enumeration value="EnteredBy"/>
+          <xsd:enumeration value="Last4"/>
+          <xsd:enumeration value="Amount"/>
+          <xsd:enumeration value="ConsumerOrderID"/>
+          <xsd:enumeration value="Status"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="TransactionColumn" nillable="true" type="tns:TransactionColumn"/>
+      <xsd:simpleType name="SortDirection">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ascending"/>
+          <xsd:enumeration value="descending"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="SortDirection" nillable="true" type="tns:SortDirection"/>
+      <xsd:simpleType name="SearchType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Received"/>
+          <xsd:enumeration value="Originated"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="SearchType" nillable="true" type="tns:SearchType"/>
+      <xsd:simpleType name="PaymentType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="eCheck"/>
+          <xsd:enumeration value="CreditCard"/>
+          <xsd:enumeration value="Unsettled"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="PaymentType" nillable="true" type="tns:PaymentType"/>
+      <xsd:simpleType name="EntryType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="VISA"/>
+          <xsd:enumeration value="MAST"/>
+          <xsd:enumeration value="DISC"/>
+          <xsd:enumeration value="AMER"/>
+          <xsd:enumeration value="DINE"/>
+          <xsd:enumeration value="JCB"/>
+          <xsd:enumeration value="PPD"/>
+          <xsd:enumeration value="CCD"/>
+          <xsd:enumeration value="POP"/>
+          <xsd:enumeration value="RCK"/>
+          <xsd:enumeration value="WEB"/>
+          <xsd:enumeration value="TEL"/>
+          <xsd:enumeration value="CTX"/>
+          <xsd:enumeration value="CIE"/>
+          <xsd:enumeration value="POS"/>
+          <xsd:enumeration value="ARC"/>
+          <xsd:enumeration value="BOC"/>
+          <xsd:enumeration value="None"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="EntryType" nillable="true" type="tns:EntryType"/>
+      <xsd:simpleType name="TransactionType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="CC_Sale_10"/>
+          <xsd:enumeration value="CC_Auth_Only_11"/>
+          <xsd:enumeration value="CC_Credit_13"/>
+          <xsd:enumeration value="CC_Ext_Authorization_15"/>
+          <xsd:enumeration value="eCheck_Sale_20"/>
+          <xsd:enumeration value="eCheck_Auth_Only_21"/>
+          <xsd:enumeration value="eCheck_Credit_23"/>
+          <xsd:enumeration value="eCheck_Force_25"/>
+          <xsd:enumeration value="None"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="TransactionType" nillable="true" type="tns:TransactionType"/>
+      <xsd:simpleType name="FundingType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Funded"/>
+          <xsd:enumeration value="Rejected"/>
+          <xsd:enumeration value="Previously_Funded_Reject"/>
+          <xsd:enumeration value="Settled"/>
+          <xsd:enumeration value="Chargeback"/>
+          <xsd:enumeration value="UnChargeback"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="FundingType" nillable="true" type="tns:FundingType"/>
+      <xsd:complexType name="ArrayOfTransactionSearchFilter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TransactionSearchFilter" nillable="true" type="tns:TransactionSearchFilter"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfTransactionSearchFilter" nillable="true" type="tns:ArrayOfTransactionSearchFilter"/>
+      <xsd:complexType name="TransactionSearchFilter">
+        <xsd:sequence>
+          <xsd:element name="FieldName" type="tns:TransactionColumn"/>
+          <xsd:element name="CompareOperator" type="tns:CompareOperators"/>
+          <xsd:element name="SearchOperator" type="tns:SearchOperator"/>
+          <xsd:element name="SearchText" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="TransactionSearchFilter" nillable="true" type="tns:TransactionSearchFilter"/>
+      <xsd:simpleType name="CompareOperators">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Equal"/>
+          <xsd:enumeration value="NotEqual"/>
+          <xsd:enumeration value="GreaterThan"/>
+          <xsd:enumeration value="LessThan"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="CompareOperators" nillable="true" type="tns:CompareOperators"/>
+      <xsd:simpleType name="SearchOperator">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="And"/>
+          <xsd:enumeration value="Or"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="SearchOperator" nillable="true" type="tns:SearchOperator"/>
+      <xsd:element name="searchTransactionsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="searchTransactionsResult" nillable="true" type="tns:ArrayOfTransactionSummary"/>
+            <xsd:element name="TotalRecords" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfTransactionSummary">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TransactionSummary" nillable="true" type="tns:TransactionSummary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfTransactionSummary" nillable="true" type="tns:ArrayOfTransactionSummary"/>
+      <xsd:complexType name="TransactionSummary">
+        <xsd:sequence>
+          <xsd:element name="TsCreated" type="xsd:dateTime"/>
+          <xsd:element name="MerchantID" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="Status" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Last4" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BillToFirstName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BillToLastName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BillToCompanyName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="DebitCredit" nillable="true" type="xsd:string"/>
+          <xsd:element name="Amount" type="xsd:decimal"/>
+          <xsd:element name="ConvenienceFeePrincipal" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="ConsumerOrderID" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ConsumerID" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EnteredBy" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CardType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="TransactionID" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResponseCode" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AuthCode" nillable="true" type="xsd:string"/>
+          <xsd:element name="ServiceFeePrincipal" type="xsd:decimal"/>
+          <xsd:element name="TotalAmount" type="xsd:decimal"/>
+          <xsd:element minOccurs="0" name="WalletID" nillable="true" type="xsd:string"/>
+          <xsd:element name="MerchantClientID" type="xsd:int"/>
+          <xsd:element name="TransactionType" type="xsd:short"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="TransactionSummary" nillable="true" type="tns:TransactionSummary"/>
+      <xsd:element name="searchSettleActivity">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ticket" type="tns:Authentication"/>
+            <xsd:element name="range" type="tns:Range"/>
+            <xsd:element minOccurs="0" name="paymentType" nillable="true" type="tns:PaymentType"/>
+            <xsd:element minOccurs="0" name="fundingType" nillable="true" type="tns:FundingType"/>
+            <xsd:element name="PageIndex" type="xsd:int"/>
+            <xsd:element name="PageSize" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchSettleActivityResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="searchSettleActivityResult" nillable="true" type="tns:ArrayOfSettle"/>
+            <xsd:element name="TotalRecords" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfSettle">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Settle" nillable="true" type="tns:Settle"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfSettle" nillable="true" type="tns:ArrayOfSettle"/>
+      <xsd:complexType name="Settle">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="FundingType" nillable="true" type="xsd:string"/>
+          <xsd:element name="MerchantID" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="PaymentType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResponseCode" nillable="true" type="xsd:string"/>
+          <xsd:element name="SettleDate" type="xsd:dateTime"/>
+          <xsd:element minOccurs="0" name="TransSettleID" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Transaction" nillable="true" type="tns:Transaction"/>
+          <xsd:element minOccurs="0" name="TransactionID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Settle" nillable="true" type="tns:Settle"/>
+      <xsd:element name="getSettleDetail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ticket" type="tns:Authentication"/>
+            <xsd:element name="MerchantID" type="xsd:int"/>
+            <xsd:element name="Day" type="xsd:dateTime"/>
+            <xsd:element name="PageIndex" type="xsd:int"/>
+            <xsd:element name="PageSize" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getSettleDetailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="getSettleDetailResult" nillable="true" type="tns:ArrayOfSettle"/>
+            <xsd:element name="TotalRecords" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getReceivedDetail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ticket" type="tns:Authentication"/>
+            <xsd:element name="MerchantID" type="xsd:int"/>
+            <xsd:element name="Day" type="xsd:dateTime"/>
+            <xsd:element name="PageIndex" type="xsd:int"/>
+            <xsd:element name="PageSize" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getReceivedDetailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="getReceivedDetailResult" nillable="true" type="tns:ArrayOfTransaction"/>
+            <xsd:element name="TotalRecords" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+      <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+      <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+      <xs:element name="byte" nillable="true" type="xs:byte"/>
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+      <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+      <xs:element name="double" nillable="true" type="xs:double"/>
+      <xs:element name="float" nillable="true" type="xs:float"/>
+      <xs:element name="int" nillable="true" type="xs:int"/>
+      <xs:element name="long" nillable="true" type="xs:long"/>
+      <xs:element name="QName" nillable="true" type="xs:QName"/>
+      <xs:element name="short" nillable="true" type="xs:short"/>
+      <xs:element name="string" nillable="true" type="xs:string"/>
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+      <xs:element name="char" nillable="true" type="tns:char"/>
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int"/>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration"/>
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid"/>
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+      <xs:attribute name="Ref" type="xs:IDREF"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ITransactionService_getTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:getTransaction"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getTransactionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getReceivedSummary_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReceivedSummary"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getReceivedSummary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReceivedSummaryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getOriginationSummary_InputMessage">
+    <wsdl:part name="parameters" element="tns:getOriginationSummary"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getOriginationSummary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getOriginationSummaryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getSettleSummary_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSettleSummary"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getSettleSummary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSettleSummaryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_searchTransactions_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchTransactions"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_searchTransactions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchTransactionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_searchSettleActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchSettleActivity"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_searchSettleActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchSettleActivityResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getSettleDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSettleDetail"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getSettleDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSettleDetailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getReceivedDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReceivedDetail"/>
+  </wsdl:message>
+  <wsdl:message name="ITransactionService_getReceivedDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReceivedDetailResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ITransactionService">
+    <wsdl:operation name="getTransaction">
+      <wsdl:input wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getTransaction" message="tns:ITransactionService_getTransaction_InputMessage"/>
+      <wsdl:output wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getTransactionResponse" message="tns:ITransactionService_getTransaction_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getReceivedSummary">
+      <wsdl:input wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getReceivedSummary" message="tns:ITransactionService_getReceivedSummary_InputMessage"/>
+      <wsdl:output wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getReceivedSummaryResponse" message="tns:ITransactionService_getReceivedSummary_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getOriginationSummary">
+      <wsdl:input wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getOriginationSummary" message="tns:ITransactionService_getOriginationSummary_InputMessage"/>
+      <wsdl:output wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getOriginationSummaryResponse" message="tns:ITransactionService_getOriginationSummary_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getSettleSummary">
+      <wsdl:input wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getSettleSummary" message="tns:ITransactionService_getSettleSummary_InputMessage"/>
+      <wsdl:output wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getSettleSummaryResponse" message="tns:ITransactionService_getSettleSummary_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchTransactions">
+      <wsdl:input wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/searchTransactions" message="tns:ITransactionService_searchTransactions_InputMessage"/>
+      <wsdl:output wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/searchTransactionsResponse" message="tns:ITransactionService_searchTransactions_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchSettleActivity">
+      <wsdl:input wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/searchSettleActivity" message="tns:ITransactionService_searchSettleActivity_InputMessage"/>
+      <wsdl:output wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/searchSettleActivityResponse" message="tns:ITransactionService_searchSettleActivity_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getSettleDetail">
+      <wsdl:input wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getSettleDetail" message="tns:ITransactionService_getSettleDetail_InputMessage"/>
+      <wsdl:output wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getSettleDetailResponse" message="tns:ITransactionService_getSettleDetail_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getReceivedDetail">
+      <wsdl:input wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getReceivedDetail" message="tns:ITransactionService_getReceivedDetail_InputMessage"/>
+      <wsdl:output wsaw:Action="https://ws.paymentsgateway.net/v1/ITransactionService/getReceivedDetailResponse" message="tns:ITransactionService_getReceivedDetail_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_ITransactionService" type="tns:ITransactionService">
+    <wsp:PolicyReference URI="#WSHttpBinding_ITransactionService_policy"/>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getTransaction">
+      <soap12:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getTransaction" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReceivedSummary">
+      <soap12:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getReceivedSummary" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOriginationSummary">
+      <soap12:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getOriginationSummary" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSettleSummary">
+      <soap12:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getSettleSummary" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTransactions">
+      <soap12:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/searchTransactions" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchSettleActivity">
+      <soap12:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/searchSettleActivity" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSettleDetail">
+      <soap12:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getSettleDetail" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReceivedDetail">
+      <soap12:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getReceivedDetail" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ITransactionService" type="tns:ITransactionService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_ITransactionService_policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getTransaction">
+      <soap:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getTransaction" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReceivedSummary">
+      <soap:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getReceivedSummary" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOriginationSummary">
+      <soap:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getOriginationSummary" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSettleSummary">
+      <soap:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getSettleSummary" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTransactions">
+      <soap:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/searchTransactions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchSettleActivity">
+      <soap:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/searchSettleActivity" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSettleDetail">
+      <soap:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getSettleDetail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReceivedDetail">
+      <soap:operation soapAction="https://ws.paymentsgateway.net/v1/ITransactionService/getReceivedDetail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TransactionService">
+    <wsdl:port name="WSHttpBinding_ITransactionService" binding="tns:WSHttpBinding_ITransactionService">
+      <soap12:address location="https://ws.paymentsgateway.net/service/v1/Transaction.svc"/>
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://ws.paymentsgateway.net/service/v1/Transaction.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ITransactionService" binding="tns:BasicHttpBinding_ITransactionService">
+      <soap:address location="https://ws.paymentsgateway.net/service/v1/Transaction.svc/basic"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

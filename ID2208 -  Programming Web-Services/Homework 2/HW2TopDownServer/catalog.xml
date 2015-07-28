@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/Users/mcederlund/Dropbox/_Web_Services/HW2/WSDL/FlightReservationServiceTopDown.wsdl" uri="src/conf/xml-resources/web-services/FlightReservationServiceTopDown/wsdl/FlightReservationServiceTopDown.wsdl"/>
+    <system systemId="file:/Users/mcederlund/Dropbox/_Web_Services/HW2/WSDL/FlightReservationServiceTopDown_schema1.xsd" uri="src/conf/xml-resources/web-services/FlightReservationServiceTopDown/wsdl/FlightReservationServiceTopDown_schema1.xsd"/>
+</catalog>

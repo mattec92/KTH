@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Academic-degreeFunding" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/Academic-degreeFunding" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/Academic-degreeFunding" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/Academic-degreeFunding-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/Academic-degreeFunding" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/Academic-degreeFunding" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:33:05 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/portal.owl#Academic-Degree"/><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/SUMO.owl#Funding"/></xsd:annotation><xsd:element name="Academic-Degree" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/academic-degree_funding_GermanGovservice_Academic-Degree_liftingSchemaMapping.xslt" type="Academic-DegreeType"/><xsd:element name="Funding" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/academic-degree_funding_GermanGovservice_Funding_liftingSchemaMapping.xslt" type="FundingType"/><xsd:simpleType name="Academic-DegreeType" sawsdl:modelReference="http://127.0.0.1/ontology/portal.owl#Academic-Degree"><xsd:restriction base="xsd:string"><xsd:enumeration value="BA"/><xsd:enumeration value="MA"/><xsd:enumeration value="PhD"/><xsd:enumeration value="BSc"/><xsd:enumeration value="DEng"/><xsd:enumeration value="MSc"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="FundingType" sawsdl:modelReference="http://127.0.0.1/ontology/SUMO.owl#Funding"><xsd:restriction base="xsd:string"/></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_FUNDINGResponse">
+    <wsdl:part name="_FUNDING" type="FundingType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_FUNDINGRequest">
+    <wsdl:part name="_ACADEMIC-DEGREE" type="Academic-DegreeType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Academic-degreeFundingSoap">
+    <wsdl:operation name="get_FUNDING">
+      <wsdl:input message="get_FUNDINGRequest">
+    </wsdl:input>
+      <wsdl:output message="get_FUNDINGResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Academic-degreeFundingSoapBinding" type="Academic-degreeFundingSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_FUNDING">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Academic-degreeFunding"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Academic-degreeFunding"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Academic-degreeFundingService">
+    <wsdl:port name="Academic-degreeFundingSoap" binding="Academic-degreeFundingSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/Academic-degreeFunding"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

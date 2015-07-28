@@ -1,0 +1,1476 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="AccountService" targetNamespace="http://accounts.feefactor.com/" xmlns:ns1="http://accounts.feefactor.com" xmlns:ns2="http://feefactor.com/" xmlns:ns3="http://cxf.apache.org/bindings/xformat" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://accounts.feefactor.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://feefactor.com/" version="1.0" xmlns:tns="http://feefactor.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="searchFilter" type="tns:SearchFilter" />
+<xs:complexType name="SearchFilter">
+<xs:sequence>
+<xs:element name="pageItems" type="xs:long" />
+<xs:element name="pageNumber" type="xs:long" />
+<xs:element minOccurs="0" name="sortString" type="xs:string" />
+<xs:element minOccurs="0" name="whereCondition" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xs:schema targetNamespace="http://accounts.feefactor.com" version="1.0" xmlns:tns="http://accounts.feefactor.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="Account" type="tns:Account" />
+<xs:element name="AccountDevice" type="tns:AccountDevice" />
+<xs:element name="AccountHistory" type="tns:AccountHistory" />
+<xs:element name="AccountPlan" type="tns:AccountPlan" />
+<xs:element name="AccountPlanHistory" type="tns:AccountPlanHistory" />
+<xs:element name="AccountRC" type="tns:AccountRC" />
+<xs:element name="AccountRCActivityLog" type="tns:AccountRCActivityLog" />
+<xs:element name="AccountRCSetting" type="tns:AccountRCSetting" />
+<xs:complexType name="Account">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="accountID" type="xs:string" />
+<xs:element form="qualified" name="accountPlanID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="activationDate" type="xs:dateTime" />
+<xs:element form="qualified" name="autoActivate" type="xs:boolean" />
+<xs:element form="qualified" name="balance" type="xs:double" />
+<xs:element form="qualified" name="batchNumber" type="xs:long" />
+<xs:element form="qualified" name="brandID" type="xs:long" />
+<xs:element form="qualified" name="brandServiceID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="creationDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="creator" type="xs:string" />
+<xs:element form="qualified" name="creditLimit" type="xs:double" />
+<xs:element form="qualified" name="currencyID" type="xs:long" />
+<xs:element form="qualified" name="denomination" type="xs:double" />
+<xs:element form="qualified" minOccurs="0" name="endRoamDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="expirationDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="firstUseDate" type="xs:dateTime" />
+<xs:element form="qualified" name="freeRollOverBal" type="xs:double" />
+<xs:element form="qualified" name="freeValueBal" type="xs:double" />
+<xs:element form="qualified" name="inactiveAgeLimit" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="inactiveExpirationDate" type="xs:dateTime" />
+<xs:element form="qualified" name="initialBalance" type="xs:double" />
+<xs:element form="qualified" minOccurs="0" name="lastPlanRefreshDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="lastUseDate" type="xs:dateTime" />
+<xs:element form="qualified" name="planID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="remarks" type="xs:string" />
+<xs:element form="qualified" name="roaming" type="xs:boolean" />
+<xs:element form="qualified" name="serialNumber" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="settings" type="xs:string" />
+<xs:element form="qualified" name="simultaneousAccess" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="status" type="xs:string" />
+<xs:element form="qualified" minOccurs="0" name="type" type="xs:string" />
+<xs:element form="qualified" name="usageAge" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="usageDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="usageExpirationDate" type="xs:dateTime" />
+<xs:element form="qualified" name="userID" type="xs:long" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AccountDevice">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="accountID" type="xs:string" />
+<xs:element form="qualified" name="brandServiceID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="deviceID" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AccountRC">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="accountID" type="xs:string" />
+<xs:element form="qualified" name="accountRCID" type="xs:long" />
+<xs:element form="qualified" name="amount" type="xs:double" />
+<xs:element form="qualified" name="brandID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="createdBy" type="xs:string" />
+<xs:element form="qualified" minOccurs="0" name="creationDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="cronExpression" type="xs:string" />
+<xs:element form="qualified" minOccurs="0" name="description" type="xs:string" />
+<xs:element form="qualified" minOccurs="0" name="effectivityDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="endDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="nextAppTime" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="prevAppTime" type="xs:dateTime" />
+<xs:element form="qualified" name="priority" type="xs:long" />
+<xs:element form="qualified" name="serialNumber" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="status" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AccountPlan">
+<xs:sequence>
+<xs:element form="qualified" name="accountPlanID" type="xs:long" />
+<xs:element form="qualified" name="amount" type="xs:double" />
+<xs:element form="qualified" minOccurs="0" name="description" type="xs:string" />
+<xs:element form="qualified" minOccurs="0" name="effectivityDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="endDate" type="xs:dateTime" />
+<xs:element form="qualified" name="planID" type="xs:long" />
+<xs:element form="qualified" name="serialNumber" type="xs:long" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AccountHistory">
+<xs:sequence>
+<xs:element form="qualified" name="accountHistoryID" type="xs:long" />
+<xs:element form="qualified" name="adminID" type="xs:long" />
+<xs:element form="qualified" name="amountChange" type="xs:double" />
+<xs:element form="qualified" minOccurs="0" name="description" type="xs:string" />
+<xs:element form="qualified" name="previousBalance" type="xs:double" />
+<xs:element form="qualified" minOccurs="0" name="referenceID" type="xs:string" />
+<xs:element form="qualified" name="serialNumber" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="transactionDate" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="transactionType" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AccountRCSetting">
+<xs:sequence>
+<xs:element form="qualified" name="accountRCID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="key" type="xs:string" />
+<xs:element form="qualified" minOccurs="0" name="value" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AccountPlanHistory">
+<xs:sequence>
+<xs:element form="qualified" name="accountPlanHistoryID" type="xs:long" />
+<xs:element form="qualified" name="amount" type="xs:double" />
+<xs:element form="qualified" minOccurs="0" name="description" type="xs:string" />
+<xs:element form="qualified" name="planID" type="xs:long" />
+<xs:element form="qualified" name="serialNumber" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="time" type="xs:dateTime" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AccountRCActivityLog">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="accountID" type="xs:string" />
+<xs:element form="qualified" name="accountRCActivityLogID" type="xs:long" />
+<xs:element form="qualified" name="accountRCID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="activity" type="xs:string" />
+<xs:element form="qualified" name="adminID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="adminName" type="xs:string" />
+<xs:element form="qualified" name="amount" type="xs:double" />
+<xs:element form="qualified" name="brandID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="ip" type="xs:string" />
+<xs:element form="qualified" name="recAccountRCALID" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="remarks" type="xs:string" />
+<xs:element form="qualified" minOccurs="0" name="schedule" type="xs:dateTime" />
+<xs:element form="qualified" name="serialNumber" type="xs:long" />
+<xs:element form="qualified" minOccurs="0" name="timestamp" type="xs:dateTime" />
+<xs:element form="qualified" minOccurs="0" name="type" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="AccountDeviceArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:AccountDevice" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="AccountRCArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:AccountRC" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="AccountPlanArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:AccountPlan" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="AccountPlanHistoryArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:AccountPlanHistory" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="AccountHistoryArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:AccountHistory" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="AccountRCActivityLogArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:AccountRCActivityLog" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="AccountArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:Account" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="AccountRCSettingArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:AccountRCSetting" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://accounts.feefactor.com/" xmlns:tns="http://accounts.feefactor.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="ServiceException" type="tns:ServiceException" />
+<xsd:complexType name="ServiceException">
+<xsd:sequence />
+</xsd:complexType>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="updateAccountRCSetting">
+    <wsdl:part name="AccountRCSetting" type="ns1:AccountRCSetting">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAccountResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshResponse">
+    <wsdl:part name="authorized" type="xsd:boolean">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCSettingsCountResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshAccount">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertAccountRC">
+    <wsdl:part name="accountRC" type="ns1:AccountRC">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCResponse">
+    <wsdl:part name="accountRC" type="ns1:AccountRC">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rechargeAccountManualResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountHistoriesCountResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountHistoriesCount">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccounts">
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rechargeAccountViaTransientResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBracketCounterResponse">
+    <wsdl:part name="account" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerAccountDevice">
+    <wsdl:part name="deviceID" type="ns1:AccountDevice">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="adjustPlanBalanceResponse">
+    <wsdl:part name="planHistoryID" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refresh">
+  </wsdl:message>
+  <wsdl:message name="rechargeAccountManual">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="amount" type="xsd:double">
+    </wsdl:part>
+    <wsdl:part name="referenceID" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="transactionType" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlanHistories">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountsCountResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ServiceException">
+    <wsdl:part element="tns:ServiceException" name="ServiceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCsResponse">
+    <wsdl:part name="accountRCs" type="ns1:AccountRCArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unregisterAccountDevice">
+    <wsdl:part name="device" type="ns1:AccountDevice">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCActivityLogsCountResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAccountRC">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertAccount">
+    <wsdl:part name="account" type="ns1:Account">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRegisteredAccountDevicesResponse">
+    <wsdl:part name="accountDevices" type="ns1:AccountDeviceArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertAccountRCSetting">
+    <wsdl:part name="AccountRCSetting" type="ns1:AccountRCSetting">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unregisterAccountDeviceResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAccount">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlanHistoriesResponse">
+    <wsdl:part name="accountPlanHistories" type="ns1:AccountPlanHistoryArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceApplyMissedAccountRCActivityLogResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateAccounts">
+    <wsdl:part name="account" type="ns1:Account">
+    </wsdl:part>
+    <wsdl:part name="quantity" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="allCaps" type="xsd:boolean">
+    </wsdl:part>
+    <wsdl:part name="accountIDPattern" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="notifyAdmin" type="xsd:boolean">
+    </wsdl:part>
+    <wsdl:part name="notifyUser" type="xsd:boolean">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCSettings">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBracketCounter">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="productID" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountResponse">
+    <wsdl:part name="account" type="ns1:Account">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlanHistoriesCount">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRegisteredAccountDevicesCountResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertAccountResponse">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountsCount">
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountHistory">
+    <wsdl:part name="arg0" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="adjustPlanBalance">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="amount" type="xsd:double">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateAccountsResponse">
+    <wsdl:part name="batchNumber" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAccountRCSetting">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="key" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlansCountResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRegisteredAccountDevicesCount">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="brandServiceID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCActivityLogs">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAccountRCResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerAccountDeviceResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlanHistory">
+    <wsdl:part name="arg0" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRegisteredAccountDevices">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="brandServiceID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateAccountRCSettingResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCActivityLogResponse">
+    <wsdl:part name="accountRCActivityLog" type="ns1:AccountRCActivityLog">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCsCountResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateAccountRCResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rechargeAccountViaTransient">
+    <wsdl:part name="targetSerialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="sourceSerialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="amount" type="xsd:double">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCsCount">
+    <wsdl:part name="brandID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountHistories">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCSettingsResponse">
+    <wsdl:part name="accountRCSettings" type="ns1:AccountRCSettingArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertAccountRCResponse">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlanHistoryResponse">
+    <wsdl:part name="accountPlanHistory" type="ns1:AccountPlanHistory">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateAccountRC">
+    <wsdl:part name="accountRC" type="ns1:AccountRC">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRC">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authenticate">
+  </wsdl:message>
+  <wsdl:message name="updateAccountResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlansCount">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlanHistoriesCountResponse">
+    <wsdl:part name="count" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCActivityLog">
+    <wsdl:part name="accountRCActivityLogID" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountHistoriesResponse">
+    <wsdl:part name="accountHistories" type="ns1:AccountHistoryArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccount">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlans">
+    <wsdl:part name="serialNumber" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountPlansResponse">
+    <wsdl:part name="accountPlans" type="ns1:AccountPlanArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountsResponse">
+    <wsdl:part name="accounts" type="ns1:AccountArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCSettingsCount">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAccountRCSettingResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceApplyMissedAccountRCActivityLog">
+    <wsdl:part name="accountRCActivityLogID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCActivityLogsResponse">
+    <wsdl:part name="accountRCActivityLogs" type="ns1:AccountRCActivityLogArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="refreshAccountResponse">
+    <wsdl:part name="count" type="xsd:int">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authenticateResponse">
+    <wsdl:part name="authorized" type="xsd:boolean">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="scheduleSubscription">
+    <wsdl:part name="accountPlan" type="ns1:AccountPlan">
+    </wsdl:part>
+    <wsdl:part name="mode" type="xsd:int">
+    </wsdl:part>
+    <wsdl:part name="retainEffectivityDate" type="xsd:boolean">
+    </wsdl:part>
+    <wsdl:part name="retainEndDate" type="xsd:boolean">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountHistoryResponse">
+    <wsdl:part name="accountHistory" type="ns1:AccountHistory">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCActivityLogsCount">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="scheduleSubscriptionResponse">
+    <wsdl:part name="accountPlanID" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateAccount">
+    <wsdl:part name="account" type="ns1:Account">
+    </wsdl:part>
+    <wsdl:part name="reason" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAccountRCs">
+    <wsdl:part name="brandID" type="xsd:long">
+    </wsdl:part>
+    <wsdl:part name="searchFilter" type="ns2:SearchFilter">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertAccountRCSettingResponse">
+    <wsdl:part name="accountRCID" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AccountService">
+    <wsdl:operation name="updateAccount">
+      <wsdl:input message="tns:updateAccount" name="updateAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:updateAccountResponse" name="updateAccountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRegisteredAccountDevices">
+      <wsdl:input message="tns:getRegisteredAccountDevices" name="getRegisteredAccountDevices">
+    </wsdl:input>
+      <wsdl:output message="tns:getRegisteredAccountDevicesResponse" name="getRegisteredAccountDevicesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCs">
+      <wsdl:input message="tns:getAccountRCs" name="getAccountRCs">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountRCsResponse" name="getAccountRCsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlanHistoriesCount">
+      <wsdl:input message="tns:getAccountPlanHistoriesCount" name="getAccountPlanHistoriesCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountPlanHistoriesCountResponse" name="getAccountPlanHistoriesCountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlans">
+      <wsdl:input message="tns:getAccountPlans" name="getAccountPlans">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountPlansResponse" name="getAccountPlansResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceApplyMissedAccountRCActivityLog">
+      <wsdl:input message="tns:forceApplyMissedAccountRCActivityLog" name="forceApplyMissedAccountRCActivityLog">
+    </wsdl:input>
+      <wsdl:output message="tns:forceApplyMissedAccountRCActivityLogResponse" name="forceApplyMissedAccountRCActivityLogResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccountRCSetting">
+      <wsdl:input message="tns:deleteAccountRCSetting" name="deleteAccountRCSetting">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteAccountRCSettingResponse" name="deleteAccountRCSettingResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="unregisterAccountDevice">
+      <wsdl:input message="tns:unregisterAccountDevice" name="unregisterAccountDevice">
+    </wsdl:input>
+      <wsdl:output message="tns:unregisterAccountDeviceResponse" name="unregisterAccountDeviceResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerAccountDevice">
+      <wsdl:input message="tns:registerAccountDevice" name="registerAccountDevice">
+    </wsdl:input>
+      <wsdl:output message="tns:registerAccountDeviceResponse" name="registerAccountDeviceResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountHistoriesCount">
+      <wsdl:input message="tns:getAccountHistoriesCount" name="getAccountHistoriesCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountHistoriesCountResponse" name="getAccountHistoriesCountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCSettingsCount">
+      <wsdl:input message="tns:getAccountRCSettingsCount" name="getAccountRCSettingsCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountRCSettingsCountResponse" name="getAccountRCSettingsCountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateAccounts">
+      <wsdl:input message="tns:generateAccounts" name="generateAccounts">
+    </wsdl:input>
+      <wsdl:output message="tns:generateAccountsResponse" name="generateAccountsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBracketCounter">
+      <wsdl:input message="tns:getBracketCounter" name="getBracketCounter">
+    </wsdl:input>
+      <wsdl:output message="tns:getBracketCounterResponse" name="getBracketCounterResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRC">
+      <wsdl:input message="tns:getAccountRC" name="getAccountRC">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountRCResponse" name="getAccountRCResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rechargeAccountManual">
+      <wsdl:input message="tns:rechargeAccountManual" name="rechargeAccountManual">
+    </wsdl:input>
+      <wsdl:output message="tns:rechargeAccountManualResponse" name="rechargeAccountManualResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="refresh">
+      <wsdl:input message="tns:refresh" name="refresh">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshResponse" name="refreshResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCActivityLogsCount">
+      <wsdl:input message="tns:getAccountRCActivityLogsCount" name="getAccountRCActivityLogsCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountRCActivityLogsCountResponse" name="getAccountRCActivityLogsCountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="refreshAccount">
+      <wsdl:input message="tns:refreshAccount" name="refreshAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:refreshAccountResponse" name="refreshAccountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountHistory">
+      <wsdl:input message="tns:getAccountHistory" name="getAccountHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountHistoryResponse" name="getAccountHistoryResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccountRCSetting">
+      <wsdl:input message="tns:updateAccountRCSetting" name="updateAccountRCSetting">
+    </wsdl:input>
+      <wsdl:output message="tns:updateAccountRCSettingResponse" name="updateAccountRCSettingResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlanHistories">
+      <wsdl:input message="tns:getAccountPlanHistories" name="getAccountPlanHistories">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountPlanHistoriesResponse" name="getAccountPlanHistoriesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountHistories">
+      <wsdl:input message="tns:getAccountHistories" name="getAccountHistories">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountHistoriesResponse" name="getAccountHistoriesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccountRC">
+      <wsdl:input message="tns:deleteAccountRC" name="deleteAccountRC">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteAccountRCResponse" name="deleteAccountRCResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccount">
+      <wsdl:input message="tns:getAccount" name="getAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountResponse" name="getAccountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertAccountRCSetting">
+      <wsdl:input message="tns:insertAccountRCSetting" name="insertAccountRCSetting">
+    </wsdl:input>
+      <wsdl:output message="tns:insertAccountRCSettingResponse" name="insertAccountRCSettingResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlanHistory">
+      <wsdl:input message="tns:getAccountPlanHistory" name="getAccountPlanHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountPlanHistoryResponse" name="getAccountPlanHistoryResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCsCount">
+      <wsdl:input message="tns:getAccountRCsCount" name="getAccountRCsCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountRCsCountResponse" name="getAccountRCsCountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlansCount">
+      <wsdl:input message="tns:getAccountPlansCount" name="getAccountPlansCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountPlansCountResponse" name="getAccountPlansCountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCActivityLogs">
+      <wsdl:input message="tns:getAccountRCActivityLogs" name="getAccountRCActivityLogs">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountRCActivityLogsResponse" name="getAccountRCActivityLogsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="adjustPlanBalance">
+      <wsdl:input message="tns:adjustPlanBalance" name="adjustPlanBalance">
+    </wsdl:input>
+      <wsdl:output message="tns:adjustPlanBalanceResponse" name="adjustPlanBalanceResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="authenticate">
+      <wsdl:input message="tns:authenticate" name="authenticate">
+    </wsdl:input>
+      <wsdl:output message="tns:authenticateResponse" name="authenticateResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountsCount">
+      <wsdl:input message="tns:getAccountsCount" name="getAccountsCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountsCountResponse" name="getAccountsCountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="scheduleSubscription">
+      <wsdl:input message="tns:scheduleSubscription" name="scheduleSubscription">
+    </wsdl:input>
+      <wsdl:output message="tns:scheduleSubscriptionResponse" name="scheduleSubscriptionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rechargeAccountViaTransient">
+      <wsdl:input message="tns:rechargeAccountViaTransient" name="rechargeAccountViaTransient">
+    </wsdl:input>
+      <wsdl:output message="tns:rechargeAccountViaTransientResponse" name="rechargeAccountViaTransientResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccountRC">
+      <wsdl:input message="tns:updateAccountRC" name="updateAccountRC">
+    </wsdl:input>
+      <wsdl:output message="tns:updateAccountRCResponse" name="updateAccountRCResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCActivityLog">
+      <wsdl:input message="tns:getAccountRCActivityLog" name="getAccountRCActivityLog">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountRCActivityLogResponse" name="getAccountRCActivityLogResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccount">
+      <wsdl:input message="tns:deleteAccount" name="deleteAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteAccountResponse" name="deleteAccountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertAccount">
+      <wsdl:input message="tns:insertAccount" name="insertAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:insertAccountResponse" name="insertAccountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccounts">
+      <wsdl:input message="tns:getAccounts" name="getAccounts">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountsResponse" name="getAccountsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRegisteredAccountDevicesCount">
+      <wsdl:input message="tns:getRegisteredAccountDevicesCount" name="getRegisteredAccountDevicesCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getRegisteredAccountDevicesCountResponse" name="getRegisteredAccountDevicesCountResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCSettings">
+      <wsdl:input message="tns:getAccountRCSettings" name="getAccountRCSettings">
+    </wsdl:input>
+      <wsdl:output message="tns:getAccountRCSettingsResponse" name="getAccountRCSettingsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertAccountRC">
+      <wsdl:input message="tns:insertAccountRC" name="insertAccountRC">
+    </wsdl:input>
+      <wsdl:output message="tns:insertAccountRCResponse" name="insertAccountRCResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccountServiceSoapBinding" type="tns:AccountService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAccountRCs">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountRCs">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountRCsResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRegisteredAccountDevices">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getRegisteredAccountDevices">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRegisteredAccountDevicesResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="updateAccount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateAccountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlanHistoriesCount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountPlanHistoriesCount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountPlanHistoriesCountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlans">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountPlans">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountPlansResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccountRCSetting">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="deleteAccountRCSetting">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteAccountRCSettingResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceApplyMissedAccountRCActivityLog">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="forceApplyMissedAccountRCActivityLog">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="forceApplyMissedAccountRCActivityLogResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerAccountDevice">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="registerAccountDevice">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="registerAccountDeviceResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="unregisterAccountDevice">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="unregisterAccountDevice">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="unregisterAccountDeviceResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountHistoriesCount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountHistoriesCount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountHistoriesCountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateAccounts">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="generateAccounts">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="generateAccountsResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCSettingsCount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountRCSettingsCount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountRCSettingsCountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRC">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountRC">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountRCResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBracketCounter">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getBracketCounter">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBracketCounterResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rechargeAccountManual">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="rechargeAccountManual">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rechargeAccountManualResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="refresh">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="refresh">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="refreshResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCActivityLogsCount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountRCActivityLogsCount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountRCActivityLogsCountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="refreshAccount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="refreshAccount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="refreshAccountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountHistory">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountHistory">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountHistoryResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccountRCSetting">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="updateAccountRCSetting">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateAccountRCSettingResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlanHistories">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountPlanHistories">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountPlanHistoriesResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccountRC">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="deleteAccountRC">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteAccountRCResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountHistories">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountHistories">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountHistoriesResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertAccountRCSetting">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="insertAccountRCSetting">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="insertAccountRCSettingResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlanHistory">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountPlanHistory">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountPlanHistoryResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountPlansCount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountPlansCount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountPlansCountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCsCount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountRCsCount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountRCsCountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCActivityLogs">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountRCActivityLogs">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountRCActivityLogsResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="adjustPlanBalance">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="adjustPlanBalance">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="adjustPlanBalanceResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="authenticate">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="authenticate">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authenticateResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountsCount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountsCount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountsCountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="scheduleSubscription">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="scheduleSubscription">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="scheduleSubscriptionResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rechargeAccountViaTransient">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="rechargeAccountViaTransient">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rechargeAccountViaTransientResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccountRC">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="updateAccountRC">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateAccountRCResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="deleteAccount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteAccountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCActivityLog">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountRCActivityLog">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountRCActivityLogResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertAccount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="insertAccount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="insertAccountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccounts">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccounts">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountsResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountRCSettings">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getAccountRCSettings">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAccountRCSettingsResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getRegisteredAccountDevicesCount">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="getRegisteredAccountDevicesCount">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRegisteredAccountDevicesCountResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertAccountRC">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input name="insertAccountRC">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="insertAccountRCResponse">
+        <soap:body namespace="http://accounts.feefactor.com/" use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccountService">
+    <wsdl:port binding="tns:AccountServiceSoapBinding" name="AccountServicePort">
+      <soap:address location="http://api.feefactor.com/soap/Accounts" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

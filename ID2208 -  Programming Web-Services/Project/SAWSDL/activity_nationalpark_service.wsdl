@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ActivityNationalpark" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityNationalpark" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/ActivityNationalpark" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/ActivityNationalpark-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/ActivityNationalpark" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/ActivityNationalpark" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:33:06 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/travel.owl#Activity"/><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/travel.owl#NationalPark"/></xsd:annotation><xsd:element name="NationalPark" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/activity_nationalpark_service_NationalPark_liftingSchemaMapping.xslt" type="NationalParkType"/><xsd:element name="Activity" type="ActivityType"/><xsd:complexType name="Campground" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#Campground"><xsd:sequence><xsd:element name="hasRating" type="CampgroundAccommodationRating"/></xsd:sequence></xsd:complexType><xsd:complexType name="NationalParkType" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#NationalPark"><xsd:choice><xsd:element name="nationalParkID" type="NationalParkDATA"/><xsd:sequence><xsd:element minOccurs="0" name="name" type="xsd:string"/><xsd:element name="hasActivity" type="Hiking"/><xsd:element name="hasAccommodation" type="Campground"/></xsd:sequence></xsd:choice></xsd:complexType><xsd:complexType name="AccommodationRating" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#AccommodationRating"><xsd:choice><xsd:element name="accommodationRatingID" type="AccommodationRatingDATA"/><xsd:sequence><xsd:element minOccurs="0" name="name" type="xsd:string"/></xsd:sequence></xsd:choice></xsd:complexType><xsd:complexType name="CampgroundAccommodationRating" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#AccommodationRating"><xsd:complexContent><xsd:restriction base="AccommodationRating"><xsd:choice><xsd:element name="accommodationRatingID" type="CampgroundAccommodationRatingDATA"/><xsd:sequence><xsd:element minOccurs="0" name="name" type="xsd:string"/></xsd:sequence></xsd:choice></xsd:restriction></xsd:complexContent></xsd:complexType><xsd:simpleType name="Hiking" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#Hiking"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="ActivityType" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#Activity"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="CampgroundAccommodationRatingDATA" sawsdl:modelReference=""><xsd:restriction base="AccommodationRatingDATA"><xsd:enumeration value="OneStarRating"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="AccommodationRatingDATA" sawsdl:modelReference=""><xsd:restriction base="xsd:string"><xsd:enumeration value="TwoStarRating"/><xsd:enumeration value="OneStarRating"/><xsd:enumeration value="ThreeStarRating"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="NationalParkDATA" sawsdl:modelReference=""><xsd:restriction base="xsd:string"><xsd:enumeration value="Warrumbungles"/><xsd:enumeration value="BlueMountains"/></xsd:restriction></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_NATIONALPARKResponse">
+    <wsdl:part name="_NATIONALPARK" type="NationalParkType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_NATIONALPARKRequest">
+    <wsdl:part name="_ACTIVITY" type="ActivityType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ActivityNationalparkSoap">
+    <wsdl:operation name="get_NATIONALPARK">
+      <wsdl:input message="get_NATIONALPARKRequest">
+    </wsdl:input>
+      <wsdl:output message="get_NATIONALPARKResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActivityNationalparkSoapBinding" type="ActivityNationalparkSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_NATIONALPARK">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityNationalpark"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityNationalpark"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ActivityNationalparkService">
+    <wsdl:port name="ActivityNationalparkSoap" binding="ActivityNationalparkSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/ActivityNationalpark"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

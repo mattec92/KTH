@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ShortCv.se" elementFormDefault="qualified">
+
+	<xsd:element name="CV">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="FirstName" type="xsd:string" />
+
+				<xsd:element name="LastName" type="xsd:string" />
+
+				<xsd:element name="PersonNumber">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:pattern value="\d{6}-\d{4}" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

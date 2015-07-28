@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://topdown.hw2.id2208.mattec.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://topdown.hw2.id2208.mattec.se/"> 
+
+  <xs:element name="UnauthorizedException" nillable="true" type="tns:exceptionBean"/>
+
+  <xs:element name="bookTicket" nillable="true" type="tns:bookTicket"/>
+
+  <xs:element name="bookTicketResponse" nillable="true" type="tns:bookTicketResponse"/>
+
+  <xs:element name="issueTicket" nillable="true" type="tns:issueTicket"/>
+
+  <xs:element name="issueTicketResponse" nillable="true" type="tns:issueTicketResponse"/>
+
+  <xs:complexType name="bookTicket">
+    <xs:sequence>
+      <xs:element name="authToken" type="xs:string" minOccurs="0"/>
+      <xs:element name="itineary" type="tns:itineary" minOccurs="0"/>
+      <xs:element name="cardNumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bookTicketResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="issueTicket">
+    <xs:sequence>
+      <xs:element name="authToken" type="xs:string" minOccurs="0"/>
+      <xs:element name="ticketNumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="issueTicketResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:ticket"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="itineary">
+    <xs:sequence>
+      <xs:element name="departureCity" type="xs:string" minOccurs="0"/>
+      <xs:element name="destinationCity" type="xs:string" minOccurs="0"/>
+      <xs:element name="flights" type="tns:flight" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="flight">
+    <xs:sequence>
+      <xs:element name="date" type="xs:string" minOccurs="0"/>
+      <xs:element name="departureCity" type="xs:string" minOccurs="0"/>
+      <xs:element name="destinationCity" type="xs:string" minOccurs="0"/>
+      <xs:element name="price" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ticket">
+    <xs:sequence>
+      <xs:element name="ticketNumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="itineary" type="tns:itineary" minOccurs="0"/>
+      <xs:element name="cardNumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exceptionBean">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

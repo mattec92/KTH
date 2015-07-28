@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tripauthority.com/hotel" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tripauthority.com/hotel" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tripauthority.com/hotel">
+      <s:element name="SubmitRequestDoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aRequestDoc">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitRequestDocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitRequestDocResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlFormattedString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SubmitRequestDocSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitRequestDoc" />
+  </wsdl:message>
+  <wsdl:message name="SubmitRequestDocSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitRequestDocResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitRequest" />
+  </wsdl:message>
+  <wsdl:message name="SubmitRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitRequestRpcSoapIn">
+    <wsdl:part name="aSiteId" type="s:string" />
+    <wsdl:part name="aUserName" type="s:string" />
+    <wsdl:part name="aPassword" type="s:string" />
+    <wsdl:part name="aRequestDoc" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SubmitRequestRpcSoapOut">
+    <wsdl:part name="SubmitRequestRpcResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:portType name="TripAuthority_x0020_HotelSoap">
+    <wsdl:operation name="SubmitRequestDoc">
+      <wsdl:input message="tns:SubmitRequestDocSoapIn" />
+      <wsdl:output message="tns:SubmitRequestDocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequest">
+      <wsdl:input message="tns:SubmitRequestSoapIn" />
+      <wsdl:output message="tns:SubmitRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequestRpc">
+      <wsdl:input message="tns:SubmitRequestRpcSoapIn" />
+      <wsdl:output message="tns:SubmitRequestRpcSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TripAuthority_x0020_HotelSoap" type="tns:TripAuthority_x0020_HotelSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitRequestDoc">
+      <soap:operation soapAction="http://tripauthority.com/hotel/SubmitRequestDoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequest">
+      <soap:operation soapAction="http://tripauthority.com/hotel/SubmitRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequestRpc">
+      <soap:operation soapAction="http://tripauthority.com/hotel/SubmitRequestRpc" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://tripauthority.com/hotel" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://tripauthority.com/hotel" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TripAuthority_x0020_HotelSoap12" type="tns:TripAuthority_x0020_HotelSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitRequestDoc">
+      <soap12:operation soapAction="http://tripauthority.com/hotel/SubmitRequestDoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequest">
+      <soap12:operation soapAction="http://tripauthority.com/hotel/SubmitRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitRequestRpc">
+      <soap12:operation soapAction="http://tripauthority.com/hotel/SubmitRequestRpc" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://tripauthority.com/hotel" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://tripauthority.com/hotel" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TripAuthority_x0020_Hotel">
+    <wsdl:port name="TripAuthority_x0020_HotelSoap" binding="tns:TripAuthority_x0020_HotelSoap">
+      <soap:address location="http://tripauthority.com/hotel.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TripAuthority_x0020_HotelSoap12" binding="tns:TripAuthority_x0020_HotelSoap12">
+      <soap12:address location="http://tripauthority.com/hotel.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

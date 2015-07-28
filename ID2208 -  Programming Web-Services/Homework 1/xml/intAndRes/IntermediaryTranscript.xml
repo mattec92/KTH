@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ap:StudiesInfo xmlns:ap="http://www.ApplicantProfile.se">
+  <ap:University>KTH</ap:University>
+  <ap:Degree>MSc</ap:Degree>
+  <ap:Year>2016</ap:Year>
+  <ap:GPA>4</ap:GPA>
+  <ap:Courses>
+    <ap:Course>
+      <ap:Name>Distributed systems</ap:Name>
+      <ap:Code>ID2201</ap:Code>
+      <ap:Grade>3</ap:Grade>
+    </ap:Course>
+    <ap:Course>
+      <ap:Name>Programming Web-Services</ap:Name>
+      <ap:Code>ID2208</ap:Code>
+      <ap:Grade>5</ap:Grade>
+    </ap:Course>
+  </ap:Courses>
+</ap:StudiesInfo>

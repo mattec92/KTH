@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="Id2208Matching">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../usr/lib/eclipse"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="Id2208Matching.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/jena/arq-extra.jar"/>
+        <pathelement location="lib/jena/arq.jar"/>
+        <pathelement location="lib/jena/icu4j_3_4.jar"/>
+        <pathelement location="lib/jena/iri.jar"/>
+        <pathelement location="lib/jena/jena.jar"/>
+        <pathelement location="lib/jena/jenatest.jar"/>
+        <pathelement location="lib/jena/json.jar"/>
+        <pathelement location="lib/jena/junit-4.5.jar"/>
+        <pathelement location="lib/jena/log4j-1.2.12.jar"/>
+        <pathelement location="lib/jena/lucene-core-2.3.1.jar"/>
+        <pathelement location="lib/jena/slf4j-api-1.5.6.jar"/>
+        <pathelement location="lib/jena/slf4j-log4j12-1.5.6.jar"/>
+        <pathelement location="lib/jena/stax-api-1.0.jar"/>
+        <pathelement location="lib/jena/wstx-asl-3.0.0.jar"/>
+        <pathelement location="lib/jena/xercesImpl.jar"/>
+        <pathelement location="lib/owlapiv3/owlapi-bin.jar"/>
+        <pathelement location="lib/owlapiv3/owlapi-src.jar"/>
+        <pathelement location="lib/pellet2.0/aterm-java-1.6.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-cli.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-core.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-datatypes.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-dig.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-el.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-explanation.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-jena.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-modularity.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-owlapi.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-owlapiv3.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-pellint.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-query.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-rules.jar"/>
+        <pathelement location="lib/pellet2.0/pellet-test.jar"/>
+        <pathelement location="lib/pellet2.0/servlet.jar"/>
+        <pathelement location="lib/owlapi/owlapi-bin.jar"/>
+        <pathelement location="lib/owlapi/owlapi-src.jar"/>
+        <pathelement location="lib/xsdlib/relaxngDatatype.jar"/>
+        <pathelement location="lib/xsdlib/xsdlib.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Id2208Matching.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Test_MyOntManager (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ontology.Test_MyOntManager" todir="${junit.output.dir}"/>
+            <classpath refid="Id2208Matching.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>

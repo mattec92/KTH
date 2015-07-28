@@ -1,0 +1,670 @@
+<definitions name='WebBookingService' targetNamespace='http://com.gblmatrix.WS.WebBooking/samples/WBInterface' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:ns1='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types' xmlns:ns2='http://generic.gblmatrix.com/' xmlns:ns3='http://teammate.gblmatrix.com/' xmlns:ns4='http://data.teammate.gblmatrix.com/' xmlns:ns5='http://data.manulife.gblmatrix.com/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://com.gblmatrix.WS.WebBooking/samples/WBInterface' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <schema targetNamespace='http://teammate.gblmatrix.com/' xmlns='http://www.w3.org/2001/XMLSchema' xmlns:ns1='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types' xmlns:ns2='http://generic.gblmatrix.com/' xmlns:ns4='http://data.teammate.gblmatrix.com/' xmlns:ns5='http://data.manulife.gblmatrix.com/' xmlns:soap11-enc='http://schemas.xmlsoap.org/soap/encoding/' xmlns:tns='http://teammate.gblmatrix.com/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+   <import namespace='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types'/>
+   <import namespace='http://generic.gblmatrix.com/'/>
+   <import namespace='http://data.manulife.gblmatrix.com/'/>
+   <import namespace='http://data.teammate.gblmatrix.com/'/>
+   <complexType name='MembershipDO'>
+    <sequence>
+     <element name='loyaltyId' type='int'/>
+     <element name='membershipType' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='TeammateDO'>
+    <sequence>
+     <element name='address_1' nillable='true' type='string'/>
+     <element name='address_2' nillable='true' type='string'/>
+     <element name='address_3' nillable='true' type='string'/>
+     <element name='address_4' nillable='true' type='string'/>
+     <element name='birthDate' nillable='true' type='dateTime'/>
+     <element name='businessEmail' nillable='true' type='string'/>
+     <element name='businessPhoneAcode' nillable='true' type='string'/>
+     <element name='businessPhoneExt' nillable='true' type='string'/>
+     <element name='businessPhoneNo' nillable='true' type='string'/>
+     <element name='cellPhoneAcode' nillable='true' type='string'/>
+     <element name='cellPhoneNo' nillable='true' type='string'/>
+     <element name='city' nillable='true' type='string'/>
+     <element name='clientLanguage' nillable='true' type='string'/>
+     <element name='country' nillable='true' type='string'/>
+     <element name='firstName' nillable='true' type='string'/>
+     <element name='gender' nillable='true' type='string'/>
+     <element name='homeEmail' nillable='true' type='string'/>
+     <element name='homePhoneAcode' nillable='true' type='string'/>
+     <element name='homePhoneNo' nillable='true' type='string'/>
+     <element name='lastName' nillable='true' type='string'/>
+     <element name='matrixBraId' nillable='true' type='string'/>
+     <element name='matrixCfaCode' nillable='true' type='string'/>
+     <element name='matrixCfaType' nillable='true' type='string'/>
+     <element name='matrixConId' nillable='true' type='string'/>
+     <element name='matrixCopId' nillable='true' type='string'/>
+     <element name='matrixProfileId' type='int'/>
+     <element maxOccurs='unbounded' minOccurs='0' name='memberships' nillable='true' type='tns:MembershipDO'/>
+     <element name='postalCode' nillable='true' type='string'/>
+     <element name='privacyInd' nillable='true' type='string'/>
+     <element name='provinceId' nillable='true' type='string'/>
+     <element name='teammateProfileId' type='int'/>
+     <element name='teammateUserId' nillable='true' type='string'/>
+     <element name='title' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types' xmlns='http://www.w3.org/2001/XMLSchema' xmlns:ns2='http://generic.gblmatrix.com/' xmlns:ns3='http://teammate.gblmatrix.com/' xmlns:ns4='http://data.teammate.gblmatrix.com/' xmlns:ns5='http://data.manulife.gblmatrix.com/' xmlns:soap11-enc='http://schemas.xmlsoap.org/soap/encoding/' xmlns:tns='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+   <import namespace='http://teammate.gblmatrix.com/'/>
+   <import namespace='http://generic.gblmatrix.com/'/>
+   <import namespace='http://data.manulife.gblmatrix.com/'/>
+   <import namespace='http://data.teammate.gblmatrix.com/'/>
+   <complexType name='authenticate'>
+    <sequence>
+     <element name='username' nillable='true' type='string'/>
+     <element name='password' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='authenticateResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='chgPassword'>
+    <sequence>
+     <element name='userId' nillable='true' type='int'/>
+     <element name='oldPwd' nillable='true' type='string'/>
+     <element name='newPwd' nillable='true' type='string'/>
+     <element name='gmtDate' nillable='true' type='dateTime'/>
+    </sequence>
+   </complexType>
+   <complexType name='chgPasswordResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='ns2:ChgPasswordResponse'/>
+    </sequence>
+   </complexType>
+   <complexType name='createMatrixProfile'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+     <element name='teammateDO' nillable='true' type='ns3:TeammateDO'/>
+    </sequence>
+   </complexType>
+   <complexType name='createMatrixProfileNew'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+     <element name='teammateDO' nillable='true' type='ns3:TeammateDO'/>
+     <element name='membershipNo' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='createMatrixProfileNewResponse'>
+    <sequence>
+     <element name='result' type='int'/>
+    </sequence>
+   </complexType>
+   <complexType name='createMatrixProfileResponse'>
+    <sequence>
+     <element name='result' type='int'/>
+    </sequence>
+   </complexType>
+   <complexType name='deleteMatrixProfile'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+     <element name='matrixCopId' nillable='true' type='string'/>
+     <element name='matrixProfileId' nillable='true' type='int'/>
+    </sequence>
+   </complexType>
+   <complexType name='deleteMatrixProfileResponse'>
+    <sequence>
+     <element name='result' type='boolean'/>
+    </sequence>
+   </complexType>
+   <complexType name='deleteTeammateMembershipInfo'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+     <element name='matrixCopId' nillable='true' type='string'/>
+     <element name='matrixBraId' nillable='true' type='string'/>
+     <element name='matrixProfileId' nillable='true' type='int'/>
+     <element maxOccurs='unbounded' minOccurs='0' name='memberships' nillable='true' type='ns3:MembershipDO'/>
+    </sequence>
+   </complexType>
+   <complexType name='deleteTeammateMembershipInfoResponse'>
+    <sequence>
+     <element name='result' type='boolean'/>
+    </sequence>
+   </complexType>
+   <complexType name='getInstance'>
+    <sequence>
+     <element name='userId' type='int'/>
+    </sequence>
+   </complexType>
+   <complexType name='getInstanceResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='getSalt'>
+    <sequence>
+     <element name='userId' type='int'/>
+    </sequence>
+   </complexType>
+   <complexType name='getSaltResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='getTripSummaryHistory'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+     <element name='request' nillable='true' type='ns4:MPTripHistoryRequestDO'/>
+    </sequence>
+   </complexType>
+   <complexType name='getTripSummaryHistoryResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='ns4:MPTripHistoryResponseDO'/>
+    </sequence>
+   </complexType>
+   <complexType name='logAndChgPwd'>
+    <sequence>
+     <element name='userId' nillable='true' type='int'/>
+     <element name='oldPwd' nillable='true' type='string'/>
+     <element name='newPwd' nillable='true' type='string'/>
+     <element name='gmtDate' nillable='true' type='dateTime'/>
+    </sequence>
+   </complexType>
+   <complexType name='logAndChgPwdResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='ns2:AuthResponse'/>
+    </sequence>
+   </complexType>
+   <complexType name='login'>
+    <sequence>
+     <element name='userId' type='int'/>
+     <element name='password' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='loginResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='ns2:AuthResponse'/>
+    </sequence>
+   </complexType>
+   <complexType name='logout'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='logoutResponse'>
+    <sequence>
+     <element name='result' type='boolean'/>
+    </sequence>
+   </complexType>
+   <complexType name='processTeammateMembershipInfo'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+     <element name='matrixCopId' nillable='true' type='string'/>
+     <element name='matrixBraId' nillable='true' type='string'/>
+     <element name='matrixProfileId' nillable='true' type='int'/>
+     <element maxOccurs='unbounded' minOccurs='0' name='memberships' nillable='true' type='ns3:MembershipDO'/>
+    </sequence>
+   </complexType>
+   <complexType name='processTeammateMembershipInfoResponse'>
+    <sequence>
+     <element name='result' type='boolean'/>
+    </sequence>
+   </complexType>
+   <complexType name='processXML'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+     <element name='xmlBookingRecord' nillable='true' type='string'/>
+     <element name='xmlBookingResponse' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='processXMLResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='transferToMatrix'>
+    <sequence>
+     <element name='serviceKey' nillable='true' type='string'/>
+     <element name='userId' nillable='true' type='int'/>
+     <element name='xmlInput' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+   <complexType name='transferToMatrixResponse'>
+    <sequence>
+     <element name='result' nillable='true' type='ns5:MtxResponse'/>
+    </sequence>
+   </complexType>
+   <complexType name='updateMatrixProfile'>
+    <sequence>
+     <element name='securityToken' nillable='true' type='string'/>
+     <element name='teammateDO' nillable='true' type='ns3:TeammateDO'/>
+    </sequence>
+   </complexType>
+   <complexType name='updateMatrixProfileResponse'>
+    <sequence>
+     <element name='result' type='boolean'/>
+    </sequence>
+   </complexType>
+   <element name='authenticate' type='tns:authenticate'/>
+   <element name='authenticateResponse' type='tns:authenticateResponse'/>
+   <element name='chgPassword' type='tns:chgPassword'/>
+   <element name='chgPasswordResponse' type='tns:chgPasswordResponse'/>
+   <element name='createMatrixProfile' type='tns:createMatrixProfile'/>
+   <element name='createMatrixProfileNew' type='tns:createMatrixProfileNew'/>
+   <element name='createMatrixProfileNewResponse' type='tns:createMatrixProfileNewResponse'/>
+   <element name='createMatrixProfileResponse' type='tns:createMatrixProfileResponse'/>
+   <element name='deleteMatrixProfile' type='tns:deleteMatrixProfile'/>
+   <element name='deleteMatrixProfileResponse' type='tns:deleteMatrixProfileResponse'/>
+   <element name='deleteTeammateMembershipInfo' type='tns:deleteTeammateMembershipInfo'/>
+   <element name='deleteTeammateMembershipInfoResponse' type='tns:deleteTeammateMembershipInfoResponse'/>
+   <element name='getInstance' type='tns:getInstance'/>
+   <element name='getInstanceResponse' type='tns:getInstanceResponse'/>
+   <element name='getSalt' type='tns:getSalt'/>
+   <element name='getSaltResponse' type='tns:getSaltResponse'/>
+   <element name='getTripSummaryHistory' type='tns:getTripSummaryHistory'/>
+   <element name='getTripSummaryHistoryResponse' type='tns:getTripSummaryHistoryResponse'/>
+   <element name='logAndChgPwd' type='tns:logAndChgPwd'/>
+   <element name='logAndChgPwdResponse' type='tns:logAndChgPwdResponse'/>
+   <element name='login' type='tns:login'/>
+   <element name='loginResponse' type='tns:loginResponse'/>
+   <element name='logout' type='tns:logout'/>
+   <element name='logoutResponse' type='tns:logoutResponse'/>
+   <element name='processTeammateMembershipInfo' type='tns:processTeammateMembershipInfo'/>
+   <element name='processTeammateMembershipInfoResponse' type='tns:processTeammateMembershipInfoResponse'/>
+   <element name='processXML' type='tns:processXML'/>
+   <element name='processXMLResponse' type='tns:processXMLResponse'/>
+   <element name='transferToMatrix' type='tns:transferToMatrix'/>
+   <element name='transferToMatrixResponse' type='tns:transferToMatrixResponse'/>
+   <element name='updateMatrixProfile' type='tns:updateMatrixProfile'/>
+   <element name='updateMatrixProfileResponse' type='tns:updateMatrixProfileResponse'/>
+  </schema>
+  <schema targetNamespace='http://generic.gblmatrix.com/' xmlns='http://www.w3.org/2001/XMLSchema' xmlns:ns1='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types' xmlns:ns3='http://teammate.gblmatrix.com/' xmlns:ns4='http://data.teammate.gblmatrix.com/' xmlns:ns5='http://data.manulife.gblmatrix.com/' xmlns:soap11-enc='http://schemas.xmlsoap.org/soap/encoding/' xmlns:tns='http://generic.gblmatrix.com/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+   <import namespace='http://teammate.gblmatrix.com/'/>
+   <import namespace='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types'/>
+   <import namespace='http://data.manulife.gblmatrix.com/'/>
+   <import namespace='http://data.teammate.gblmatrix.com/'/>
+   <complexType name='AuthResponse'>
+    <sequence>
+     <element name='errorDescription' nillable='true' type='string'/>
+     <element name='remainingSignOns' type='int'/>
+     <element name='signOnInd' nillable='true' type='string'/>
+     <element name='userSecurityLevel' type='int'/>
+    </sequence>
+   </complexType>
+   <complexType name='ChgPasswordResponse'>
+    <sequence>
+     <element name='errorDescription' nillable='true' type='string'/>
+     <element name='msgId' type='int'/>
+     <element name='remainingSignOns' type='int'/>
+     <element name='signOnInd' nillable='true' type='string'/>
+     <element name='userSecurityLevel' type='int'/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace='http://data.manulife.gblmatrix.com/' xmlns='http://www.w3.org/2001/XMLSchema' xmlns:ns1='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types' xmlns:ns2='http://generic.gblmatrix.com/' xmlns:ns3='http://teammate.gblmatrix.com/' xmlns:ns4='http://data.teammate.gblmatrix.com/' xmlns:soap11-enc='http://schemas.xmlsoap.org/soap/encoding/' xmlns:tns='http://data.manulife.gblmatrix.com/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+   <import namespace='http://teammate.gblmatrix.com/'/>
+   <import namespace='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types'/>
+   <import namespace='http://generic.gblmatrix.com/'/>
+   <import namespace='http://data.teammate.gblmatrix.com/'/>
+   <complexType name='MtxResponse'>
+    <sequence>
+     <element name='policyNumber' nillable='true' type='string'/>
+     <element name='resendDate' nillable='true' type='string'/>
+     <element name='resendTime' nillable='true' type='string'/>
+     <element name='transDate' nillable='true' type='string'/>
+     <element name='transTime' nillable='true' type='string'/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace='http://data.teammate.gblmatrix.com/' xmlns='http://www.w3.org/2001/XMLSchema' xmlns:ns1='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types' xmlns:ns2='http://generic.gblmatrix.com/' xmlns:ns3='http://teammate.gblmatrix.com/' xmlns:ns5='http://data.manulife.gblmatrix.com/' xmlns:soap11-enc='http://schemas.xmlsoap.org/soap/encoding/' xmlns:tns='http://data.teammate.gblmatrix.com/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+   <import namespace='http://teammate.gblmatrix.com/'/>
+   <import namespace='http://com.gblmatrix.WS.WebBooking/samples/WebBookingInterface/types'/>
+   <import namespace='http://generic.gblmatrix.com/'/>
+   <import namespace='http://data.manulife.gblmatrix.com/'/>
+   <complexType name='MPTripHistoryDataDO'>
+    <sequence>
+     <element name='braId' nillable='true' type='string'/>
+     <element name='cfaCode' nillable='true' type='string'/>
+     <element name='cfaId' nillable='true' type='int'/>
+     <element name='cfaType' nillable='true' type='string'/>
+     <element name='commission' nillable='true' type='decimal'/>
+     <element name='departureDate' nillable='true' type='string'/>
+     <element name='destinationCityCode' nillable='true' type='string'/>
+     <element name='destinationCityName' nillable='true' type='string'/>
+     <element name='docType' nillable='true' type='string'/>
+     <element name='documentLineNumber' nillable='true' type='int'/>
+     <element name='documentType' nillable='true' type='string'/>
+     <element name='serviceType' nillable='true' type='string'/>
+     <element name='supplierCode' nillable='true' type='string'/>
+     <element name='supplierName' nillable='true' type='string'/>
+     <element name='supplierPaid' nillable='true' type='decimal'/>
+    </sequence>
+   </complexType>
+   <complexType name='MPTripHistoryRequestDO'>
+    <sequence>
+     <element name='matrixCompanyNumber' nillable='true' type='string'/>
+     <element name='matrixForeignId' nillable='true' type='int'/>
+     <element name='matrixProfileId' nillable='true' type='int'/>
+     <element name='maxSize' nillable='true' type='int'/>
+    </sequence>
+   </complexType>
+   <complexType name='MPTripHistoryResponseDO'>
+    <sequence>
+     <element name='request' nillable='true' type='tns:MPTripHistoryRequestDO'/>
+     <element name='requestStatus' nillable='true' type='string'/>
+     <element maxOccurs='unbounded' minOccurs='0' name='tripHistoryData' nillable='true' type='tns:MPTripHistoryDataDO'/>
+    </sequence>
+   </complexType>
+  </schema>
+ </types>
+ <message name='WebBookingInterface_processXMLResponse' xmlns='http://schemas.xmlsoap.org/wsdl/'>
+  <part element='ns1:processXMLResponse' name='processXMLResponse'></part>
+ </message>
+ <message name='WebBookingInterface_createMatrixProfileNew'>
+  <part element='ns1:createMatrixProfileNew' name='createMatrixProfileNew'></part>
+ </message>
+ <message name='WebBookingInterface_processXML'>
+  <part element='ns1:processXML' name='processXML'></part>
+ </message>
+ <message name='WebBookingInterface_getInstance'>
+  <part element='ns1:getInstance' name='getInstance'></part>
+ </message>
+ <message name='WebBookingInterface_deleteTeammateMembershipInfoResponse'>
+  <part element='ns1:deleteTeammateMembershipInfoResponse' name='deleteTeammateMembershipInfoResponse'></part>
+ </message>
+ <message name='WebBookingInterface_logoutResponse'>
+  <part element='ns1:logoutResponse' name='logoutResponse'></part>
+ </message>
+ <message name='WebBookingInterface_logAndChgPwd'>
+  <part element='ns1:logAndChgPwd' name='logAndChgPwd'></part>
+ </message>
+ <message name='WebBookingInterface_chgPasswordResponse'>
+  <part element='ns1:chgPasswordResponse' name='chgPasswordResponse'></part>
+ </message>
+ <message name='WebBookingInterface_getInstanceResponse'>
+  <part element='ns1:getInstanceResponse' name='getInstanceResponse'></part>
+ </message>
+ <message name='WebBookingInterface_logAndChgPwdResponse'>
+  <part element='ns1:logAndChgPwdResponse' name='logAndChgPwdResponse'></part>
+ </message>
+ <message name='WebBookingInterface_updateMatrixProfileResponse'>
+  <part element='ns1:updateMatrixProfileResponse' name='updateMatrixProfileResponse'></part>
+ </message>
+ <message name='WebBookingInterface_transferToMatrixResponse'>
+  <part element='ns1:transferToMatrixResponse' name='transferToMatrixResponse'></part>
+ </message>
+ <message name='WebBookingInterface_createMatrixProfile'>
+  <part element='ns1:createMatrixProfile' name='createMatrixProfile'></part>
+ </message>
+ <message name='WebBookingInterface_getSaltResponse'>
+  <part element='ns1:getSaltResponse' name='getSaltResponse'></part>
+ </message>
+ <message name='WebBookingInterface_getTripSummaryHistory'>
+  <part element='ns1:getTripSummaryHistory' name='getTripSummaryHistory'></part>
+ </message>
+ <message name='WebBookingInterface_login'>
+  <part element='ns1:login' name='login'></part>
+ </message>
+ <message name='WebBookingInterface_processTeammateMembershipInfoResponse'>
+  <part element='ns1:processTeammateMembershipInfoResponse' name='processTeammateMembershipInfoResponse'></part>
+ </message>
+ <message name='WebBookingInterface_logout'>
+  <part element='ns1:logout' name='logout'></part>
+ </message>
+ <message name='WebBookingInterface_deleteTeammateMembershipInfo'>
+  <part element='ns1:deleteTeammateMembershipInfo' name='deleteTeammateMembershipInfo'></part>
+ </message>
+ <message name='WebBookingInterface_deleteMatrixProfile'>
+  <part element='ns1:deleteMatrixProfile' name='deleteMatrixProfile'></part>
+ </message>
+ <message name='WebBookingInterface_createMatrixProfileNewResponse'>
+  <part element='ns1:createMatrixProfileNewResponse' name='createMatrixProfileNewResponse'></part>
+ </message>
+ <message name='WebBookingInterface_transferToMatrix'>
+  <part element='ns1:transferToMatrix' name='transferToMatrix'></part>
+ </message>
+ <message name='WebBookingInterface_deleteMatrixProfileResponse'>
+  <part element='ns1:deleteMatrixProfileResponse' name='deleteMatrixProfileResponse'></part>
+ </message>
+ <message name='WebBookingInterface_processTeammateMembershipInfo'>
+  <part element='ns1:processTeammateMembershipInfo' name='processTeammateMembershipInfo'></part>
+ </message>
+ <message name='WebBookingInterface_authenticate'>
+  <part element='ns1:authenticate' name='authenticate'></part>
+ </message>
+ <message name='WebBookingInterface_getSalt'>
+  <part element='ns1:getSalt' name='getSalt'></part>
+ </message>
+ <message name='WebBookingInterface_createMatrixProfileResponse'>
+  <part element='ns1:createMatrixProfileResponse' name='createMatrixProfileResponse'></part>
+ </message>
+ <message name='WebBookingInterface_getTripSummaryHistoryResponse'>
+  <part element='ns1:getTripSummaryHistoryResponse' name='getTripSummaryHistoryResponse'></part>
+ </message>
+ <message name='WebBookingInterface_loginResponse'>
+  <part element='ns1:loginResponse' name='loginResponse'></part>
+ </message>
+ <message name='WebBookingInterface_updateMatrixProfile'>
+  <part element='ns1:updateMatrixProfile' name='updateMatrixProfile'></part>
+ </message>
+ <message name='WebBookingInterface_chgPassword'>
+  <part element='ns1:chgPassword' name='chgPassword'></part>
+ </message>
+ <message name='WebBookingInterface_authenticateResponse'>
+  <part element='ns1:authenticateResponse' name='authenticateResponse'></part>
+ </message>
+ <portType name='WebBookingInterface'>
+  <operation name='authenticate' parameterOrder='authenticate'>
+   <input message='tns:WebBookingInterface_authenticate'></input>
+   <output message='tns:WebBookingInterface_authenticateResponse'></output>
+  </operation>
+  <operation name='chgPassword' parameterOrder='chgPassword'>
+   <input message='tns:WebBookingInterface_chgPassword'></input>
+   <output message='tns:WebBookingInterface_chgPasswordResponse'></output>
+  </operation>
+  <operation name='createMatrixProfile' parameterOrder='createMatrixProfile'>
+   <input message='tns:WebBookingInterface_createMatrixProfile'></input>
+   <output message='tns:WebBookingInterface_createMatrixProfileResponse'></output>
+  </operation>
+  <operation name='createMatrixProfileNew' parameterOrder='createMatrixProfileNew'>
+   <input message='tns:WebBookingInterface_createMatrixProfileNew'></input>
+   <output message='tns:WebBookingInterface_createMatrixProfileNewResponse'></output>
+  </operation>
+  <operation name='deleteMatrixProfile' parameterOrder='deleteMatrixProfile'>
+   <input message='tns:WebBookingInterface_deleteMatrixProfile'></input>
+   <output message='tns:WebBookingInterface_deleteMatrixProfileResponse'></output>
+  </operation>
+  <operation name='deleteTeammateMembershipInfo' parameterOrder='deleteTeammateMembershipInfo'>
+   <input message='tns:WebBookingInterface_deleteTeammateMembershipInfo'></input>
+   <output message='tns:WebBookingInterface_deleteTeammateMembershipInfoResponse'></output>
+  </operation>
+  <operation name='getInstance' parameterOrder='getInstance'>
+   <input message='tns:WebBookingInterface_getInstance'></input>
+   <output message='tns:WebBookingInterface_getInstanceResponse'></output>
+  </operation>
+  <operation name='getSalt' parameterOrder='getSalt'>
+   <input message='tns:WebBookingInterface_getSalt'></input>
+   <output message='tns:WebBookingInterface_getSaltResponse'></output>
+  </operation>
+  <operation name='getTripSummaryHistory' parameterOrder='getTripSummaryHistory'>
+   <input message='tns:WebBookingInterface_getTripSummaryHistory'></input>
+   <output message='tns:WebBookingInterface_getTripSummaryHistoryResponse'></output>
+  </operation>
+  <operation name='logAndChgPwd' parameterOrder='logAndChgPwd'>
+   <input message='tns:WebBookingInterface_logAndChgPwd'></input>
+   <output message='tns:WebBookingInterface_logAndChgPwdResponse'></output>
+  </operation>
+  <operation name='login' parameterOrder='login'>
+   <input message='tns:WebBookingInterface_login'></input>
+   <output message='tns:WebBookingInterface_loginResponse'></output>
+  </operation>
+  <operation name='logout' parameterOrder='logout'>
+   <input message='tns:WebBookingInterface_logout'></input>
+   <output message='tns:WebBookingInterface_logoutResponse'></output>
+  </operation>
+  <operation name='processTeammateMembershipInfo' parameterOrder='processTeammateMembershipInfo'>
+   <input message='tns:WebBookingInterface_processTeammateMembershipInfo'></input>
+   <output message='tns:WebBookingInterface_processTeammateMembershipInfoResponse'></output>
+  </operation>
+  <operation name='processXML' parameterOrder='processXML'>
+   <input message='tns:WebBookingInterface_processXML'></input>
+   <output message='tns:WebBookingInterface_processXMLResponse'></output>
+  </operation>
+  <operation name='transferToMatrix' parameterOrder='transferToMatrix'>
+   <input message='tns:WebBookingInterface_transferToMatrix'></input>
+   <output message='tns:WebBookingInterface_transferToMatrixResponse'></output>
+  </operation>
+  <operation name='updateMatrixProfile' parameterOrder='updateMatrixProfile'>
+   <input message='tns:WebBookingInterface_updateMatrixProfile'></input>
+   <output message='tns:WebBookingInterface_updateMatrixProfileResponse'></output>
+  </operation>
+ </portType>
+ <binding name='WebBookingInterfaceBinding' type='tns:WebBookingInterface'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='authenticate'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='chgPassword'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='createMatrixProfile'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='createMatrixProfileNew'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='deleteMatrixProfile'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='deleteTeammateMembershipInfo'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getInstance'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getSalt'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getTripSummaryHistory'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='logAndChgPwd'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='login'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='logout'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='processTeammateMembershipInfo'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='processXML'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='transferToMatrix'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='updateMatrixProfile'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='WebBookingService'>
+  <port binding='tns:WebBookingInterfaceBinding' name='WebBookingInterfacePort'>
+   <soap:address location='https://moab.global-matrix.com/GlobalMatrixAPI/WebBooking'/>
+  </port>
+ </service>
+</definitions>

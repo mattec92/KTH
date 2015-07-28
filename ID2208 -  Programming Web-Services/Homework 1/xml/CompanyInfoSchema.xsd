@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.CompanyInfo.se" elementFormDefault="qualified">
+
+	<xsd:element name="Companies">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="Company" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+
+							<xsd:element name="Name" type="xsd:string" />
+
+							<xsd:element name="CompanyNumber" type="xsd:integer" />
+
+							<xsd:element name="PhoneNumber" type="xsd:integer" />
+
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

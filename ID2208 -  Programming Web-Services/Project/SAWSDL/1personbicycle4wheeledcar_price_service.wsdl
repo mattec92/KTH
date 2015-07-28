@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="1personbicycle4wheeledcarPrice" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/1personbicycle4wheeledcarPrice" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/1personbicycle4wheeledcarPrice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/1personbicycle4wheeledcarPrice-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/1personbicycle4wheeledcarPrice" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/1personbicycle4wheeledcarPrice" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:33:02 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/my_ontology.owl#FourWheeledCar"/><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/my_ontology.owl#OnePersonBicycle"/><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/concept.owl#Price"/></xsd:annotation><xsd:element name="Price" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/1personbicycle4wheeledcar_price_service_Price_liftingSchemaMapping.xslt" type="PriceType"/><xsd:element name="OnePersonBicycle" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/1personbicycle4wheeledcar_price_service_OnePersonBicycle_liftingSchemaMapping.xslt" type="OnePersonBicycleType"/><xsd:element name="FourWheeledCar" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/1personbicycle4wheeledcar_price_service_FourWheeledCar_liftingSchemaMapping.xslt" type="FourWheeledCarType"/><xsd:complexType name="PriceType" sawsdl:modelReference="http://127.0.0.1/ontology/concept.owl#Price"><xsd:sequence><xsd:element name="currency" type="Currency"/><xsd:element name="amount" type="xsd:float"/></xsd:sequence></xsd:complexType><xsd:complexType name="DesignedThing" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#DesignedThing"><xsd:sequence><xsd:element name="designedBy" type="Designer"/></xsd:sequence></xsd:complexType><xsd:complexType name="FourWheeledCarType" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#FourWheeledCar"><xsd:sequence><xsd:element name="Shape" type="DesignedThing"/><xsd:element name="Color"/><xsd:element name="Power" type="MoveableThing"/><xsd:element name="LifeTime" type="DesignedThing"/><xsd:element name="Speed" type="MoveableThing"/><xsd:element name="Model" type="DesignedThing"/><xsd:element name="Engine"/><xsd:element name="Rigid" type="DesignedThing"/><xsd:element name="madeBy" type="Company"/><xsd:element maxOccurs="5" name="Person"/><xsd:element name="hasValue" type="Thing"/><xsd:element name="belongsTo" type="Person"/><xsd:element maxOccurs="4" name="Wheel"/><xsd:element name="Profitable" type="DesignedThing"/></xsd:sequence></xsd:complexType><xsd:complexType name="OnePersonBicycleType" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#OnePersonBicycle"><xsd:sequence><xsd:element name="Person"/><xsd:element minOccurs="2" name="Wheel"/></xsd:sequence></xsd:complexType><xsd:simpleType name="MoveableThing" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#MoveableThing"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Currency" sawsdl:modelReference="http://www.daml.ecs.soton.ac.uk/ont/currency.owl#Currency"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Person" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Person"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Designer" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#Designer"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="Thing" sawsdl:modelReference="http://www.w3.org/2002/07/owl#Thing"><xsd:restriction base="xsd:string"><xsd:enumeration value="greenLamp01"/><xsd:enumeration value="staticFramework01"/><xsd:enumeration value="ultraSoundTechnology"/><xsd:enumeration value="contactSensor01"/><xsd:enumeration value="magazin02CargoArea"/><xsd:enumeration value="yellowButton01"/><xsd:enumeration value="cup01CargoArea"/><xsd:enumeration value="rfIDChip01"/><xsd:enumeration value="redPill01"/><xsd:enumeration value="doser02"/><xsd:enumeration value="redLamp01"/><xsd:enumeration value="battery01"/><xsd:enumeration value="doser01"/><xsd:enumeration value="magazin02"/><xsd:enumeration value="whitePill01"/><xsd:enumeration value="powerPlug01"/><xsd:enumeration value="doser03CargoArea"/><xsd:enumeration value="stopper02"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="Company" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#Company"><xsd:restriction base="xsd:string"/></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_PRICEResponse">
+    <wsdl:part name="_PRICE" type="PriceType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_PRICERequest">
+    <wsdl:part name="_4WHEELEDCAR" type="FourWheeledCarType">
+    </wsdl:part>
+    <wsdl:part name="_1PERSONBICYCLE" type="OnePersonBicycleType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="1personbicycle4wheeledcarPriceSoap">
+    <wsdl:operation name="get_PRICE">
+      <wsdl:input message="get_PRICERequest">
+    </wsdl:input>
+      <wsdl:output message="get_PRICEResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="1personbicycle4wheeledcarPriceSoapBinding" type="1personbicycle4wheeledcarPriceSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_PRICE">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/1personbicycle4wheeledcarPrice"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/1personbicycle4wheeledcarPrice"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="1personbicycle4wheeledcarPriceService">
+    <wsdl:port name="1personbicycle4wheeledcarPriceSoap" binding="1personbicycle4wheeledcarPriceSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/1personbicycle4wheeledcarPrice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="com.bango.webservices.subscriptions" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="com.bango.webservices.subscriptions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="com.bango.webservices.subscriptions">
+      <s:element name="GetSubscriptionID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:GetSubscriptionIDRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSubscriptionIDRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bango" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSubscriptionIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSubscriptionIDResult" type="tns:GetSubscriptionIDResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSubscriptionIDResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="subscriptionId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RequestPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:RequestPaymentRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestPaymentRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="subscriptionId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RequestPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RequestPaymentResult" type="tns:RequestPaymentResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestPaymentResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="paymentId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelSubscription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:CancelSubscriptionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelSubscriptionRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="subscriptionId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelSubscriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CancelSubscriptionResult" type="tns:CancelSubscriptionResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelSubscriptionResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelAndRevokeSubscription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:CancelAndRevokeSubscriptionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelAndRevokeSubscriptionRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="subscriptionId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelAndRevokeSubscriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CancelAndRevokeSubscriptionResult" type="tns:CancelAndRevokeSubscriptionResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelAndRevokeSubscriptionResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPaymentInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:GetPaymentInfoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPaymentInfoRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="paymentId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPaymentInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPaymentInfoResult" type="tns:GetPaymentInfoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPaymentInfoResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paymentStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paymentFailureCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="paymentDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSubscriptionInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:GetSubscriptionInfoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSubscriptionInfoRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="subscriptionId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSubscriptionInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSubscriptionInfoResult" type="tns:GetSubscriptionInfoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSubscriptionInfoResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="accessModel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="bango" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="subscriptionStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lastPaymentId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="creationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="cancellationDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="accessMinutesRemaining" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="lastAccessedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="retryNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSubscribers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:GetSubscribersRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSubscribersRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bango" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSubscribersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSubscribersResult" type="tns:GetSubscribersResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSubscribersResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="subscribers" type="tns:ArrayOfSubscriber" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSubscriber">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Subscriber" type="tns:Subscriber" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Subscriber">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="subscriptionId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNewSubscriptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:GetNewSubscriptionsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetNewSubscriptionsRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bango" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNewSubscriptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetNewSubscriptionsResult" type="tns:GetNewSubscriptionsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetNewSubscriptionsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="subscribers" type="tns:ArrayOfSubscriber" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCancellations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="tns:GetCancellationsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCancellationsRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bango" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCancellationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCancellationsResult" type="tns:GetCancellationsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCancellationsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="responseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="subscribers" type="tns:ArrayOfSubscriber" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSubscriptionIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionID" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscriptionIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestPayment" />
+  </wsdl:message>
+  <wsdl:message name="RequestPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelSubscription" />
+  </wsdl:message>
+  <wsdl:message name="CancelSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelAndRevokeSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelAndRevokeSubscription" />
+  </wsdl:message>
+  <wsdl:message name="CancelAndRevokeSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelAndRevokeSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPaymentInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPaymentInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscriptionInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscriptionInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscribersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubscribers" />
+  </wsdl:message>
+  <wsdl:message name="GetSubscribersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubscribersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewSubscriptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="GetNewSubscriptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCancellationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCancellations" />
+  </wsdl:message>
+  <wsdl:message name="GetCancellationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCancellationsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetSubscriptionID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the subscription ID for the requested userID and Bango Number</wsdl:documentation>
+      <wsdl:input message="tns:GetSubscriptionIDSoapIn" />
+      <wsdl:output message="tns:GetSubscriptionIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestPayment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Requests a payment be collected from the specified subscription ID</wsdl:documentation>
+      <wsdl:input message="tns:RequestPaymentSoapIn" />
+      <wsdl:output message="tns:RequestPaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancels the specified subscription ID</wsdl:documentation>
+      <wsdl:input message="tns:CancelSubscriptionSoapIn" />
+      <wsdl:output message="tns:CancelSubscriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelAndRevokeSubscription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancels the specified subscription ID and revokes any remaining paid-for time</wsdl:documentation>
+      <wsdl:input message="tns:CancelAndRevokeSubscriptionSoapIn" />
+      <wsdl:output message="tns:CancelAndRevokeSubscriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the details of the specfied payment ID</wsdl:documentation>
+      <wsdl:input message="tns:GetPaymentInfoSoapIn" />
+      <wsdl:output message="tns:GetPaymentInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptionInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the details of the specfied subscription ID</wsdl:documentation>
+      <wsdl:input message="tns:GetSubscriptionInfoSoapIn" />
+      <wsdl:output message="tns:GetSubscriptionInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscribers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the list of subscribers for a specified Bango number</wsdl:documentation>
+      <wsdl:input message="tns:GetSubscribersSoapIn" />
+      <wsdl:output message="tns:GetSubscribersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewSubscriptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the list of new subscribers for a specified Bango number</wsdl:documentation>
+      <wsdl:input message="tns:GetNewSubscriptionsSoapIn" />
+      <wsdl:output message="tns:GetNewSubscriptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCancellations">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the list of cancelled subscribers for a specified Bango number</wsdl:documentation>
+      <wsdl:input message="tns:GetCancellationsSoapIn" />
+      <wsdl:output message="tns:GetCancellationsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSubscriptionID">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/GetSubscriptionID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPayment">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/RequestPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelSubscription">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/CancelSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAndRevokeSubscription">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/CancelAndRevokeSubscription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentInfo">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/GetPaymentInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptionInfo">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/GetSubscriptionInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscribers">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/GetSubscribers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewSubscriptions">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/GetNewSubscriptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCancellations">
+      <soap:operation soapAction="com.bango.webservices.subscriptions/GetCancellations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSubscriptionID">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/GetSubscriptionID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPayment">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/RequestPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelSubscription">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/CancelSubscription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAndRevokeSubscription">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/CancelAndRevokeSubscription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentInfo">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/GetPaymentInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptionInfo">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/GetSubscriptionInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscribers">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/GetSubscribers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewSubscriptions">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/GetNewSubscriptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCancellations">
+      <soap12:operation soapAction="com.bango.webservices.subscriptions/GetCancellations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="https://webservices.bango.com/subscriptions/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="https://webservices.bango.com/subscriptions/service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://api2.libertyreserve.com/soap/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="https://api2.libertyreserve.com/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://api2.libertyreserve.com/soap/">
+      <s:element name="Authentication" type="tns:Authentication" />
+      <s:complexType name="Authentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApiName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:complexType name="Balance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Usd" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Euro" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gold" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Transaction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Batch" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Currency" type="tns:Currency" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fee" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Memo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Source" type="tns:Source" />
+          <s:element minOccurs="1" maxOccurs="1" name="Private" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Payer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Payee" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayeeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Currency">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Usd" />
+          <s:enumeration value="Euro" />
+          <s:enumeration value="Gold" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="Source">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Site" />
+          <s:enumeration value="Wallet" />
+          <s:enumeration value="Api" />
+          <s:enumeration value="Sci" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="HistorySpecification">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="From" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Till" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AmountFrom" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AmountTo" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="RelatedAccount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Currency" type="tns:SearchCurrency" />
+          <s:element minOccurs="1" maxOccurs="1" name="Direction" type="tns:SearchDirection" />
+          <s:element minOccurs="1" maxOccurs="1" name="Source" type="tns:SearchSource" />
+          <s:element minOccurs="1" maxOccurs="1" name="Private" type="tns:SearchPrivate" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SearchCurrency">
+        <s:restriction base="s:string">
+          <s:enumeration value="Any" />
+          <s:enumeration value="Usd" />
+          <s:enumeration value="Euro" />
+          <s:enumeration value="Gold" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="SearchDirection">
+        <s:restriction base="s:string">
+          <s:enumeration value="Any" />
+          <s:enumeration value="Incoming" />
+          <s:enumeration value="Outgoing" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="SearchSource">
+        <s:restriction base="s:string">
+          <s:enumeration value="Any" />
+          <s:enumeration value="Site" />
+          <s:enumeration value="Wallet" />
+          <s:enumeration value="Api" />
+          <s:enumeration value="Sci" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="SearchPrivate">
+        <s:restriction base="s:string">
+          <s:enumeration value="Any" />
+          <s:enumeration value="Yes" />
+          <s:enumeration value="No" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="HistoryResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Transactions" type="tns:ArrayOfTransaction" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasMore" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Transaction" nillable="true" type="tns:Transaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Transfer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Payee" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Currency" type="tns:Currency" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Memo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Private" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Purpose" type="tns:PaymentPurpose" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PaymentPurpose">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Service" />
+          <s:enumeration value="Salary" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfTransfer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Transfer" nillable="true" type="tns:Transfer" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AccountNameSoapIn">
+    <wsdl:part name="accountToRetrieve" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AccountNameSoapOut">
+    <wsdl:part name="AccountNameResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AccountNameAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="BalanceSoapIn" />
+  <wsdl:message name="BalanceSoapOut">
+    <wsdl:part name="BalanceResult" type="tns:Balance" />
+  </wsdl:message>
+  <wsdl:message name="BalanceAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="FindTransactionSoapIn">
+    <wsdl:part name="batch" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="FindTransactionSoapOut">
+    <wsdl:part name="FindTransactionResult" type="tns:Transaction" />
+  </wsdl:message>
+  <wsdl:message name="FindTransactionAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="HistorySoapIn">
+    <wsdl:part name="specification" type="tns:HistorySpecification" />
+    <wsdl:part name="pageIndex" type="s:int" />
+    <wsdl:part name="pageSize" type="s:int" />
+  </wsdl:message>
+  <wsdl:message name="HistorySoapOut">
+    <wsdl:part name="HistoryResult" type="tns:HistoryResult" />
+  </wsdl:message>
+  <wsdl:message name="HistoryAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="TransferSoapIn">
+    <wsdl:part name="transferInfo" type="tns:Transfer" />
+  </wsdl:message>
+  <wsdl:message name="TransferSoapOut">
+    <wsdl:part name="TransferResult" type="tns:Transaction" />
+  </wsdl:message>
+  <wsdl:message name="TransferAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="BulkTransferSoapIn">
+    <wsdl:part name="transfers" type="tns:ArrayOfTransfer" />
+  </wsdl:message>
+  <wsdl:message name="BulkTransferSoapOut">
+    <wsdl:part name="BulkTransferResult" type="tns:ArrayOfTransaction" />
+  </wsdl:message>
+  <wsdl:message name="BulkTransferAuthentication">
+    <wsdl:part name="Authentication" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:portType name="ApiServiceSoap">
+    <wsdl:operation name="AccountName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves Liberty Reserve account name</wsdl:documentation>
+      <wsdl:input message="tns:AccountNameSoapIn" />
+      <wsdl:output message="tns:AccountNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Balance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves Liberty Reserve account balance for specified currency</wsdl:documentation>
+      <wsdl:input message="tns:BalanceSoapIn" />
+      <wsdl:output message="tns:BalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindTransaction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Finds transaction specified by batch number</wsdl:documentation>
+      <wsdl:input message="tns:FindTransactionSoapIn" />
+      <wsdl:output message="tns:FindTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="History">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves transaction history performing search by specified criteria</wsdl:documentation>
+      <wsdl:input message="tns:HistorySoapIn" />
+      <wsdl:output message="tns:HistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Transfer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs single transfer</wsdl:documentation>
+      <wsdl:input message="tns:TransferSoapIn" />
+      <wsdl:output message="tns:TransferSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BulkTransfer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs multiple transfers as a batch. If error occurrs, any successful transfers are rolled back</wsdl:documentation>
+      <wsdl:input message="tns:BulkTransferSoapIn" />
+      <wsdl:output message="tns:BulkTransferSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ApiServiceSoap" type="tns:ApiServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="AccountName">
+      <soap:operation soapAction="https://api2.libertyreserve.com/soap/AccountName" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap:header message="tns:AccountNameAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Balance">
+      <soap:operation soapAction="https://api2.libertyreserve.com/soap/Balance" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap:header message="tns:BalanceAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindTransaction">
+      <soap:operation soapAction="https://api2.libertyreserve.com/soap/FindTransaction" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap:header message="tns:FindTransactionAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="History">
+      <soap:operation soapAction="https://api2.libertyreserve.com/soap/History" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap:header message="tns:HistoryAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transfer">
+      <soap:operation soapAction="https://api2.libertyreserve.com/soap/Transfer" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap:header message="tns:TransferAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTransfer">
+      <soap:operation soapAction="https://api2.libertyreserve.com/soap/BulkTransfer" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap:header message="tns:BulkTransferAuthentication" part="Authentication" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ApiServiceSoap12" type="tns:ApiServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="AccountName">
+      <soap12:operation soapAction="https://api2.libertyreserve.com/soap/AccountName" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap12:header message="tns:AccountNameAuthentication" part="Authentication" use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Balance">
+      <soap12:operation soapAction="https://api2.libertyreserve.com/soap/Balance" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap12:header message="tns:BalanceAuthentication" part="Authentication" use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindTransaction">
+      <soap12:operation soapAction="https://api2.libertyreserve.com/soap/FindTransaction" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap12:header message="tns:FindTransactionAuthentication" part="Authentication" use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="History">
+      <soap12:operation soapAction="https://api2.libertyreserve.com/soap/History" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap12:header message="tns:HistoryAuthentication" part="Authentication" use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transfer">
+      <soap12:operation soapAction="https://api2.libertyreserve.com/soap/Transfer" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap12:header message="tns:TransferAuthentication" part="Authentication" use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BulkTransfer">
+      <soap12:operation soapAction="https://api2.libertyreserve.com/soap/BulkTransfer" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+        <soap12:header message="tns:BulkTransferAuthentication" part="Authentication" use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" namespace="https://api2.libertyreserve.com/soap/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ApiService">
+    <wsdl:port name="ApiServiceSoap" binding="tns:ApiServiceSoap">
+      <soap:address location="http://www.libertyreserve.com/services/apiservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ApiServiceSoap12" binding="tns:ApiServiceSoap12">
+      <soap12:address location="http://www.libertyreserve.com/services/apiservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

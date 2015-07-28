@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://mobilepax.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://mobilepax.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://mobilepax.com/">
+      <s:element name="startMobilePax">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="merchantid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="gsmno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="paymenttype" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="chargingunit" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="chargingvalue" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="productDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="startMobilePaxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startMobilePaxResult" type="tns:MobilePaxReturn" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MobilePaxReturn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="errcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="transactionid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="startMobilePaxSoapIn">
+    <wsdl:part name="parameters" element="tns:startMobilePax" />
+  </wsdl:message>
+  <wsdl:message name="startMobilePaxSoapOut">
+    <wsdl:part name="parameters" element="tns:startMobilePaxResponse" />
+  </wsdl:message>
+  <wsdl:portType name="mobilepaxSoap">
+    <wsdl:operation name="startMobilePax">
+      <wsdl:input message="tns:startMobilePaxSoapIn" />
+      <wsdl:output message="tns:startMobilePaxSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="mobilepaxSoap" type="tns:mobilepaxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="startMobilePax">
+      <soap:operation soapAction="http://mobilepax.com/startMobilePax" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="mobilepaxSoap12" type="tns:mobilepaxSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="startMobilePax">
+      <soap12:operation soapAction="http://mobilepax.com/startMobilePax" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="mobilepax">
+    <wsdl:port name="mobilepaxSoap" binding="tns:mobilepaxSoap">
+      <soap:address location="http://api.mobilepax.com/mobilepax.asmx" />
+    </wsdl:port>
+    <wsdl:port name="mobilepaxSoap12" binding="tns:mobilepaxSoap12">
+      <soap12:address location="http://api.mobilepax.com/mobilepax.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

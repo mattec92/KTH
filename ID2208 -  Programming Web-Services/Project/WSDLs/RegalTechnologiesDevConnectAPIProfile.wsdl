@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://processor" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://processor" xmlns:intf="http://processor" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+   <wsdl:types>
+
+      <schema elementFormDefault="qualified" targetNamespace="http://processor" xmlns="http://www.w3.org/2001/XMLSchema">
+
+         <element name="processCommand">
+
+            <complexType>
+
+               <all>
+
+                  <element name="merchantCode" type="xsd:string"/>
+
+                  <element name="command" type="xsd:string"/>
+
+                  <element name="paymentMethod" type="xsd:string"/>
+
+                  <element name="paymentSubMethod" type="xsd:string"/>
+
+                  <element name="insertType" type="xsd:string"/>
+
+                  <element name="branchNumber" type="xsd:string"/>
+
+                  <element name="customerAccountNumber" type="xsd:string"/>
+
+                  <element name="invoiceNumber" type="xsd:string"/>
+
+                  <element name="bankRoutingNumber" type="xsd:string"/>
+
+                  <element name="bankAccountNumber" type="xsd:string"/>
+
+                  <element name="checkDate" type="xsd:string"/>
+
+                  <element name="creditCardNumber" type="xsd:string"/>
+
+                  <element name="expireMonth" type="xsd:string"/>
+
+                  <element name="expireYear" type="xsd:string"/>
+
+                  <element name="cvvCode" type="xsd:string"/>
+
+                  <element name="paymentAmount" type="xsd:string"/>
+
+                  <element name="serviceFee" type="xsd:string"/>
+
+                  <element name="billFirstName" type="xsd:string"/>
+
+                  <element name="billLastName" type="xsd:string"/>
+
+                  <element name="billCompany" type="xsd:string"/>
+
+                  <element name="billAddress" type="xsd:string"/>
+
+                  <element name="billCity" type="xsd:string"/>
+
+                  <element name="billZip" type="xsd:string"/>
+
+                  <element name="billState" type="xsd:string"/>
+
+                  <element name="billCountry" type="xsd:string"/>
+
+                  <element name="billPhone" type="xsd:string"/>
+
+                  <element name="billEmail" type="xsd:string"/>
+
+                  <element name="billDriversLicenseNumber" type="xsd:string"/>
+
+                  <element name="billDriversLicenseState" type="xsd:string"/>
+
+                  <element name="shipFirstName" type="xsd:string"/>
+
+                  <element name="shipLastName" type="xsd:string"/>
+
+                  <element name="shipCompany" type="xsd:string"/>
+
+                  <element name="shipAddress" type="xsd:string"/>
+
+                  <element name="shipCity" type="xsd:string"/>
+
+                  <element name="shipState" type="xsd:string"/>
+
+                  <element name="shipZip" type="xsd:string"/>
+
+                  <element name="shipCountry" type="xsd:string"/>
+
+                  <element name="shipPhone" type="xsd:string"/>
+
+                  <element name="shipEmail" type="xsd:string"/>
+
+                  <element name="description" type="xsd:string"/>
+
+                  <element name="trackingNumber" type="xsd:string"/>
+
+                  <element name="test" type="xsd:string"/>
+
+                  <element name="numberOfPayments" type="xsd:string"/>
+
+                  <element name="recurringAmount" type="xsd:string"/>
+
+                  <element name="recurringFrequency" type="xsd:string"/>
+
+                  <element name="recurringDateOfMonth1" type="xsd:string"/>
+
+                  <element name="recurringDateOfMonth2" type="xsd:string"/>
+
+                  <element name="recurringWeekDay" type="xsd:string"/>
+
+                  <element name="recurringStartDate" type="xsd:string"/>
+
+                  <element name="debitCardNumber" type="xsd:string"/>
+
+                  <element name="paymentChannel" type="xsd:string"/>
+
+                  <element name="paymentTransactionID" type="xsd:string"/>
+
+						      <element name="transactionType" type="xsd:string"/>
+
+						      <element name="creditCardToken" type="xsd:string"/>
+
+						      <element name="debitCardToken" type="xsd:string"/>
+
+						      <element name="paymentDate" type="xsd:string"/>
+
+						      <element name="fromDate" type="xsd:string"/>
+
+						      <element name="toDate" type="xsd:string"/>
+
+						      <element name="status" type="xsd:string"/>
+
+               </all>
+
+            </complexType>
+
+         </element>
+
+         <element name="processCommandResponse">
+
+            <complexType>
+
+               <sequence>
+
+                  <element name="processCommandReturn" type="impl:ProcessResponse"/>
+
+               </sequence>
+
+            </complexType>
+
+         </element>
+
+         <complexType name="ProcessResponse">
+
+            <sequence>
+
+               <element name="approvalCode" nillable="true" type="xsd:string"/>
+
+               <element name="command" nillable="true" type="xsd:string"/>
+
+               <element name="commandResponseCode" nillable="true" type="xsd:string"/>
+
+               <element name="commandResponseText" nillable="true" type="xsd:string"/>
+
+               <element name="customerAccountNumber" nillable="true" type="xsd:string"/>
+
+               <element name="paymentAmount" nillable="true" type="xsd:string"/>
+
+               <element name="paymentMethod" nillable="true" type="xsd:string"/>
+
+               <element name="paymentResponseCode" nillable="true" type="xsd:string"/>
+
+               <element name="paymentResponseText" nillable="true" type="xsd:string"/>
+
+               <element name="paymentTransactionID" nillable="true" type="xsd:string"/>
+
+               <element name="trackingNumber" nillable="true" type="xsd:string"/>
+  
+               <element name="transactionType" nillable="true" type="xsd:string"/>
+
+               <element name="status" nillable="true" type="xsd:string"/>
+
+               <element name="paymentDate" nillable="true" type="xsd:string"/>
+
+               <element name="transaction" nillable="true" type="xsd:string"/>
+
+
+            </sequence>
+
+         </complexType>
+
+      </schema>
+
+   </wsdl:types>
+
+   <wsdl:message name="processCommandResponse">
+
+      <wsdl:part element="impl:processCommandResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="processCommandRequest">
+
+      <wsdl:part element="impl:processCommand" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ProcessRequest">
+
+      <wsdl:operation name="processCommand">
+
+         <wsdl:input message="impl:processCommandRequest" name="processCommandRequest"/>
+
+         <wsdl:output message="impl:processCommandResponse" name="processCommandResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ProcessRequestSoapBinding" type="impl:ProcessRequest">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="processCommand">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="processCommandRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="processCommandResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ProcessRequestService">
+
+      <wsdl:port binding="impl:ProcessRequestSoapBinding" name="ProcessRequest">
+
+         <wsdlsoap:address location="https://regaltek.secured-server.biz/RegalPayment/services/ProcessRequest"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

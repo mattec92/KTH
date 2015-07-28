@@ -1,0 +1,2025 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://resortdata.com/IRMPublic" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://resortdata.com/IRMPublic" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://resortdata.com/IRMPublic">
+      <s:element name="Version">
+        <s:complexType />
+      </s:element>
+      <s:element name="VersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GDSReservation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeReservationRQ" type="tns:MakeReservation_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MakeReservation_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationRequest" type="tns:irmDatesRoomInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentInfo" type="tns:irmAgentInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="RateInfo" type="tns:irmRateInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestInfo" type="tns:irmGuestInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="CCardInfo" type="tns:irmCCCard" />
+          <s:element minOccurs="0" maxOccurs="1" name="GDSInfo" type="tns:irmGDSInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmWebSvcCredentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LogonID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatabaseID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmDatesRoomInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ArrivalDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartureDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="People1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="People2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="People3" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="People4" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmAgentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentAddress1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentAddress2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentCountry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentPhone1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentPhone2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TravelAgentEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupPassword" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmRateInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RatePlan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RatePerDay" type="tns:ArrayOfDecimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDecimal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="decimal" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmGuestInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmCCCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardExpDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmGDSInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="GDSResID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PMSResID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentProcessed" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GDSReservationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GDSReservationResult" type="tns:MakeReservation_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MakeReservation_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="irmReturnStatusEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Failure" />
+          <s:enumeration value="RoomUnavailable" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GDSCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelReservationRQ" type="tns:CancelReservation_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelReservation_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GDSConfirmNum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GDSCancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GDSCancelResult" type="tns:CancelReservation_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelReservation_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConfirmationNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GDSModify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyReservationRQ" type="tns:ModifyReservation_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ModifyReservation_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationRequest" type="tns:irmDatesRoomInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentInfo" type="tns:irmAgentInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="RateInfo" type="tns:irmRateInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestInfo" type="tns:irmGuestInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="CCardInfo" type="tns:irmCCCard" />
+          <s:element minOccurs="0" maxOccurs="1" name="GDSInfo" type="tns:irmGDSInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GDSModifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GDSModifyResult" type="tns:ModifyReservation_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ModifyReservation_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GDSResID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PMSResID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GDSLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SysLoginRQ" type="tns:Login_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Login_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginInfo" type="tns:irmLoginInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeNameAddress" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SkipPasswordValidation" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmLoginInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HideEMail" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ByZipCode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowOLDOwner" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GDSLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GDSLoginResult" type="tns:Login_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Login_irmRS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:ReturnStatusCodeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="LoginErr" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MasterNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlternateID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NameAddress" type="tns:wsNameAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupAgent" type="tns:wsGroupAgentMaster" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomInfo" type="tns:wsRoomDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ReturnStatusCodeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Failure" />
+          <s:enumeration value="CannotConnect" />
+          <s:enumeration value="PaymentFailed" />
+          <s:enumeration value="UtilityRunning" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="wsNameAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceOfBusiness" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MarketCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VIP" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="wsGroupAgentMaster">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MasterType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RatePlan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RateDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceOfBusiness" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MarketCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommissionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaxCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArrivalDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartureDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepositPercentage" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupLeaderResNum" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PredeductDefault" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="wsRoomDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RoomType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaidZone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaidsNote" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BlockFromIRM" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="URL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeshareOwnership" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGuestInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetGuestInformation_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetGuestInformation_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGuestInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGuestInformationResult" type="tns:GetGuestInformation_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetGuestInformation_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestInformation" type="tns:irmGuestInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFolio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetFolio_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFolio_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFolioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFolioResult" type="tns:GetFolio_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFolio_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Folio">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PostCharge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:PostCharge_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PostCharge_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="Transaction" type="tns:irmTransactionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmTransactionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PostChargeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostChargeResult" type="tns:PostCharge_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PostCharge_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllRooms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetAllRooms_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetAllRooms_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllRoomsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllRoomsResult" type="tns:GetAllRooms_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetAllRooms_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rooms">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckAvailability">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:CheckAvailability_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CheckAvailability_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="AvailabilityRequest" type="tns:irmDatesRoomInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckAvailabilityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckAvailabilityResult" type="tns:CheckAvailability_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CheckAvailability_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnavailableReason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Inventory">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IsRoomAvailable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:CheckAvailability_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsRoomAvailableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsRoomAvailableResult" type="tns:AvailableRooms_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AvailableRooms_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:irmReturnStatusEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnavailableReason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultSet">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MakeReservation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:MakeReservation_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeReservationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeReservationResult" type="tns:MakeReservation_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableRooms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetAvailableRooms_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetAvailableRooms_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatesPeople" type="tns:irmDatesPeople" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchCriteria" type="tns:irmSearchCriteria" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmDatesPeople">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ArrivalDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartureDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="People1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="People2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="People3" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="People4" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmSearchCriteria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RoomType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest6" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest7" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest8" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestRequest9" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRMSearch1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRMSearch2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRMSearch3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRMSearch4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRMSearch5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRMSearch6" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRMSearch7" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRMSearch8" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAvailableRoomsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAvailableRoomsResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnavailableReason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConfirmationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultSet">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoomInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetRoomInfo_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetRoomInfo_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchCriteria" type="tns:irmSearchCriteria" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoomInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoomInfoResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomCalendar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetRoomCalendar_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetRoomCalendar_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Room" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatesPeople" type="tns:irmDatesPeople" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rate" type="tns:irmRatePlan" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmRatePlan">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RatePlan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PromotionCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoomCalendarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoomCalendarResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentRatePerStay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetAgentRatePerStay_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetAgentRatePerStay_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Room" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatesPeople" type="tns:irmDatesPeople" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentInfo" type="tns:irmAgentInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="OtherChargeOverride" type="tns:irmOtherChargeOverride" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeAllAvailableRates" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmOtherChargeOverride">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludeOtherCharge3" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludeOtherCharge4" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludeOtherCharge5" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludeOtherCharge6" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludeOtherCharge7" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludeSecurityDeposit" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAgentRatePerStayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgentRatePerStayResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRatePerStay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetRatePerStay_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetRatePerStay_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Room" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatesPeople" type="tns:irmDatesPeople" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rate" type="tns:irmRatePlan" />
+          <s:element minOccurs="0" maxOccurs="1" name="OtherChargeOverride" type="tns:irmOtherChargeOverride" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRatePerStayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRatePerStayResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeReservationWithDeposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:MakeReservationWithDeposit_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MakeReservationWithDeposit_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationRequest" type="tns:irmDatesRoomInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentInfo" type="tns:irmAgentInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="RateInfo" type="tns:irmRateInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="OtherChargeOverride" type="tns:irmOtherChargeOverride" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestCredentials" type="tns:irmGuestCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestInfo" type="tns:irmGuestInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentInfo" type="tns:irmPayment" />
+          <s:element minOccurs="0" maxOccurs="1" name="VirtualStoreItems" type="tns:ArrayOfIrmVirtualStoreItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmGuestCredentials">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LoginType" type="tns:irmLoginIDType" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="irmLoginIDType">
+        <s:restriction base="s:string">
+          <s:enumeration value="GuestHistoryNumber_0" />
+          <s:enumeration value="GuestHistoryEmail_1" />
+          <s:enumeration value="CRMNumber_2" />
+          <s:enumeration value="CRMAlternate_3" />
+          <s:enumeration value="CRMEmail_4" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="irmPayment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DepositDueDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardExpiration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreditCardCVC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingPostalCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Retries" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIrmVirtualStoreItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="irmVirtualStoreItem" nillable="true" type="tns:irmVirtualStoreItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmVirtualStoreItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VendorNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MakeReservationWithDepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeReservationWithDepositResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelReservation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:Cancel_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Cancel_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestCredentials" type="tns:irmGuestCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CancellationReason" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelReservationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelReservationResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GuestLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GuestLogin_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GuestLogin_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestCredentials" type="tns:irmGuestCredentials" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GuestLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GuestLoginResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReservationInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetReservationInfo_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetReservationInfo_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestCredentials" type="tns:irmGuestCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetFolio" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetAllReservations" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReservationInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReservationInfoResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakePayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:MakePayment_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MakePayment_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestCredentials" type="tns:irmGuestCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentInfo" type="tns:irmPayment" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MakePaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakePaymentResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRoomCleanStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:UpdateRoomCleanStatus_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateRoomCleanStatus_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoomNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CleanStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateRoomCleanStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateRoomCleanStatusResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCourseInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetCourseInformation_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCourseInformation_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCourseInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCourseInformationResult" type="tns:GetCourseInformation_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCourseInformation_irmRS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultSet">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVirtualStoreCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetVirtualStoreCategories_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVirtualStoreCategories_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVirtualStoreCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVirtualStoreCategoriesResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVirtualStoreVendors">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetVirtualStoreVendors_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVirtualStoreVendors_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VendorNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVirtualStoreVendorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVirtualStoreVendorsResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVirtualStoreItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:GetVirtualStoreItems_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVirtualStoreItems_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VendorNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationInformation" type="tns:irmDatesRoomInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVirtualStoreItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVirtualStoreItemsResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRMCreateAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:CRMCreateAccount_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CRMCreateAccount_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestInfo" type="tns:irmGuestInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CRMCreateAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRMCreateAccountResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRMModifyAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:CRMModifyAccount_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CRMModifyAccount_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestCredentials" type="tns:irmGuestCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestInfo" type="tns:irmGuestInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkReservations" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="PointsTransaction" type="tns:irmPointsTransaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="irmPointsTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Points" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReservationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment2" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CRMModifyAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRMModifyAccountResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CRMGetAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RQ" type="tns:CRMGetAccount_irmRQ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CRMGetAccount_irmRQ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="tns:irmWebSvcCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestOptions" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseOptions" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestCredentials" type="tns:irmGuestCredentials" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CRMGetAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CRMGetAccountResult" type="tns:Result_irmRS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VersionSoapIn">
+    <wsdl:part name="parameters" element="tns:Version" />
+  </wsdl:message>
+  <wsdl:message name="VersionSoapOut">
+    <wsdl:part name="parameters" element="tns:VersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GDSReservationSoapIn">
+    <wsdl:part name="parameters" element="tns:GDSReservation" />
+  </wsdl:message>
+  <wsdl:message name="GDSReservationSoapOut">
+    <wsdl:part name="parameters" element="tns:GDSReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GDSCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:GDSCancel" />
+  </wsdl:message>
+  <wsdl:message name="GDSCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:GDSCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="GDSModifySoapIn">
+    <wsdl:part name="parameters" element="tns:GDSModify" />
+  </wsdl:message>
+  <wsdl:message name="GDSModifySoapOut">
+    <wsdl:part name="parameters" element="tns:GDSModifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GDSLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:GDSLogin" />
+  </wsdl:message>
+  <wsdl:message name="GDSLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:GDSLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGuestInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGuestInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetGuestInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGuestInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFolioSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFolio" />
+  </wsdl:message>
+  <wsdl:message name="GetFolioSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFolioResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostChargeSoapIn">
+    <wsdl:part name="parameters" element="tns:PostCharge" />
+  </wsdl:message>
+  <wsdl:message name="PostChargeSoapOut">
+    <wsdl:part name="parameters" element="tns:PostChargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRoomsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllRooms" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRoomsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckAvailabilitySoapIn">
+    <wsdl:part name="parameters" element="tns:CheckAvailability" />
+  </wsdl:message>
+  <wsdl:message name="CheckAvailabilitySoapOut">
+    <wsdl:part name="parameters" element="tns:CheckAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsRoomAvailableSoapIn">
+    <wsdl:part name="parameters" element="tns:IsRoomAvailable" />
+  </wsdl:message>
+  <wsdl:message name="IsRoomAvailableSoapOut">
+    <wsdl:part name="parameters" element="tns:IsRoomAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeReservationSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeReservation" />
+  </wsdl:message>
+  <wsdl:message name="MakeReservationSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableRoomsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAvailableRooms" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableRoomsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAvailableRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoomInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomCalendarSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoomCalendar" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomCalendarSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomCalendarResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentRatePerStaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgentRatePerStay" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentRatePerStaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgentRatePerStayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRatePerStaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetRatePerStay" />
+  </wsdl:message>
+  <wsdl:message name="GetRatePerStaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetRatePerStayResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeReservationWithDepositSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeReservationWithDeposit" />
+  </wsdl:message>
+  <wsdl:message name="MakeReservationWithDepositSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeReservationWithDepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelReservationSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelReservation" />
+  </wsdl:message>
+  <wsdl:message name="CancelReservationSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GuestLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:GuestLogin" />
+  </wsdl:message>
+  <wsdl:message name="GuestLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:GuestLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReservationInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReservationInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetReservationInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReservationInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakePaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:MakePayment" />
+  </wsdl:message>
+  <wsdl:message name="MakePaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:MakePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRoomCleanStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRoomCleanStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRoomCleanStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRoomCleanStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCourseInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCourseInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVirtualStoreCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVirtualStoreCategories" />
+  </wsdl:message>
+  <wsdl:message name="GetVirtualStoreCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVirtualStoreCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVirtualStoreVendorsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVirtualStoreVendors" />
+  </wsdl:message>
+  <wsdl:message name="GetVirtualStoreVendorsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVirtualStoreVendorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVirtualStoreItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVirtualStoreItems" />
+  </wsdl:message>
+  <wsdl:message name="GetVirtualStoreItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVirtualStoreItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRMCreateAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:CRMCreateAccount" />
+  </wsdl:message>
+  <wsdl:message name="CRMCreateAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:CRMCreateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRMModifyAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:CRMModifyAccount" />
+  </wsdl:message>
+  <wsdl:message name="CRMModifyAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:CRMModifyAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="CRMGetAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:CRMGetAccount" />
+  </wsdl:message>
+  <wsdl:message name="CRMGetAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:CRMGetAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="VersionHttpGetIn" />
+  <wsdl:message name="VersionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="VersionHttpPostIn" />
+  <wsdl:message name="VersionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="IRMPublicMethodsSoap">
+    <wsdl:operation name="Version">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve assembly version number.</wsdl:documentation>
+      <wsdl:input message="tns:VersionSoapIn" />
+      <wsdl:output message="tns:VersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GDSReservation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reserve specified room type on requested dates for GDS providers.  Internal use only</wsdl:documentation>
+      <wsdl:input message="tns:GDSReservationSoapIn" />
+      <wsdl:output message="tns:GDSReservationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GDSCancel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancel specified reservation for GDS providers.  Internal use only.</wsdl:documentation>
+      <wsdl:input message="tns:GDSCancelSoapIn" />
+      <wsdl:output message="tns:GDSCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GDSModify">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Modify specified reservation for GDS providers.  Internal use only.</wsdl:documentation>
+      <wsdl:input message="tns:GDSModifySoapIn" />
+      <wsdl:output message="tns:GDSModifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GDSLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticate user login information for GDS providers.  Internal use only.</wsdl:documentation>
+      <wsdl:input message="tns:GDSLoginSoapIn" />
+      <wsdl:output message="tns:GDSLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuestInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve guest contact information for a specified reservation number.</wsdl:documentation>
+      <wsdl:input message="tns:GetGuestInformationSoapIn" />
+      <wsdl:output message="tns:GetGuestInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve list of charges for a specified reservation number.</wsdl:documentation>
+      <wsdl:input message="tns:GetFolioSoapIn" />
+      <wsdl:output message="tns:GetFolioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostCharge">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Post a charge to a specified reservation number.</wsdl:documentation>
+      <wsdl:input message="tns:PostChargeSoapIn" />
+      <wsdl:output message="tns:PostChargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRooms">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve list of all room numbers.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllRoomsSoapIn" />
+      <wsdl:output message="tns:GetAllRoomsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckAvailability">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check availability of a specified room type for requested date range.  Returns inventory counts for each day based on one night stay.</wsdl:documentation>
+      <wsdl:input message="tns:CheckAvailabilitySoapIn" />
+      <wsdl:output message="tns:CheckAvailabilitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsRoomAvailable">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check availability of a specified room type or room number for requested arrival through departure dates.</wsdl:documentation>
+      <wsdl:input message="tns:IsRoomAvailableSoapIn" />
+      <wsdl:output message="tns:IsRoomAvailableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeReservation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reserve specified room number or room type on requested dates.</wsdl:documentation>
+      <wsdl:input message="tns:MakeReservationSoapIn" />
+      <wsdl:output message="tns:MakeReservationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableRooms">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get available rooms for requested dates that meet selection criteria.</wsdl:documentation>
+      <wsdl:input message="tns:GetAvailableRoomsSoapIn" />
+      <wsdl:output message="tns:GetAvailableRoomsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get static room or room type information.</wsdl:documentation>
+      <wsdl:input message="tns:GetRoomInfoSoapIn" />
+      <wsdl:output message="tns:GetRoomInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomCalendar">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get room availability for a range of dates.</wsdl:documentation>
+      <wsdl:input message="tns:GetRoomCalendarSoapIn" />
+      <wsdl:output message="tns:GetRoomCalendarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentRatePerStay">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check availability of a room and return agent rate details.</wsdl:documentation>
+      <wsdl:input message="tns:GetAgentRatePerStaySoapIn" />
+      <wsdl:output message="tns:GetAgentRatePerStaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRatePerStay">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check availability of a room and return rate details.</wsdl:documentation>
+      <wsdl:input message="tns:GetRatePerStaySoapIn" />
+      <wsdl:output message="tns:GetRatePerStaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeReservationWithDeposit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reserve specified room number or room type on requested dates.</wsdl:documentation>
+      <wsdl:input message="tns:MakeReservationWithDepositSoapIn" />
+      <wsdl:output message="tns:MakeReservationWithDepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelReservation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancel the specified reservation.</wsdl:documentation>
+      <wsdl:input message="tns:CancelReservationSoapIn" />
+      <wsdl:output message="tns:CancelReservationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GuestLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve name and address information from guest login id and password.</wsdl:documentation>
+      <wsdl:input message="tns:GuestLoginSoapIn" />
+      <wsdl:output message="tns:GuestLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve reservation information including guest name, dates, balance due.</wsdl:documentation>
+      <wsdl:input message="tns:GetReservationInfoSoapIn" />
+      <wsdl:output message="tns:GetReservationInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakePayment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Process a credit card payment and post the payment transaction to the reservation specified.</wsdl:documentation>
+      <wsdl:input message="tns:MakePaymentSoapIn" />
+      <wsdl:output message="tns:MakePaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRoomCleanStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Change clean status of a room.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateRoomCleanStatusSoapIn" />
+      <wsdl:output message="tns:UpdateRoomCleanStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Custom method.</wsdl:documentation>
+      <wsdl:input message="tns:GetCourseInformationSoapIn" />
+      <wsdl:output message="tns:GetCourseInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreCategories">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve virtual store categories.</wsdl:documentation>
+      <wsdl:input message="tns:GetVirtualStoreCategoriesSoapIn" />
+      <wsdl:output message="tns:GetVirtualStoreCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreVendors">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve virtual store vendors.</wsdl:documentation>
+      <wsdl:input message="tns:GetVirtualStoreVendorsSoapIn" />
+      <wsdl:output message="tns:GetVirtualStoreVendorsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreItems">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve virtual store items for a specified vendor.</wsdl:documentation>
+      <wsdl:input message="tns:GetVirtualStoreItemsSoapIn" />
+      <wsdl:output message="tns:GetVirtualStoreItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRMCreateAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Create a new CRM account with guest information and password.</wsdl:documentation>
+      <wsdl:input message="tns:CRMCreateAccountSoapIn" />
+      <wsdl:output message="tns:CRMCreateAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRMModifyAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Modify CRM guest address, phone, email information; award/redeem points; link reservations.</wsdl:documentation>
+      <wsdl:input message="tns:CRMModifyAccountSoapIn" />
+      <wsdl:output message="tns:CRMModifyAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CRMGetAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve CRM guest information, optionally including points details.</wsdl:documentation>
+      <wsdl:input message="tns:CRMGetAccountSoapIn" />
+      <wsdl:output message="tns:CRMGetAccountSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRMPublicMethodsHttpGet">
+    <wsdl:operation name="Version">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve assembly version number.</wsdl:documentation>
+      <wsdl:input message="tns:VersionHttpGetIn" />
+      <wsdl:output message="tns:VersionHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRMPublicMethodsHttpPost">
+    <wsdl:operation name="Version">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve assembly version number.</wsdl:documentation>
+      <wsdl:input message="tns:VersionHttpPostIn" />
+      <wsdl:output message="tns:VersionHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IRMPublicMethodsSoap" type="tns:IRMPublicMethodsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Version">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/Version" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDSReservation">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GDSReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDSCancel">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GDSCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDSModify">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GDSModify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDSLogin">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GDSLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuestInformation">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetGuestInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolio">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetFolio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCharge">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/PostCharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRooms">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetAllRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAvailability">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/CheckAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsRoomAvailable">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/IsRoomAvailable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeReservation">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/MakeReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableRooms">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetAvailableRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomInfo">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetRoomInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomCalendar">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetRoomCalendar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentRatePerStay">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetAgentRatePerStay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRatePerStay">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetRatePerStay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeReservationWithDeposit">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/MakeReservationWithDeposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelReservation">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/CancelReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuestLogin">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GuestLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationInfo">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetReservationInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakePayment">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/MakePayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRoomCleanStatus">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/UpdateRoomCleanStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseInformation">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetCourseInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreCategories">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetVirtualStoreCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreVendors">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetVirtualStoreVendors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreItems">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/GetVirtualStoreItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRMCreateAccount">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/CRMCreateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRMModifyAccount">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/CRMModifyAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRMGetAccount">
+      <soap:operation soapAction="http://resortdata.com/IRMPublic/CRMGetAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IRMPublicMethodsSoap12" type="tns:IRMPublicMethodsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Version">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/Version" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDSReservation">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GDSReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDSCancel">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GDSCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDSModify">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GDSModify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDSLogin">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GDSLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuestInformation">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetGuestInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolio">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetFolio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCharge">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/PostCharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRooms">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetAllRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAvailability">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/CheckAvailability" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsRoomAvailable">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/IsRoomAvailable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeReservation">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/MakeReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableRooms">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetAvailableRooms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomInfo">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetRoomInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomCalendar">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetRoomCalendar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentRatePerStay">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetAgentRatePerStay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRatePerStay">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetRatePerStay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeReservationWithDeposit">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/MakeReservationWithDeposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelReservation">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/CancelReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuestLogin">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GuestLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationInfo">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetReservationInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakePayment">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/MakePayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRoomCleanStatus">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/UpdateRoomCleanStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseInformation">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetCourseInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreCategories">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetVirtualStoreCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreVendors">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetVirtualStoreVendors" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVirtualStoreItems">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/GetVirtualStoreItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRMCreateAccount">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/CRMCreateAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRMModifyAccount">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/CRMModifyAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CRMGetAccount">
+      <soap12:operation soapAction="http://resortdata.com/IRMPublic/CRMGetAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IRMPublicMethodsHttpGet" type="tns:IRMPublicMethodsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Version">
+      <http:operation location="/Version" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IRMPublicMethodsHttpPost" type="tns:IRMPublicMethodsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Version">
+      <http:operation location="/Version" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IRMPublicMethods">
+    <wsdl:port name="IRMPublicMethodsSoap" binding="tns:IRMPublicMethodsSoap">
+      <soap:address location="http://irm.resortdata.com/RDPWinCentralSvc/IRMPublic.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IRMPublicMethodsSoap12" binding="tns:IRMPublicMethodsSoap12">
+      <soap12:address location="http://irm.resortdata.com/RDPWinCentralSvc/IRMPublic.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IRMPublicMethodsHttpGet" binding="tns:IRMPublicMethodsHttpGet">
+      <http:address location="http://irm.resortdata.com/RDPWinCentralSvc/IRMPublic.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IRMPublicMethodsHttpPost" binding="tns:IRMPublicMethodsHttpPost">
+      <http:address location="http://irm.resortdata.com/RDPWinCentralSvc/IRMPublic.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

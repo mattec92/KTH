@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Honey" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/Honey" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/Honey" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/Honey-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/Honey" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/Honey" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:37:01 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/Mid-level-ontology.owl#Honey"/></xsd:annotation><xsd:element name="Honey" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/_honey_Providerservice_Honey_liftingSchemaMapping.xslt" type="HoneyType"/><xsd:simpleType name="HoneyType" sawsdl:modelReference="http://127.0.0.1/ontology/Mid-level-ontology.owl#Honey"><xsd:restriction base="xsd:string"/></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_HONEYResponse">
+    <wsdl:part name="_HONEY" type="HoneyType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_HONEYRequest">
+  </wsdl:message>
+  <wsdl:portType name="HoneySoap">
+    <wsdl:operation name="get_HONEY">
+      <wsdl:input message="get_HONEYRequest">
+    </wsdl:input>
+      <wsdl:output message="get_HONEYResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HoneySoapBinding" type="HoneySoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_HONEY">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Honey"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Honey"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HoneyService">
+    <wsdl:port name="HoneySoap" binding="HoneySoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/Honey"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

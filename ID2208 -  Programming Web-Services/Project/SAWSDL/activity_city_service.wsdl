@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ActivityCity" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityCity" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/ActivityCity" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/ActivityCity-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/ActivityCity" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/ActivityCity" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:33:06 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/travel.owl#Activity"/><xsd:documentation source="Translation (OWL2XSD-ComplexType) of http://127.0.0.1/ontology/travel.owl#City"/></xsd:annotation><xsd:element name="City" sawsdl:liftingSchemaMapping="http://127.0.0.1/services/liftingSchemaMappings/activity_city_service_City_liftingSchemaMapping.xslt" type="CityType"/><xsd:element name="Activity" type="ActivityType"/><xsd:complexType name="LuxuryHotel" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#LuxuryHotel"><xsd:choice><xsd:element name="luxuryHotelID" type="LuxuryHotelDATA"/><xsd:sequence><xsd:element minOccurs="0" name="name" type="xsd:string"/><xsd:element name="hasRating" type="LuxuryHotelAccommodationRating"/></xsd:sequence></xsd:choice></xsd:complexType><xsd:complexType name="AccommodationRating" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#AccommodationRating"><xsd:choice><xsd:element name="accommodationRatingID" type="AccommodationRatingDATA"/><xsd:sequence><xsd:element minOccurs="0" name="name" type="xsd:string"/></xsd:sequence></xsd:choice></xsd:complexType><xsd:complexType name="CityType" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#City"><xsd:choice><xsd:element name="cityID" type="CityDATA"/><xsd:sequence><xsd:element minOccurs="0" name="name" type="xsd:string"/><xsd:element name="hasAccommodation" type="LuxuryHotel"/></xsd:sequence></xsd:choice></xsd:complexType><xsd:complexType name="LuxuryHotelAccommodationRating" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#AccommodationRating"><xsd:complexContent><xsd:restriction base="AccommodationRating"><xsd:choice><xsd:element name="accommodationRatingID" type="LuxuryHotelAccommodationRatingDATA"/><xsd:sequence><xsd:element minOccurs="0" name="name" type="xsd:string"/></xsd:sequence></xsd:choice></xsd:restriction></xsd:complexContent></xsd:complexType><xsd:simpleType name="ActivityType" sawsdl:modelReference="http://127.0.0.1/ontology/travel.owl#Activity"><xsd:restriction base="xsd:string"/></xsd:simpleType><xsd:simpleType name="LuxuryHotelAccommodationRatingDATA" sawsdl:modelReference=""><xsd:restriction base="AccommodationRatingDATA"><xsd:enumeration value="ThreeStarRating"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="LuxuryHotelDATA" sawsdl:modelReference=""><xsd:restriction base="xsd:string"><xsd:enumeration value="FourSeasons"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="AccommodationRatingDATA" sawsdl:modelReference=""><xsd:restriction base="xsd:string"><xsd:enumeration value="TwoStarRating"/><xsd:enumeration value="OneStarRating"/><xsd:enumeration value="ThreeStarRating"/></xsd:restriction></xsd:simpleType><xsd:simpleType name="CityDATA" sawsdl:modelReference=""><xsd:restriction base="xsd:string"><xsd:enumeration value="Cairns"/></xsd:restriction></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_CITYResponse">
+    <wsdl:part name="_CITY" type="CityType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_CITYRequest">
+    <wsdl:part name="_ACTIVITY" type="ActivityType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ActivityCitySoap">
+    <wsdl:operation name="get_CITY">
+      <wsdl:input message="get_CITYRequest">
+    </wsdl:input>
+      <wsdl:output message="get_CITYResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActivityCitySoapBinding" type="ActivityCitySoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_CITY">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityCity"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/ActivityCity"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ActivityCityService">
+    <wsdl:port name="ActivityCitySoap" binding="ActivityCitySoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/ActivityCity"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

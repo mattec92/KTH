@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Author" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/Author" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/Author" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/Author-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/Author" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/Author" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:33:50 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/books.owl#Author"/></xsd:annotation><xsd:element name="Author" type="AuthorType"/><xsd:simpleType name="AuthorType" sawsdl:modelReference="http://127.0.0.1/ontology/books.owl#Author"><xsd:restriction base="xsd:string"/></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_AUTHORResponse">
+    <wsdl:part name="_AUTHOR" type="AuthorType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="get_AUTHORRequest">
+  </wsdl:message>
+  <wsdl:portType name="AuthorSoap">
+    <wsdl:operation name="get_AUTHOR">
+      <wsdl:input message="get_AUTHORRequest">
+    </wsdl:input>
+      <wsdl:output message="get_AUTHORResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthorSoapBinding" type="AuthorSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_AUTHOR">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Author"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Author"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthorService">
+    <wsdl:port name="AuthorSoap" binding="AuthorSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/Author"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

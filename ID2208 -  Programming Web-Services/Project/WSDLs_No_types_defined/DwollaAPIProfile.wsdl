@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Api" targetNamespace="http://tempuri.org/">
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://tempuri.org/Imports">
+         <xsd:import schemaLocation="https://www.dwolla.com/api/API.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+         <xsd:import schemaLocation="https://www.dwolla.com/api/API.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+         <xsd:import schemaLocation="https://www.dwolla.com/api/API.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" />
+         <xsd:import schemaLocation="https://www.dwolla.com/api/API.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="IApi_SendMoney_InputMessage">
+      <wsdl:part name="parameters" element="tns:SendMoney" />
+   </wsdl:message>
+   <wsdl:message name="IApi_SendMoney_OutputMessage">
+      <wsdl:part name="parameters" element="tns:SendMoneyResponse" />
+   </wsdl:message>
+   <wsdl:message name="IApi_SendMoneyAssumeCosts_InputMessage">
+      <wsdl:part name="parameters" element="tns:SendMoneyAssumeCosts" />
+   </wsdl:message>
+   <wsdl:message name="IApi_SendMoneyAssumeCosts_OutputMessage">
+      <wsdl:part name="parameters" element="tns:SendMoneyAssumeCostsResponse" />
+   </wsdl:message>
+   <wsdl:message name="IApi_RequestPaymentKey_InputMessage">
+      <wsdl:part name="parameters" element="tns:RequestPaymentKey" />
+   </wsdl:message>
+   <wsdl:message name="IApi_RequestPaymentKey_OutputMessage">
+      <wsdl:part name="parameters" element="tns:RequestPaymentKeyResponse" />
+   </wsdl:message>
+   <wsdl:message name="IApi_RequestPaymentKey_AmountInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q1:AmountInvalidException" />
+   </wsdl:message>
+   <wsdl:message name="IApi_RequestPaymentKey_ApiCredentialsInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q2:ApiCredentialsInvalidException" />
+   </wsdl:message>
+   <wsdl:message name="IApi_RequestPaymentKey_UserInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q3:UserInvalidException" />
+   </wsdl:message>
+   <wsdl:message name="IApi_VerifyPaymentKey_InputMessage">
+      <wsdl:part name="parameters" element="tns:VerifyPaymentKey" />
+   </wsdl:message>
+   <wsdl:message name="IApi_VerifyPaymentKey_OutputMessage">
+      <wsdl:part name="parameters" element="tns:VerifyPaymentKeyResponse" />
+   </wsdl:message>
+   <wsdl:message name="IApi_VerifyPaymentKey_UserInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q4:UserInvalidException" />
+   </wsdl:message>
+   <wsdl:message name="IApi_VerifyPaymentKey_AmountInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q5:AmountInvalidException" />
+   </wsdl:message>
+   <wsdl:message name="IApi_VerifyPaymentKey_ApiCredentialsInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q6:ApiCredentialsInvalidException" />
+   </wsdl:message>
+   <wsdl:message name="IApi_ConfirmPayment_InputMessage">
+      <wsdl:part name="parameters" element="tns:ConfirmPayment" />
+   </wsdl:message>
+   <wsdl:message name="IApi_ConfirmPayment_OutputMessage">
+      <wsdl:part name="parameters" element="tns:ConfirmPaymentResponse" />
+   </wsdl:message>
+   <wsdl:message name="IApi_ConfirmPayment_AmountInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q7:AmountInvalidException" />
+   </wsdl:message>
+   <wsdl:message name="IApi_ConfirmPayment_ApiCredentialsInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q8:ApiCredentialsInvalidException" />
+   </wsdl:message>
+   <wsdl:message name="IApi_ConfirmPayment_UserInvalidExceptionFault_FaultMessage">
+      <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Dwolla.Lib.Exceptions" name="detail" element="q9:UserInvalidException" />
+   </wsdl:message>
+   <wsdl:portType name="IApi">
+      <wsdl:operation name="SendMoney">
+         <wsdl:input wsaw:Action="http://tempuri.org/IApi/SendMoney" message="tns:IApi_SendMoney_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IApi/SendMoneyResponse" message="tns:IApi_SendMoney_OutputMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="SendMoneyAssumeCosts">
+         <wsdl:input wsaw:Action="http://tempuri.org/IApi/SendMoneyAssumeCosts" message="tns:IApi_SendMoneyAssumeCosts_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IApi/SendMoneyAssumeCostsResponse" message="tns:IApi_SendMoneyAssumeCosts_OutputMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="RequestPaymentKey">
+         <wsdl:input wsaw:Action="http://tempuri.org/IApi/RequestPaymentKey" message="tns:IApi_RequestPaymentKey_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IApi/RequestPaymentKeyResponse" message="tns:IApi_RequestPaymentKey_OutputMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/RequestPaymentKeyAmountInvalidExceptionFault" name="AmountInvalidExceptionFault" message="tns:IApi_RequestPaymentKey_AmountInvalidExceptionFault_FaultMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/RequestPaymentKeyApiCredentialsInvalidExceptionFault" name="ApiCredentialsInvalidExceptionFault" message="tns:IApi_RequestPaymentKey_ApiCredentialsInvalidExceptionFault_FaultMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/RequestPaymentKeyUserInvalidExceptionFault" name="UserInvalidExceptionFault" message="tns:IApi_RequestPaymentKey_UserInvalidExceptionFault_FaultMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="VerifyPaymentKey">
+         <wsdl:input wsaw:Action="http://tempuri.org/IApi/VerifyPaymentKey" message="tns:IApi_VerifyPaymentKey_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IApi/VerifyPaymentKeyResponse" message="tns:IApi_VerifyPaymentKey_OutputMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/VerifyPaymentKeyUserInvalidExceptionFault" name="UserInvalidExceptionFault" message="tns:IApi_VerifyPaymentKey_UserInvalidExceptionFault_FaultMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/VerifyPaymentKeyAmountInvalidExceptionFault" name="AmountInvalidExceptionFault" message="tns:IApi_VerifyPaymentKey_AmountInvalidExceptionFault_FaultMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/VerifyPaymentKeyApiCredentialsInvalidExceptionFault" name="ApiCredentialsInvalidExceptionFault" message="tns:IApi_VerifyPaymentKey_ApiCredentialsInvalidExceptionFault_FaultMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="ConfirmPayment">
+         <wsdl:input wsaw:Action="http://tempuri.org/IApi/ConfirmPayment" message="tns:IApi_ConfirmPayment_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IApi/ConfirmPaymentResponse" message="tns:IApi_ConfirmPayment_OutputMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/ConfirmPaymentAmountInvalidExceptionFault" name="AmountInvalidExceptionFault" message="tns:IApi_ConfirmPayment_AmountInvalidExceptionFault_FaultMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/ConfirmPaymentApiCredentialsInvalidExceptionFault" name="ApiCredentialsInvalidExceptionFault" message="tns:IApi_ConfirmPayment_ApiCredentialsInvalidExceptionFault_FaultMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IApi/ConfirmPaymentUserInvalidExceptionFault" name="UserInvalidExceptionFault" message="tns:IApi_ConfirmPayment_UserInvalidExceptionFault_FaultMessage" />
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="BasicHttpBinding_IApi" type="tns:IApi">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="SendMoney">
+         <soap:operation soapAction="http://tempuri.org/IApi/SendMoney" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="SendMoneyAssumeCosts">
+         <soap:operation soapAction="http://tempuri.org/IApi/SendMoneyAssumeCosts" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="RequestPaymentKey">
+         <soap:operation soapAction="http://tempuri.org/IApi/RequestPaymentKey" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+         <wsdl:fault name="AmountInvalidExceptionFault">
+            <soap:fault name="AmountInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+         <wsdl:fault name="ApiCredentialsInvalidExceptionFault">
+            <soap:fault name="ApiCredentialsInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+         <wsdl:fault name="UserInvalidExceptionFault">
+            <soap:fault name="UserInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="VerifyPaymentKey">
+         <soap:operation soapAction="http://tempuri.org/IApi/VerifyPaymentKey" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+         <wsdl:fault name="UserInvalidExceptionFault">
+            <soap:fault name="UserInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+         <wsdl:fault name="AmountInvalidExceptionFault">
+            <soap:fault name="AmountInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+         <wsdl:fault name="ApiCredentialsInvalidExceptionFault">
+            <soap:fault name="ApiCredentialsInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="ConfirmPayment">
+         <soap:operation soapAction="http://tempuri.org/IApi/ConfirmPayment" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+         <wsdl:fault name="AmountInvalidExceptionFault">
+            <soap:fault name="AmountInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+         <wsdl:fault name="ApiCredentialsInvalidExceptionFault">
+            <soap:fault name="ApiCredentialsInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+         <wsdl:fault name="UserInvalidExceptionFault">
+            <soap:fault name="UserInvalidExceptionFault" use="literal" />
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="Api">
+      <wsdl:port name="BasicHttpBinding_IApi" binding="tns:BasicHttpBinding_IApi">
+         <soap:address location="https://www.dwolla.com/api/API.svc" />
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
+

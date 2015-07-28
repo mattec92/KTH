@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Flight Reservation Service</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h3>Login</h3>
+            Username
+            <h:inputText id="usernameField" binding="#{inputUsername}"/>
+            <br/>
+            Password
+            <h:inputText id="passwordField" binding="#{inputPassword}"/>
+            <br/>
+            <h:commandButton value="Log in" action="#{flightReservationService.login(inputUsername.value, inputPassword.value)}"/>
+            <br/>
+            <h:outputLabel value="#{flightReservationService.secretToken}"/>
+            <br/><br/><br/>
+
+            <h3>Get itineary</h3>
+            From
+            <h:inputText id="fromField" binding="#{inputFrom}"/>
+            <br/>
+            To
+            <h:inputText id="toField" binding="#{inputTo}"/>
+            <br/>
+            Date
+            <h:inputText id="dateField" binding="#{inputDate}"/>
+            <br/>
+            <h:commandButton value="Get itinearies" action="#{flightReservationService.getItinearies(inputFrom.value, inputTo.value, inputDate.value)}"/>
+            <br/>
+            <h:outputLabel value="#{flightReservationService.itineariesRepresentation}"/>
+            <br/><br/><br/>
+
+            <h3>Book ticket</h3>
+            CardNr
+            <h:inputText id="CardNrField" binding="#{inputCardNr}"/>
+            <br/>
+            <h:commandButton value="Book ticket" action="#{flightReservationService.bookTicket(inputCardNr.value)}"/>
+            <br/>
+            <h:outputLabel value="#{flightReservationService.ticketNr}"/>
+            <br/><br/><br/>
+            
+            <h3>Issue ticket (get ticket)</h3>
+            TicketNr
+            <h:inputText id="TicketNrField" binding="#{inputTicketNr}"/>
+            <br/>
+            <h:commandButton value="Get ticket" action="#{flightReservationService.getTicket(inputTicketNr.value)}"/>
+            <br/>
+            <h:outputLabel value="#{flightReservationService.ticketRepresentation}"/>
+            <br/><br/><br/>
+
+            <h3>Change card nr</h3>
+            TicketNr
+            <h:inputText id="TicketNrChangeField" binding="#{inputTicketNrChange}"/>
+            <br/>
+            New card nr
+            <h:inputText id="NewCardNrField" binding="#{inputNewCardNr}"/>
+            <br/>
+            <h:commandButton value="Change card nr" action="#{flightReservationService.changeCardNumber(inputTicketNrChange.value, inputNewCardNr.value)}"/>
+            <br/><br/><br/>
+            
+            <h3>Cancel booking</h3>
+            TicketNr
+            <h:inputText id="TicketNrDeleteField" binding="#{inputTicketNrDelete}"/>
+            <br/>
+            <h:commandButton value="Cancel booking" action="#{flightReservationService.cancelBooking(inputTicketNrDelete.value)}"/>
+            <br/><br/><br/>
+            
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Videomedia" targetNamespace="http://127.0.0.1/services/sawsdl_wsdl11/Videomedia" xmlns="http://127.0.0.1/services/sawsdl_wsdl11/Videomedia" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://127.0.0.1/services/sawsdl_wsdl11/Videomedia-impl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://127.0.0.1/services/sawsdl_wsdl11/Videomedia" xmlns:sawsdl="http://www.w3.org/ns/sawsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://127.0.0.1/services/sawsdl_wsdl11/Videomedia" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema version="OWLS2WSDL Wed Sep 22 14:36:49 CEST 2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:annotation><xsd:documentation source="Translation (OWL2XSD-SimpleType) of http://127.0.0.1/ontology/my_ontology.owl#VideoMedia"/></xsd:annotation><xsd:element name="VideoMedia" type="VideoMediaType"/><xsd:simpleType name="VideoMediaType" sawsdl:modelReference="http://127.0.0.1/ontology/my_ontology.owl#VideoMedia"><xsd:restriction base="xsd:string"/></xsd:simpleType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="get_VIDEOMEDIARequest">
+  </wsdl:message>
+  <wsdl:message name="get_VIDEOMEDIAResponse">
+    <wsdl:part name="_VIDEOMEDIA" type="VideoMediaType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="VideomediaSoap">
+    <wsdl:operation name="get_VIDEOMEDIA">
+      <wsdl:input message="get_VIDEOMEDIARequest">
+    </wsdl:input>
+      <wsdl:output message="get_VIDEOMEDIAResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VideomediaSoapBinding" type="VideomediaSoap">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get_VIDEOMEDIA">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Videomedia"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://127.0.0.1/services/sawsdl_wsdl11/Videomedia"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VideomediaService">
+    <wsdl:port name="VideomediaSoap" binding="VideomediaSoapBinding">
+      <wsdlsoap:address location="http://127.0.0.1/services/sawsdl_wsdl11/Videomedia"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

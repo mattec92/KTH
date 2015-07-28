@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://topdown.hw2.id2208.mattec.se/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FlightReservationServiceTopDown" targetNamespace="http://topdown.hw2.id2208.mattec.se/">
+	
+	<types>
+		<xsd:schema>
+		  <xsd:import namespace="http://topdown.hw2.id2208.mattec.se/" schemaLocation="http://localhost:8080/FlightReservationServiceTopDown/FlightReservationServiceTopDown?xsd=1"/>
+		</xsd:schema>
+	</types>
+	
+	<message name="bookTicket">    
+		<part name="parameters" element="tns:bookTicket"/>
+	</message>
+	<message name="bookTicketResponse">
+		<part name="parameters" element="tns:bookTicketResponse"/>
+	</message>
+	<message name="issueTicket">
+		<part name="parameters" element="tns:issueTicket"/>
+	</message>
+	<message name="issueTicketResponse">
+		<part name="parameters" element="tns:issueTicketResponse"/>
+	</message>
+    <message name="UnauthorizedException">
+    	<part name="fault" element="tns:UnauthorizedException"/>
+  	</message>
+	
+	<portType name="FlightReservationServiceTopDown">
+		<operation name="bookTicket">
+			<input message="tns:bookTicket"/>
+			<output message="tns:bookTicketResponse"/>
+			<fault message="tns:UnauthorizedException" name="UnauthorizedException"/>
+		</operation>
+		<operation name="issueTicket">
+			<input message="tns:issueTicket"/>
+			<output message="tns:issueTicketResponse"/>
+			<fault message="tns:UnauthorizedException" name="UnauthorizedException"/>
+		</operation>
+	</portType>
+	
+	<binding name="FlightReservationServiceTopDownPortBinding" type="tns:FlightReservationServiceTopDown">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="bookTicket">
+			<soap:operation soapAction="bookTicket"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		    <fault name="UnauthorizedException">
+		     	<soap:fault name="UnauthorizedException" use="literal"/>
+		    </fault>
+		</operation>
+		<operation name="issueTicket">
+			<soap:operation soapAction="issueTicket"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		    <fault name="UnauthorizedException">
+		     	<soap:fault name="UnauthorizedException" use="literal"/>
+		    </fault>
+		</operation>
+	</binding>
+	
+	<service name="FlightReservationServiceTopDown">
+		<documentation> WSDL File for FlightReservationServiceTopDown</documentation>
+		<port binding="tns:FlightReservationServiceTopDownPortBinding" name="FlightReservationServiceTopDownPort">
+			<soap:address location="http://localhost:8080/FlightReservationServiceTopDown/FlightReservationServiceTopDown"/>
+		</port>
+	</service>
+</definitions>

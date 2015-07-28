@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.EmploymentInfo.se" elementFormDefault="qualified">
+
+	<xsd:element name="Employee">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="Name" type="xsd:string" />
+
+				<xsd:element name="PersonNumber">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:pattern value="\d{6}-\d{4}" />
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+
+				<xsd:element name="Employment" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+
+							<xsd:element name="CompanyName" type="xsd:string" />
+
+							<xsd:element name="Role" type="xsd:string" />
+
+							<xsd:element name="StartDate" type="xsd:date" />
+
+							<xsd:element name="EndDate" type="xsd:date" />
+
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

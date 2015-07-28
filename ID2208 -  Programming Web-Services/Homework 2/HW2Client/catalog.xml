@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/FlightReservationServiceBottomUp/FlightReservationServiceBottomUp?xsd=2" uri="xml-resources/web-service-references/FlightReservationServiceBottomUp/wsdl/localhost_8080/FlightReservationServiceBottomUp/FlightReservationServiceBottomUp.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/FlightReservationServiceBottomUp/FlightReservationServiceBottomUp?wsdl" uri="xml-resources/web-service-references/FlightReservationServiceBottomUp/wsdl/localhost_8080/FlightReservationServiceBottomUp/FlightReservationServiceBottomUp.wsdl"/>
+    <system systemId="http://localhost:8080/FlightReservationServiceBottomUp/FlightReservationServiceBottomUp?xsd=1" uri="xml-resources/web-service-references/FlightReservationServiceBottomUp/wsdl/localhost_8080/FlightReservationServiceBottomUp/FlightReservationServiceBottomUp.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/FlightReservationServiceTopDown/FlightReservationServiceTopDown?wsdl" uri="xml-resources/web-service-references/FlightReservationServiceTopDown/wsdl/localhost_8080/FlightReservationServiceTopDown/FlightReservationServiceTopDown.wsdl"/>
+    <system systemId="http://localhost:8080/FlightReservationServiceTopDown/FlightReservationServiceTopDown?xsd=1" uri="xml-resources/web-service-references/FlightReservationServiceTopDown/wsdl/localhost_8080/FlightReservationServiceTopDown/FlightReservationServiceTopDown.xsd_1.xsd"/>
+</catalog>
