@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Currency Converter</title>
+    </h:head>
+    <h:body>
+        Currency Converter
+        <br/>
+        <br/>
+
+        <h:form>
+            From:
+
+            <br/>
+
+            <h:selectOneListbox id="from" value="#{converter.fromCurrency}">
+                <f:selectItems value="#{converter.currencies}" var="currency" itemValue="#{currency.name}" />
+            </h:selectOneListbox>
+
+            <br/>
+            <br/>
+
+            To:
+
+            <br/>
+
+            <h:selectOneListbox id="to" value="#{converter.toCurrency}">
+                <f:selectItems value="#{converter.currencies}" var="currency" itemValue="#{currency.name}" />
+            </h:selectOneListbox>
+
+            <br/>
+            <br/>
+
+            Amount:
+
+            <br/>
+
+            <h:inputText id="amount" value="#{converter.amount}"/>
+
+            <br/>
+            <br/>
+
+            <h:commandButton value="Convert" action="#{converter.convert}"/>
+
+            <br/>
+            <br/>
+
+            <h:outputText rendered="#{converter.convertedAmount != -1}"  value="Converted: #{converter.amount} #{converter.fromCurrency} = #{converter.convertedAmount} #{converter.toCurrency}"/>
+
+        </h:form>
+    </h:body>
+</html>
+

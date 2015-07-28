@@ -1,0 +1,37 @@
+.leftPanel {
+    float: left;
+    width: 48%;
+    margin: 10px;
+}
+
+.rightPanel {
+    float: right;
+    width: 48%;
+    margin: 10px;
+}
+
+.topPanel {
+    float: top;
+    margin: 10px;
+}
+
+.listItem {
+    border: 1px solid;
+    margin-bottom: 10px;
+}
+
+.block {
+    display: inline-block;
+    padding: 20px;
+    border: 1px solid;
+}
+
+.error {
+    color: red;
+}
+
+td {
+    padding: 10px;
+    width: 25%;
+    text-align: center;
+}

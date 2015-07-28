@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>WebShop: Log in</title>
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+    </h:head>
+    <h:body>
+        <h1>Welcome. Please log in.</h1>
+        <br/>
+        <div class="block">
+            <h:form>
+                Username
+                <br/>
+                <h:inputText id="usernameField" binding="#{inputUsername}"/>
+                <br/><br/>
+                Password
+                <br/>
+                <h:inputSecret id="passwordField" binding="#{inputPassword}"/>
+                <br/><br/>
+                <h:outputLabel class="error" rendered="#{userManager.loginError != null}" value="#{userManager.loginError}"/>
+                <br/><br/>
+                <h:commandButton value="Log in" action="#{userManager.login(inputUsername.value, inputPassword.value)}"/>
+                <br/><br/>
+                <h:commandButton value="Register new account" action="register"/>
+            </h:form>
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>WebShop: Admin</title> 
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+    </h:head>
+    <h:body>
+        <div class="topPanel">
+            <h:form>
+                <h:commandButton value="Log out" action="#{userManager.logout}"/>
+                <h:commandButton value="Restock" action="#{adminManager.initArticles}"/>
+                <br/><br/>
+                <h:outputLabel class="error" rendered="#{adminManager.errorMessage != null}" value="#{adminManager.errorMessage}"/>
+            </h:form>
+        </div>
+        <div class="leftPanel">
+            <h1>Inventory</h1>
+            <c:forEach var="element" items="#{adminManager.articles}" varStatus="status">
+                <div class="listItem">
+                    <h:form>
+                        <table>
+                            <tr>
+                                <td>
+                                    #{element.name} 
+                                </td>
+                                <td>
+                                    #{element.quantity} 
+                                </td>
+                                <td>
+                                    <h:inputText id="inventoryQuantityInput" value="#{adminManager.inventoryQuantities[element.name]}"/>
+                                </td>
+                                <td>
+                                    <h:commandButton value="Add units" action="#{adminManager.addUnits(element)}"/>
+                                </td>
+                                <td>
+                                    <h:commandButton value="Remove units" action="#{adminManager.removeUnits(element)}"/>
+                                </td>
+                                <td>
+                                    <h:commandButton value="Remove article" action="#{adminManager.removeArticle(element)}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </h:form>
+                </div>
+            </c:forEach>
+
+            <div class="listItem">
+                Add new article
+                <h:form>
+                    <table>
+                        <tr>
+                            <td>
+                                Name 
+                                <h:inputText id="newArticleName" binding="#{newArticleName}"/>
+                            </td>
+                            <td>
+                                Quantity 
+                                <h:inputText id="newArticleQuantity" binding="#{newArticleQuantity}"/>
+                            </td>
+                            <td>
+                                <h:commandButton value="Add article" action="#{adminManager.addArticle(newArticleName.value, newArticleQuantity.value)}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </h:form>
+            </div>
+
+        </div>
+
+        <div class="rightPanel">
+            <h1>Accounts</h1>
+            <c:forEach var="element" items="#{adminManager.accounts}">
+                <div class="listItem">
+                    <h:form>
+                        <table>
+                            <tr>
+                                <td>
+                                    #{element.username} 
+                                </td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="#{element.isBanned}">
+                                            <h:commandButton value="Unban account" action="#{adminManager.unbanAccount(element)}"/>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h:commandButton value="Ban account" action="#{adminManager.banAccount(element)}"/>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                            </tr>
+                        </table>
+                    </h:form>
+                </div>
+            </c:forEach>
+        </div>
+    </h:body>
+</html>

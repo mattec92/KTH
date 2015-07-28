@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>        
+        <navigation-case>
+            <if>#{userManager.isLoggedInAsAdmin}</if>
+            <to-view-id>/admin.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <if>#{userManager.isLoggedIn}</if>
+            <to-view-id>/shop.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>register</from-action>
+            <to-view-id>/register.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/register.xhtml</from-view-id>        
+        <navigation-case>
+            <if>#{userManager.isLoggedInAsAdmin}</if>
+            <to-view-id>/admin.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <if>#{userManager.isLoggedIn}</if>
+            <to-view-id>/shop.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/shop.xhtml</from-view-id>
+        <navigation-case>
+            <if>#{userManager.isLoggedIn == false}</if>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/admin.xhtml</from-view-id>
+        <navigation-case>
+            <if>#{userManager.isLoggedIn == false}</if>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
