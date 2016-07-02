@@ -42,4 +42,4 @@ Period 4: ID2204
 
 <h4>Year 5 (2015-2016)</h4>
 
-To be continued this autumn.
+No courses including programming work were taken.
